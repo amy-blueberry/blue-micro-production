@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Ownership/HQ documented; interim revenue and dated catalog supply meet quantitative coverage. Registrations separately labeled and not used as MAU.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "8d0efccbc17e42b48b2487c4e7b91c7d492ad9a52842b6cf39e2e980c9d625b1"
+}

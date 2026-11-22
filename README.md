@@ -9,12 +9,18 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 | Document | Purpose |
 | --- | --- |
 | [Research overview](docs/research/README.md) | Scope, provenance, completed work and limitations |
+| [Top 10 micro-drama companies](docs/research/micro-drama-market/README.md) | Company profiles, ownership, monetization, dated metrics and sources |
+| [AI versus conventional production](docs/research/micro-drama-market/AI_VS_TRADITIONAL.md) | Generated footage, human filming, AI assistance and evidence limits |
 | [Audience evidence](docs/research/01-audience-evidence.md) | Public market research and candidate audience segments |
 | [Reference mechanics](docs/research/02-reference-mechanics.md) | Timestamped Walden analysis and comparisons |
 | [Story and format hypotheses](docs/research/03-story-and-format-hypotheses.md) | Six candidate arcs and nine additional creative variables |
 | [Validation playbook](docs/research/04-validation-playbook.md) | Recruitment design, evidence gates, roles and iterative workflow |
 | [Hypothesis register](docs/research/05-hypothesis-register.json) | Fifteen untested hypotheses with explicit status |
 | [Comment observations](docs/research/06-walden-comment-observations.json) | Twenty bounded qualitative observations; no demographic inference |
+
+## Micro-drama market findings
+
+The November 21, 2026 market comparison covers ten apps/operators selected by Q1 2026 estimated worldwide app purchase revenue. The production comparison distinguishes disclosed AI-generated releases, mixed catalogs, conventional filming and parent-level AI capability. Sources, dates and uncertainty sit beside the claims. These adult-market business benchmarks do not establish the audience or story preferences for Bumpp.
 
 ## What we are trying to learn
 

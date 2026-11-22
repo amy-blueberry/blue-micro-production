@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "PASS at the identified operator/brand level: legal operator and self-reported brand HQ are explicit, with conflicting group-location and reported holding-chain limitations preserved. Dated growth and downloads satisfy quantitative coverage; they do not supply audited revenue.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "cc9185b5dcee0dd9c4e217c8ae10cac38835c09df8f4e7c995dce7a6c06918b1"
+}

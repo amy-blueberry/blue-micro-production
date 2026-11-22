@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Parent/operator and actual parent headquarters verified; two dated download observations, with overlapping scopes explicitly disclosed. Launch-month conflict retained.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "023437e96860bc60497929c9ede1c05eea561e097709a0c7de1ce7d3bc870732"
+}

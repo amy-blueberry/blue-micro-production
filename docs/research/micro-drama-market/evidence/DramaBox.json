@@ -1,0 +1,46 @@
+{
+  "company": "DramaBox",
+  "entity_level": "App / operating brand; current holding-company transaction separately identified",
+  "parent": "StoryMatrix operator; Drama Times holding entity; Dianzhong origin; WEBTOON preferred-share investor",
+  "headquarters": "Singapore operating headquarters; Dianzhong origin in Beijing",
+  "sections": {
+    "Company & Ownership": "StoryMatrix Pte. Ltd. is the Singapore operator; its July 18, 2026 policy gives a Singapore registered address. Headquarters is reported as Singapore by PitchBook; this should not be confused with Dianzhong\u2019s Beijing base. DramaBox launched in April 2023. The ownership description changed materially in 2026: WEBTOON\u2019s filing says Tap Future merged into Drama Times Inc. (called DramaBox in the filing) on October 8, 2026; WEBTOON received and additionally purchased Series A1 preferred shares. It does not disclose a complete post-merger cap table or valuation. Disney confirms participation in its 2025 accelerator, not a disclosed acquisition. [Operator policy](https://support.dramaboxdb.com/privacy.html), [HQ profile](https://pitchbook.com/profiles/company/769498-03), [origin and launch](https://cbgl.iabchina.cn/brands/dramabox), [SEC](https://www.sec.gov/Archives/edgar/data/1997859/000199785926000099/R26.htm), [Disney](https://sites.disney.com/accelerator/2025/07/28/disney-accelerator-announces-its-2025-class-of-companies-animaj-dramabox-haddy-and-liminal-space-join-the-portfolio-of-companies-to-participate-in-the-successful-growth-development-and-innovation/).",
+    "Core Strategy & Positioning": "International app distribution combines translated-origin content with localized originals. Romance, identity reversals, fantasy and revenge are visible catalog propositions. Paid creative acquisition is documented by SocialPeta; the April 26, 2026 Trade Desk partnership adds programmatic advertising demand. Do not confuse selling ad inventory with buying users: they are separate sides of the business. [Advertising research](https://sp2cdn-idea-global.zingfront.com/report-preview/2025/Insight-into-Global-Micro-Drama-App-Marketing-for-H1-2025.pdf), [partner announcement](https://www.prnewswire.com/apac/news-releases/the-trade-desk-powers-open-internet-growth-with-dramabox-short-drama-partnership-302752834.html).",
+    "Monetization & Unit Economics": "Free entry with in-app offers, memberships and advertising. US iOS snapshot on November 21, 2026 lists memberships at $5.99, $17.99 and $19.99, but the SKU labels do not establish duration; they must not all be called weekly plans. It also lists $4.99 and $9.99 special offers. A stable universal coin exchange rate, advertising/IAP split, realized payer LTV and CAC are not disclosed in the reviewed evidence. [Store](https://apps.apple.com/us/app/dramabox-stream-drama-shorts/id6445905219). The verified ad partnership supports a mixed model, not a quantified advertising share.",
+    "Traction & Financial Data Points": "| Period | Metric | Provenance |\n|---|---|---|\n| Q1 2025 | About US$120 million app-store IAP | Sensor Tower estimate. [Report p.11](https://investgame.net/wp-content/uploads/2025/11/State-of-Short-Drama-Apps-Overseas-2025-Report.pdf) |\n| Q1 2026 | Close to US$140 million app-store IAP | Sensor Tower estimate. [June 2026 report](https://sensortower.com/blog/state-of-short-drama-apps-2026-report) |\n\nThese are app-level consumer-spending estimates, not audited group revenue. Dianzhong group figures and WEBTOON investment distributions must not be attributed to DramaBox app sales.",
+    "Notable Titles & IP": "The inspected store promotes *Falling for the Demon Prince*, *Ugly Duckling, Hidden Beauty* and *Escape from Greystone*. These demonstrate fantasy-school, appearance/status and confinement/suspense positioning; store promotion is not title-level performance proof. The reviewed material does not provide an audited current original-production cadence. [Catalog events](https://apps.apple.com/us/app/dramabox-stream-drama-shorts/id6445905219).",
+    "Competitive Moat & Risks": "Analyst interpretation: scale in paid distribution, a broad localized library and access to programmatic advertising can support multiple monetization paths. Risks include acquisition competition, title-rights complexity and confusing store spending with net financial results. The 2026 ownership transaction also makes static parent-company lists unreliable. This adult-oriented app research does not establish suitability or preferences for Roblox youth audiences."
+  },
+  "metrics": [
+    {
+      "name": "IAP revenue",
+      "value": 120000000,
+      "unit": "USD approximately",
+      "period": "Q1 2025",
+      "scope": "App-store estimate",
+      "source_url": "https://investgame.net/wp-content/uploads/2025/11/State-of-Short-Drama-Apps-Overseas-2025-Report.pdf",
+      "qualifies": true
+    },
+    {
+      "name": "IAP revenue",
+      "value": 140000000,
+      "unit": "USD approximately",
+      "period": "Q1 2026",
+      "scope": "App-store estimate",
+      "source_url": "https://sensortower.com/blog/state-of-short-drama-apps-2026-report",
+      "qualifies": true
+    }
+  ],
+  "judge": {
+    "criteria": {
+      "ownership_hq": true,
+      "two_dated_metrics": true,
+      "no_placeholders": true,
+      "specific_strategy": true
+    },
+    "rationale": "Operator/HQ and the latest verified holding-company transaction are explicit; two dated metrics are sourced; acquisition and advertising monetization are distinguished. Full beneficial ownership and private unit economics remain disclosure limitations.",
+    "result": "PASS",
+    "attempts": 0,
+    "profile_sha256": "6321f5541dc5720a6f88027f5f8f687a3e35152a1f60a3e930f73ee3430c82bb"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Reported parent/app relationship, first-party HQ and legal operator verified. Dated downloads and translation output pass; imprecisely dated MAU excluded from gate.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "0a51e38422a64b468efb81bff266e01d8181dcbb01bb6a2aed5fedf8573bf2d5"
+}

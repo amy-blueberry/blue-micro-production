@@ -1,0 +1,92 @@
+[
+  {
+    "company": "ReelShort",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/ReelShort.md",
+    "rank_q1_2026_iap": 2
+  },
+  {
+    "company": "DramaBox",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/DramaBox.md",
+    "rank_q1_2026_iap": 1
+  },
+  {
+    "company": "ShortMax",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/ShortMax.md",
+    "rank_q1_2026_iap": 6
+  },
+  {
+    "company": "GoodShort",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/GoodShort.md",
+    "rank_q1_2026_iap": 5
+  },
+  {
+    "company": "MyDrama",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/MyDrama.md",
+    "rank_q1_2026_iap": 8
+  },
+  {
+    "company": "FlareFlow",
+    "category": "Global apps",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/FlareFlow.md",
+    "rank_q1_2026_iap": 10
+  },
+  {
+    "company": "NetShort",
+    "category": "Regional leaders and challengers",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/NetShort.md",
+    "rank_q1_2026_iap": 3
+  },
+  {
+    "company": "DramaWave",
+    "category": "Regional leaders and challengers",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/DramaWave.md",
+    "rank_q1_2026_iap": 4
+  },
+  {
+    "company": "Stardust TV",
+    "category": "Regional leaders and challengers",
+    "status": "DONE",
+    "attempts": 0,
+    "judge_status": "PASS",
+    "profile": "profiles/Stardust_TV.md",
+    "rank_q1_2026_iap": 9
+  },
+  {
+    "company": "FlickReels",
+    "category": "Additional ecosystem entities",
+    "status": "DONE",
+    "attempts": 1,
+    "judge_status": "PASS",
+    "profile": "profiles/FlickReels.md",
+    "rank_q1_2026_iap": 7
+  }
+]

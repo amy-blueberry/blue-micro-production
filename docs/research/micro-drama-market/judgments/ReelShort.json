@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Operator, minority investor and HQ are explicit; two dated app-level estimates are cited; strategy names genre, development and acquisition choices. PASS is a sourcing gate, not an audit of private financials.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "26e305acc070d110f3d70291931a17b0083617dd9e475b3cf01db3c5490538f0"
+}

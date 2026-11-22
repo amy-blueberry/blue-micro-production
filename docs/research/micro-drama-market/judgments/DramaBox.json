@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Operator/HQ and the latest verified holding-company transaction are explicit; two dated metrics are sourced; acquisition and advertising monetization are distinguished. Full beneficial ownership and private unit economics remain disclosure limitations.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "6321f5541dc5720a6f88027f5f8f687a3e35152a1f60a3e930f73ee3430c82bb"
+}

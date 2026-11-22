@@ -1,0 +1,33 @@
+# MyDrama
+
+Research date: 2026-11-21. Entity level: App within HOLYWATER portfolio.
+
+For the later cross-company production-method comparison and additional title-level evidence, see [AI versus conventional production](../AI_VS_TRADITIONAL.md).
+
+## Company & Ownership
+
+My Drama is a HOLYWATER TECH product, launched in 2024. The group identifies Kyiv, Ukraine as headquarters. Current terms name XOLY LIMITED for US customers and Cyprus-incorporated Holy Water Limited for other residents; these legal addresses differ from operating headquarters. Parent funding announced January 15, 2026 was $22m, led by Horizon Capital with Endeavor Catalyst and Wheelhouse. FOX’s investment is at group level, not a separately priced acquisition of this app. [HQ](https://www.linkedin.com/company/holywatertech), [service entities](https://my-drama.com/terms-of-use), [funding](https://www.holywater.tech/blog/holywater-raises-record-22-million-to-turn-microdramas-into-mainstream-entertainment-in-the-u-s), [launch and operating model](https://www.streaming-radar.com/p/interview-with-illia-berestovskyi-holywater-tech).
+
+## Core Strategy & Positioning
+
+Live-action vertical series target international viewers, with romance and increasingly broader genres. My Passion supplies publishing/IP signals; My Muse supports generative experimentation. The October 29, 2026 R&D interview describes title-specific acquisition tests, using first-day ROAS together with projected longer-term returns and retention. Creatives are varied before declaring the underlying story unsuccessful. This is executive testimony, not an independently replicated experiment. [Interview](https://www.streaming-radar.com/p/interview-with-illia-berestovskyi-holywater-tech).
+
+## Monetization & Unit Economics
+
+Coins and auto-renewing subscriptions coexist; web and app-store subscriptions have separate cancellation routes. The reviewed terms do not establish one universal price or reconciled ad/IAP share. No numeric CAC, LTV or first-day ROAS hurdle is disclosed. A Kyrgyzstan iOS storefront lists a $19.99 refill subscription, observed November 21, 2026; neither US availability nor billing frequency follows from that SKU alone. [Terms](https://my-drama.com/terms-of-use), [regional store](https://apps.apple.com/kg/app/my-drama-watch-short-episodes/id6498713494).
+
+## Traction & Financial Data Points
+
+• H1 2025 company review: **10m+ My Drama downloads**; cumulative, not monthly users.
+• Same H1 2025 review: **70+ live series**, with **4–5 titles launched per month** reported at that time. These are company claims and not an audited release log. [Company review](https://www.linkedin.com/posts/holywatertech_the-first-half-of-2025-is-in-the-booksso-activity-7353334244275904513-SNP9).
+• FY2025: HOLYWATER reported approximately **2× group revenue growth**, without an absolute My Drama app revenue figure. [January 15, 2026 statement](https://www.holywater.tech/blog/holywater-raises-record-22-million-to-turn-microdramas-into-mainstream-entertainment-in-the-u-s).
+
+## Notable Titles & IP
+
+The company’s H1 2025 catalog/cadence disclosure is the usable production benchmark above. The reviewed sources do not provide title-level receipts sufficient to label a highest-grossing series. FOX’s later production commitment should not be counted as already delivered episodes. Parent-wide reach must not be relabeled as My Drama app downloads. [Company review](https://www.linkedin.com/posts/holywatertech_the-first-half-of-2025-is-in-the-booksso-activity-7353334244275904513-SNP9), [parent description](https://www.holywater.tech/llm-info).
+
+## Competitive Moat & Risks
+
+Analyst interpretation: connected publishing, experimentation and performance marketing can create a faster learning cycle. Dependence on paid distribution, renewal friction and unverified attribution remain vulnerabilities. Live-action My Drama should not be classified as fully AI-generated simply because its parent also operates My Muse.
+
+Evidence gate: **PASS**. PASS: product owner, group HQ and legal counterparties distinguished. Dated app downloads and explicitly labeled parent funding satisfy quantitative coverage; catalog stock is supplementary. Company claims are attributed, not independently audited.

@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "research_date": "2026-11-21",
+  "profiles": 10,
+  "metrics": 23,
+  "pending": 0,
+  "checks": [
+    "unique ranked entities",
+    "six required sections",
+    "no prohibited placeholders",
+    "two qualifying dated metrics",
+    "source URL fields",
+    "judgment/profile hashes",
+    "local Markdown links",
+    "CSV row counts and rank order",
+    "queue/run-state agreement"
+  ],
+  "limitation": "Structural checks do not independently audit external claims."
+}

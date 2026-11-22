@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Parent, service operator and parent HQ are identified; two dated reported scale figures are present with peak-period limitations. No claim of independent financial audit or closed app funding is made.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "b1e730402e016d103a228aba9bd742f7aae2981d7d94cc069c1443c9dae8bd62"
+}

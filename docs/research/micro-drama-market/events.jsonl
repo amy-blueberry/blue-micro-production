@@ -1,0 +1,13 @@
+{"company": "ReelShort", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "DramaBox", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "ShortMax", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "GoodShort", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "MyDrama", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"event": "SCOPE_REDUCED_BY_USER", "date": "2026-11-21", "selected": ["DramaBox", "ReelShort", "NetShort", "DramaWave", "GoodShort", "ShortMax", "FlickReels", "MyDrama", "Stardust TV", "FlareFlow"], "basis": "Sensor Tower Q1 2026 worldwide IAP revenue ranking via Adjust p.4, visually checked"}
+{"company": "FlareFlow", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "NetShort", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "DramaWave", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "Stardust TV", "event": "JUDGED", "attempts": 0, "result": "PASS"}
+{"company": "FlickReels", "event": "JUDGED", "attempts": 0, "result": "NEEDS_FOLLOWUP"}
+{"company": "FlickReels", "event": "JUDGED", "attempts": 1, "result": "PASS"}
+{"event": "PRODUCTION_METHOD_COMPARISON_ADDED", "research_date": "2026-11-21", "profiles": 10, "artifact": "AI_VS_TRADITIONAL.md", "note": "Title-level disclosures distinguish generated footage, AI assistance and parent-only capability."}

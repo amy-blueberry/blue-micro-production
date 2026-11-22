@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "Parent/HQ and operator corroborated; dated app billings and downloads pass. Annualized and combined-platform metrics cannot be substituted for standalone realized revenue.",
+  "result": "PASS",
+  "attempts": 0,
+  "profile_sha256": "398f7271dc7bf5fed7e235023e9ef524f2ad4fefd8e834e0332f2f1da7fcb37c"
+}

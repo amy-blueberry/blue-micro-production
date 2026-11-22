@@ -22,3 +22,7 @@ Not completed: creator analytics access, representative audience survey, youth i
 Internal Blueberry memo and onboarding document informed the earlier business and production brief. They do not establish demand for a particular story or viewer demographic. The original StoReel deck and seven screenshots remain unavailable in this workspace and contribute no verified figures here. Synced source files remain unchanged.
 
 Decision now: investigate audience segments and compare story territories. Do not greenlight an episode from this document. The previous SECOND LOOK prototype is an unvalidated earlier creative experiment, not the selected concept.
+
+## Micro-drama company comparison
+
+The [top-ten market research](micro-drama-market/README.md) adds company profiles, comparison and metrics CSVs, a source index, and sequential review records. The [AI-production comparison](micro-drama-market/AI_VS_TRADITIONAL.md) separates generated footage from AI assistance and conventional filming. The selection uses Q1 2026 app IAP estimates; disclosures are researched through November 21, 2026. This business-model research does not change the audience-hypothesis register or authorize episode production.

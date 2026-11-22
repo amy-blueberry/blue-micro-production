@@ -1,0 +1,14 @@
+{
+  "research_date": "2026-11-21",
+  "phase": "COMPLETE",
+  "active_company": null,
+  "discovered_entities": 40,
+  "scope": "Top 10 worldwide short-drama apps by Q1 2026 estimated IAP revenue; parent companies mapped, not independently ranked",
+  "order": "Strict queue order; one active entity",
+  "done": 10,
+  "pending": 0,
+  "total": 10,
+  "ranking_source": "https://a.storyblok.com/f/47007/x/9a9afd9c10/short-drama-apps-report.pdf",
+  "ranking_page": 4,
+  "repository_path": "docs/research/micro-drama-market"
+}

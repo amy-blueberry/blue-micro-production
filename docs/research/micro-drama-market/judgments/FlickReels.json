@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "ownership_hq": true,
+    "two_dated_metrics": true,
+    "no_placeholders": true,
+    "specific_strategy": true
+  },
+  "rationale": "PASS after one targeted follow-up: first-party product and recruitment pages corroborate Zhangwan attribution and Hangzhou headquarters; Singapore app operator is separately identified. Two dated quantitative observations and a specific strategy are sourced. This gate is evidence completeness, not an audit of company claims.",
+  "result": "PASS",
+  "attempts": 1,
+  "profile_sha256": "0935ef91f7ea884ff12a70b65098bdb27acad3a15781934bd1e909369edd63f5"
+}

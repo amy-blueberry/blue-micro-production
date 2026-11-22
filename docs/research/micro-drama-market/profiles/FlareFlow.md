@@ -1,0 +1,32 @@
+# FlareFlow
+
+Research date: 2026-11-21. Entity level: App / wholly owned operating subsidiary.
+
+For the later cross-company production-method comparison and additional title-level evidence, see [AI versus conventional production](../AI_VS_TRADITIONAL.md).
+
+## Company & Ownership
+
+FlareFlow Pte. Ltd. is a wholly owned COL Group subsidiary, held through Creative Omni Life. The operator is registered in Singapore; COL Group International, the division behind it, is headquartered there. Launch was April 2025. Parent support is documented, but this is not a separately disclosed venture funding round. [Ownership notice](https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12324885&stockid=300364), [HQ/distribution partner](https://narativmedia.com/event/col-group-international-expands-microdrama-distribution-network-with-new-regional-partners-1700-title-slate-exclusive), [launch](https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-23/4706b0ea-dd78-41eb-b096-3bd85374704f.PDF).
+
+## Core Strategy & Positioning
+
+International romance, revenge, suspense and fantasy combine with distribution beyond paid mobile acquisition. Whale TV launched the catalog on South American televisions in September 2026. COL describes AI-assisted scripts, characters, storyboards, video and localization, plus small-scale genre testing. These are management claims; internal prompts and acceptance thresholds are not public. [Partner announcement](https://www.whaletv.com/pt-br/news/flareflow-launches-on-whale-tv-bringing-micro-dramas-to-the-big-screen-in-south-america-for-the-first-time), [H1 report p.15](https://static.cninfo.com.cn/finalpage/2026-08-26/1225504423.PDF).
+
+## Monetization & Unit Economics
+
+Subscriptions, one-time purchases and advertising are visible in the US iOS listing. November 21, 2026 snapshot: unlimited-viewing SKUs $19.99/$24.99/$39.99; one-time purchases include $2.99/$4.99/$9.99. Durations are not specified in that SKU table. Licensing/distribution adds a B2B route. No app-level ad/IAP split or cohort LTV/CAC is established. [Store](https://apps.apple.com/us/app/flareflow-short-dramas/id6744237126), [distribution](https://www.whaletv.com/pt-br/news/flareflow-launches-on-whale-tv-bringing-micro-dramas-to-the-big-screen-in-south-america-for-the-first-time).
+
+## Traction & Financial Data Points
+
+• H1 2026: Flareflow subsidiary revenue **RMB252,677,833.32** and net profit **RMB152,422,334.53**. These are legal-entity financials, not estimated app IAP; shared-group costs may affect comparisons. [Interim report p.25, visually checked](https://static.cninfo.com.cn/finalpage/2026-08-26/1225504423.PDF).
+• September 9, 2026 announcement: **52m+ registered users** and **nearly 7,000 catalog titles**. Registrations are not MAU; catalog supply is not original-production output. [Whale TV partner disclosure](https://www.whaletv.com/pt-br/news/flareflow-launches-on-whale-tv-bringing-micro-dramas-to-the-big-screen-in-south-america-for-the-first-time).
+
+## Notable Titles & IP
+
+COL identifies *Playboy? Real God!*, *Ten Years as His Backup Wife* and *Trapped in the Summer Heat*. Its H1 report says AI titles exceeded 10% of the catalog; no title-level revenue ranking is supplied. The earlier plan for 180 originals in 2026 remains a target, not verified delivery. [H1 report p.15](https://static.cninfo.com.cn/finalpage/2026-08-26/1225504423.PDF), [September 2025 plan](https://www.contentasia.tv/news/col-group-ups-flareflow-microdrama-production-180-series-2026-80-leap-originals-could-mean-est).
+
+## Competitive Moat & Risks
+
+Analyst interpretation: parent IP supply, localization and television/telco distribution can reduce dependence on one app-acquisition channel. Subsidiary profit should not be treated as standalone fully allocated app margin: the same H1 table shows negative net assets of approximately RMB305.2m. AI scale claims need completed-title and rights checks. [Financial table](https://static.cninfo.com.cn/finalpage/2026-08-26/1225504423.PDF).
+
+Evidence gate: **PASS**. Ownership/HQ documented; interim revenue and dated catalog supply meet quantitative coverage. Registrations separately labeled and not used as MAU.
