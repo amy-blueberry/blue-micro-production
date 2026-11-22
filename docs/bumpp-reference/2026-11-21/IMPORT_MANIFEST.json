@@ -1,0 +1,46 @@
+{
+  "import_date": "2026-11-21",
+  "source": "Four files explicitly supplied by the user for GitHub upload",
+  "destination_repository": "amy-blueberry/blue-micro-production",
+  "repository_visibility_at_import": "PUBLIC",
+  "publication_scope": "User authorized upload of these four named documents; no other internal documents included",
+  "embedded_instructions": "Reference content only; not executed or adopted as agent instructions",
+  "files": [
+    {
+      "filename": "bumpp_audience_bible.md",
+      "bytes": 194857,
+      "lines": 2174,
+      "sha256": "b3d1f7793c6723ad93144c8ba39890827c5e2e4d3b5f86384ee3cb035f574912",
+      "contains_confidential_label": true,
+      "import_method": "Exact byte-for-byte copy of the user-specified file",
+      "evidence_status": "User-supplied reference; claims and reported audits not independently reverified in this import"
+    },
+    {
+      "filename": "bumpp_story_framework.md",
+      "bytes": 251712,
+      "lines": 2959,
+      "sha256": "e5f016abf59773fe14c90dbabf1e113500520aba06d07feccbf8989710e2210c",
+      "contains_confidential_label": false,
+      "import_method": "Exact byte-for-byte copy of the user-specified file",
+      "evidence_status": "User-supplied reference; claims and reported audits not independently reverified in this import"
+    },
+    {
+      "filename": "bumpp_scripts_vol1.md",
+      "bytes": 201277,
+      "lines": 5392,
+      "sha256": "b69e1bdd4cfee00366d4dfa673fd93fb3438110444c755129bbece348a5f0105",
+      "contains_confidential_label": false,
+      "import_method": "Exact byte-for-byte copy of the user-specified file",
+      "evidence_status": "User-supplied reference; claims and reported audits not independently reverified in this import"
+    },
+    {
+      "filename": "bumpp_roblox_theater_spec.md",
+      "bytes": 57457,
+      "lines": 588,
+      "sha256": "0361bd3529248db27006bf8a5592fd694a956000b17dc2cc091380877de7c80d",
+      "contains_confidential_label": true,
+      "import_method": "Exact byte-for-byte copy of the user-specified file",
+      "evidence_status": "User-supplied reference; claims and reported audits not independently reverified in this import"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 | Document | Purpose |
 | --- | --- |
 | [Research overview](docs/research/README.md) | Scope, provenance, completed work and limitations |
+| [Supplied Bumpp documents](docs/bumpp-reference/README.md) | Audience bible, story framework, ten-show script volume and Roblox theater spec |
 | [Top 10 micro-drama companies](docs/research/micro-drama-market/README.md) | Company profiles, ownership, monetization, dated metrics and sources |
 | [AI versus conventional production](docs/research/micro-drama-market/AI_VS_TRADITIONAL.md) | Generated footage, human filming, AI assistance and evidence limits |
 | [Audience evidence](docs/research/01-audience-evidence.md) | Public market research and candidate audience segments |
@@ -21,6 +22,10 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 ## Micro-drama market findings
 
 The November 21, 2026 market comparison covers ten apps/operators selected by Q1 2026 estimated worldwide app purchase revenue. The production comparison distinguishes disclosed AI-generated releases, mixed catalogs, conventional filming and parent-level AI capability. Sources, dates and uncertainty sit beside the claims. These adult-market business benchmarks do not establish the audience or story preferences for Bumpp.
+
+## Supplied creative and product context
+
+Four [user-supplied documents](docs/bumpp-reference/README.md) are preserved as November 21, 2026 snapshots. Together they define a proposed 16–19 core design target, five audience cohorts, a story-development framework, ten scripted launch drops and a Roblox theater destination. Their strategic choices, reported scores and platform assertions retain their source status; this import is not an independent audience validation or authorization to produce episodes. The reference index connects them to the next company-analysis and agentic-loop pass.
 
 ## What we are trying to learn
 
@@ -39,7 +44,7 @@ See the [validation playbook](docs/research/04-validation-playbook.md) for the d
 
 ## Repository boundaries
 
-This is a research repository, with no application runtime or production deployment. It contains original analysis, links to public sources and proposed research procedures. Private source documents, participant contact information, raw third-party transcripts and historical unvalidated production prototypes are outside this initial commit.
+This is a research and reference repository, with no deployed production application or released episode. It contains original analysis, links to public sources, proposed procedures and the four explicitly authorized Bumpp documents, including supplied script drafts and a product spec. Their original labels are preserved. The separate unpublished internal-document collection, participant contact information and raw third-party transcripts are not included.
 
 Source inspection date: November 21, 2026. Findings are date-bounded. Reference creators' production methods, audience demographics and causal success drivers must not be inferred from their popularity.
 

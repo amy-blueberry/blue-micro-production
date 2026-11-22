@@ -26,3 +26,7 @@ Decision now: investigate audience segments and compare story territories. Do no
 ## Micro-drama company comparison
 
 The [top-ten market research](micro-drama-market/README.md) adds company profiles, comparison and metrics CSVs, a source index, and sequential review records. The [AI-production comparison](micro-drama-market/AI_VS_TRADITIONAL.md) separates generated footage from AI assistance and conventional filming. The selection uses Q1 2026 app IAP estimates; disclosures are researched through November 21, 2026. This business-model research does not change the audience-hypothesis register or authorize episode production.
+
+## Supplied Bumpp brief
+
+The subsequently supplied [audience bible, story framework, scripts and theater spec](../bumpp-reference/README.md) are preserved separately. The bible describes a 16–19 core target as a company decision; that is a strategic target rather than a newly measured demographic majority. Its cohort claims and the scripts' reported audit scores have not been independently reproduced in this import. Use these documents as brief inputs when continuing company analysis, preserving the distinction between research verification, editorial scoring and actual viewer testing.
