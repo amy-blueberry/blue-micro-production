@@ -1,95 +1,113 @@
-# Content and culture intelligence for Bumpp
+# Secret Sauce: cultural and story intelligence
 
-Revised November 22, 2026 from the user's Miro feedback. This is an operating specification, not a completed scan, audience finding, active scheduler or authorization to create episodes.
+Version 2, November 22, 2026. Governing input: the [user-supplied specification provenance](references/README.md). This replaces the earlier single-score / 80-point creative gate. It is a proposed operating design; no monitoring, production, audience test or outreach is activated.
 
-## What changed
+## Objective and system boundary
 
-The creative unit of analysis is the **work, scene, story mechanism or cultural moment**, not the company. Accept user-supplied films, series, clips, scenes, screenshots and creative notes. A24 and other production houses are possible sources of selected works; their names do not establish a coherent style or prove appeal to Bumpp's audience. No specific A24 title has been supplied or reviewed in this revision.
+Discover emerging Roblox fiction, game-origin IP and cultural behavior early; decode why people care; create original, executable hypotheses; learn whether Bumpp earns character attachment, deliberate continuation and return viewing. External virality is an input, not the end metric. This is a story-intelligence system, not general social listening.
 
-Company economics and production technology remain useful in a separate business-intelligence track. They do not determine which stories to tell. Keep the existing company research, but remove company rankings from the creative recommendation logic.
+Company economics remain in the separate industry-research track. Specific works, scenes and clips supplied by the user, including selected A24 works, enter the decoding queue as creative references. They are not an eleventh platform feed. A reference is not evidence that its audience matches Bumpp or permission to reuse protected material.
 
-## Two inputs into the creative loop
+## Four-stage operating structure
 
-### 1. Curated reference content
+| Stage | Agent responsibility | Accountable people | Work and handoff | Decision boundary |
+|---|---|---|---|---|
+| DISCOVER | A1 Content & Culture Scout | Research lead; engineer owns connectors | Collect enabled feed snapshots; resolve series/games/memes; compare source-specific baselines; deduplicate; surface genuinely new signals | Separate early discovery from authority amplification. Do not require a large creator to validate every early alert. |
+| DECODE | A2 Evidence Reviewer & Story Decoder, with A8 synthesis | Research lead + story editor | Verify scope and freshness; inspect shortlisted works; annotate characters, relationships, payoff, continuation and fandom with timecodes | Credible evidence is not automatically a compelling story. Preserve inference and missing evidence. |
+| CREATE / TEST | A8 recommends; A4 develops; A5 plans; A6 coordinates; A7 assists QC | Producer + showrunner, then director/editor/engineer | Editorially select an original hypothesis; preregister a bounded test; use the existing script, preview, budget, quality and release gates | Still paused until explicitly authorized. A rights-review route does not authorize a derivative work or external outreach. |
+| LEARN | A3 Audience Analyst + A8 Learning Planner | Analyst + research lead + producer/showrunner | Compare F10 outcomes with the declared hypothesis and matched baselines; record uncertainty, costs and editorial findings | Human decision updates the brief or next experiment; no automatic publication, model training or canon change. |
 
-**Owner:** Research lead with writer/creative lead. **Trigger:** A reference arrives or an approved reference publishes new content.
+## Ten evolving intelligence feeds
 
-1. Register the exact title, episode, scene/time range or file pointer, who selected it, and what they want to learn. Preserve access/reuse limits separately from the fact that a reference is publicly viewable.
-2. Record what was actually inspected: full audiovisual work, bounded clip, transcript, trailer, screenshots, or metadata only. Do not describe transcript-only analysis as a viewing audit.
-3. Identify character wants, relationship imbalance, stakes, escalation, reversals, withheld information and payoff. For inspected audiovisual material, also examine staging, performance, shot choices, sound and pacing.
-4. Attach timestamps or bounded descriptions supporting each observation. Separate observations from interpretations of why it works.
-5. Produce a mechanism card: what to learn, what could translate to Roblox-native storytelling, what should not transfer, and what audience evidence is missing.
-6. Link the card to a research hypothesis. The eventual writer adapts a general mechanism to original characters and situations; reference inclusion does not authorize copying dialogue, plots, music, character designs or footage.
+The [machine-readable feed registry](intelligence_feeds.json) defines the collection units, fields, cadence and limitations. Every connector is NOT_CONNECTED. Nine feeds are external and one is internal.
 
-Do not adopt mature themes or imagery because the studio is admired. A reference can inform craft while its content is unsuitable for the chosen age scope.
+| Feed | Priority | Monitored universe | Purpose |
+|---|---|---|---|
+| F01 Roblox | P0 | 20 relevant popular/engaged experiences + 10 fastest rising, deduplicated; retain 30 days after rank exit | Early game/mechanic/IP discovery and filming affordances |
+| F02 YouTube scripted series | P0 | 20 emerging Roblox/Minecraft series, including small channels; link episodes into series | Discover the next Walden Academy; distinguish character fandom from premise clicks |
+| F03 TikTok | P0 | 20 accelerating cohort-relevant memes, sounds, phrases, POV formats and fan edits | Detect independent small-account spread and authentic use context |
+| F04 YouTube emerging gaming creators | P0 | 10 breakout videos/day outside the panel + 20 rolling emerging channels | Confirm new games/mechanics before authority amplification |
+| F05 MyDramaList | P1 | 10 currently trending relevant Korean dramas; original and filtered ranks separate | Relationship and emotional narrative mechanisms |
+| F06 WEBTOON | P1 | 10 rising relevant series + newer rapidly growing titles | Character attachment, chapter progression and fandom |
+| F07 Authority panel | P0 | 10 candidate established creators; latest 3–5 relevant new uploads/account since prior scan | Confirmation/amplification, not a substitute for discovery |
+| F08 Reddit | P1 | Up to 10 high-signal threads/day from a reviewed allowlist | Qualitative theories, unmet needs and early warnings; population mismatch explicit |
+| F09 ReelShort + DramaBox | P2 | 10 relevant promoted/trending titles combined; ranking method recorded | Packaging/pacing mechanics, not direct audience-demographic evidence |
+| F10 Bumpp owned data | P0 | Every published item tied to hypothesis, version, primary cohort and exposure | Learn continuation, return, completion and character fandom |
 
-### 2. Daily audience-culture radar
+TikTok Creative Center supports F03; Google Trends optionally corroborates already-detected terms. Neither is an additional feed. Preserve source-specific ranks rather than inventing one global popularity rank.
 
-**Owner:** Research lead. **Worker:** A1 Content & Culture Scout. **Cadence:** Daily after deployment; currently inactive.
+The [authority panel](authority_panel.json) retains all ten supplied candidates with blank official-account records until verified. Verify current handles, activity, cohort fit and access before activation. Five candidates have daily review priority; five have 2–3-times-weekly priority. Review membership monthly. The earlier Roblox drama reference creators remain reference seeds, not fixed discovery winners or members of this panel.
 
-1. Load the current version of the target-audience hypothesis and approved sources/topics. Gen Alpha and young Gen Z are broad brief terms, not a single measured cohort. Keep the supplied 16–19 design target distinct from measured reference-show audiences and other candidate cohorts.
-2. Collect permitted public or licensed observations of current interests, fandoms, memes, formats, gaming culture, relationship conversations and viral moments. Accept user-supplied examples as inputs too. API, export, licensed feed or permitted manual inspection are implementation routes; no unrestricted scrape or private-access bypass is implied.
-3. Store source, publication time, observation time, platform, available counters and denominator/window. Deduplicate reposts. Compare like formats at similar ages after publication; maintain missing values as missing.
-4. Distinguish emerging, accelerating, established, saturated and fading signals using available dated observations. A single observation cannot establish acceleration or trend decay.
-5. Explain relevance to the target cohort using scoped research or authorized aggregate data when available. Otherwise mark relevance as a hypothesis. Do not infer age, gender or location from profiles, avatars or comment language.
-6. Identify the underlying interest or social tension. A meme's surface wording is not a story engine. Record alternative explanations, paid-distribution uncertainty and counterexamples.
-7. Route meaningful changes to the evidence reviewer. Save a no-material-change result when appropriate. Daily cadence does not justify inventing a fresh trend.
+## Audience design
 
-## Daily review and handoff
+Assign exactly one primary behavioral cohort per opportunity, with secondary fits allowed. These are design segments from the brief, not measured demographics of public viewers.
 
-A1 produces reference mechanism cards and culture-signal cards. A2 checks source credibility, inspection coverage, comparability, freshness and relevance claims. The research lead accepts evidence only for its supported scope.
+| Cohort | Brief's design range | Creative emphasis |
+|---|---|---|
+| Lore Keepers | 15–19 | Continuity, ships, theories, side-character agency, affection before betrayal |
+| Drama Girls | 16–22 | Central creative ICP; recognition, romantic anticipation, vulnerability, emotional reversals |
+| Scream Team | 15–21 | Rule-based fear, fair clues, psychological dread, collaborative theorizing |
+| The Lobby | 15–21 | Ensemble loyalty, competence, rivalry and in-world humor/memes |
+| The Crossover | 18–24 | Strong writing, satire, relatable stakes, accessibility beyond Roblox |
 
-A8 Learning Planner reviews accepted evidence **daily**, and when material new evidence or a completed experiment arrives. It combines the reference craft, current culture signal, actual Bumpp findings where available, competition and production feasibility into an opportunity brief. Past findings remain dated; new production cost or audience data is not assumed to arrive every day.
+Core design age is 16–19; 20–24 is ascending; 13–15 is spillover, not the creative target. Do not infer individual ages from comments, usernames or avatars. Apply age-safety review to the actual intended distribution. Use the [supplied Audience Bible](../bumpp-reference/2026-11-21/bumpp_audience_bible.md) for its ten signals per cohort; record an unavailable signal or dealbreaker as unresolved, not an invented criterion.
 
-Each opportunity brief includes:
+## Story decoding and capacity
 
-- A precise target-audience hypothesis and project goal.
-- The reference mechanism and current signal, each linked to evidence.
-- Why the audience might care: identity, emotional stake or relationship tension.
-- A comparison with actual inspected competing content and how Bumpp could stand out.
-- A proposed reason viewers would continue or voluntarily share; counterevidence and uncertainty.
-- The smallest research test, its outcome definitions and a result that would weaken the idea.
-- The creative opportunity scorecard below, reviewer rationale and unresolved dependencies.
-- A recommended action: research, revise, park, reject, or request development authorization.
+A2 and the story editor annotate the opening 5–15 seconds; protagonist want/fear/contradiction/status/vulnerability/voice; friendships, ships and rivalries; ordinary affection before rupture; revelations; escalation and earned payoff; the unresolved emotional question; named-character fandom; Roblox translation; and primary-cohort fit. Every conclusion links to an inspected episode/scene/timecode and evidence note. Record whether the inspection was audiovisual, transcript-only, a trailer or metadata. Distinguish short-form and long-form pacing.
 
-This is hypothesis development, not permission to draft a pilot while episode work is paused.
+Editorial questions: Would someone share this moment? Would viewers talk about the character? Would they deliberately choose episode two? The brief's “friendship retains; romance hooks” principle is a creative hypothesis to test, not a universal measured law.
 
-## Two independent gates
+The supplied brief contains overlapping weekly limits. Implementation default: screen 3–5 candidates weekly, deeply decode at most three properties total, and let MyDramaList/WEBTOON share that deep-review allocation. Do not add a new three-property allowance for every feed. This conservative capacity interpretation is explicit and can be revised by the editorial lead.
 
-**Evidence gate:** Is the source accurate and applicable to the claim? Research lead owns this check. A true announcement or large view count can pass a factual check without establishing creative appeal.
+## Three independent scores
 
-**Creative greenlight gate:** Is the opportunity compelling to the intended audience, aligned with our goals, differentiated, feasible and strong enough to merit development? Producer and showrunner own this decision. A high score cannot bypass rights, age safety, evidence gaps, budget limits or the development pause.
+All weights below are supplied, proposed and unvalidated. Report three separate 0–100 assessments, never one blended score. No universal numerical greenlight cutoff is defined. The previous 80-point gate is superseded.
 
-### Proposed virality-potential rubric
+| Assessment | Components and weights | Question |
+|---|---|---|
+| Viral opportunity | Momentum 30; independent creator adoption 25; cross-platform spread 25; behavioral-cohort relevance 20 | Is this breaking out early? |
+| Story / IP potential | Character attachment 30; relationship/emotional stakes 25; next-episode reasons 25; world/character extensibility 20 | Can this sustain a beloved serialized show? |
+| Execution opportunity | Roblox filming feasibility 30; speed to test 25; originality/rights feasibility 25; distribution fit 20 | Can we act effectively and responsibly? |
 
-This is a provisional editorial prioritization score, **not a probability of virality**, a prediction model, a reported audience result or an established industry benchmark. No opportunities have been scored here. The user requested high potential before greenlight; the numerical definition below is a proposed implementation default to calibrate against actual results.
+Proposed calculation contract: each component is a reviewer-approved, source-specific normalized 0–100 assessment; score = sum(component × weight)/100. Store normalization method/version and rationale. This contract does not establish empirical predictive validity. A missing component is NULL with reason; report the affected score as incomplete, retaining observed components without silently reweighting. Missing evidence is not zero. Other complete scores can still be reported, but missing feasibility/rights prerequisites block the dependent action.
 
-| Dimension | Reviewer question | Required support |
-| --- | --- | --- |
-| Audience appeal | Does the tension matter to our specified audience? | Scoped audience evidence or clearly labeled hypothesis and planned validation |
-| Hook clarity | Can a viewer quickly understand the situation and why it matters? | Inspected reference mechanics; later, actual hook/comprehension testing |
-| Emotional continuation | Is there a believable unresolved relationship or consequence? | Mechanism analysis and counterexamples; later, observed continuation |
-| Shareability | Is there a voluntary reason to discuss, quote or share it? | Relevant observed behavior or a testable hypothesis, without reward/coercion proxies |
-| Competitive distinction | Is there a concrete reason this stands out among comparable content? | Named, inspected comparators and a specific difference |
+Confidence, sample size/denominator and rights status are mandatory separate fields. Tag evidence `[D]` measured facts, `[O]` observed public behavior, `[I]` interpretation, or `[FP]` first-party experiments. Public view growth may be measured while a claim about emotional causation remains interpretation. Correlation does not establish causation.
 
-Each dimension is rated 0–4 by a human reviewer: 0 contradicts the case; 1 weak; 2 mixed; 3 strong editorial case; 4 exceptional editorial case. **Missing information is null, not zero.** Every rating includes evidence, rationale and a separate confidence label. A strong hypothesis is still untested; the score never upgrades its evidence status.
+## Editorial routes, not automatic greenlights
 
-If all five dimensions are scored, total = sum of ratings × 5, on a 0–100 scale. Proposed “high” = at least 80/100, with audience appeal and competitive distinction each at least 3/4. Any missing dimension means NOT_SCORED and cannot satisfy the high-score gate. Goals, rights, age safety, feasibility and explicit development authorization are additional pass/fail requirements.
+| Route | Trigger in the supplied design | Owner and next step |
+|---|---|---|
+| WATCH | Weak or early signal | Research lead retains history and revisits; no production commitment |
+| INVESTIGATE | Meaningful relative acceleration plus independent corroboration, or exceptional character/fandom evidence | Research lead targets review within 24h, subject to access/capacity |
+| TEST | Strong cohort fit, credible story hypothesis and feasible original low-cost test | Producer/showrunner approve scope and metric; 48–72h is a target after authorization/prerequisites, not a service guarantee |
+| DEVELOP PILOT | Strong story/IP case and character/relationship engine, even with moderate viral momentum | Showrunner and producer decide; development pause must be explicitly lifted |
+| RIGHTS REVIEW | The opportunity depends on protected existing characters, world, branding or story | Producer routes to a qualified rights reviewer; a license or permitted original alternative precedes dependent work |
 
-Before using this cutoff to allocate production spend, test reviewer agreement on a labeled reference set and compare prospective ratings with later outcomes. Record rubric versions and score changes; do not tune the cutoff after seeing a result and present it as a prediction. High potential can justify a bounded research test while production remains blocked.
+High viral / low story can justify an original marketing or meme test; high story / moderate viral can justify original pilot development; high across all three can prioritize development or rights review. “High” is an editorial characterization to calibrate, not an unstated numerical threshold. Scores do not override age safety, originality, rights, budgets or human approval. No agent contacts rights holders without separate authorization.
 
-## Minimal record contracts
+## Daily and weekly outputs
 
-**Reference card:** reference_id; title; source/file pointer; selected segment; selection rationale; inspection mode/coverage; access basis; timestamped observations; story/craft mechanism; adaptation hypothesis; do-not-transfer notes; audience relevance status; reviewer; version.
+**Daily:** A8 triages at most five genuinely new findings. Include canonical entity/URL, first-seen time, primary cohort, sources, growth versus baseline, independent confirmation, three separate scores, confidence/missing data, character/emotional hypothesis, original application, rights/production caveat, next action and owner. No-change is valid. Keep rising/peaking/fading history separately; retain rank-exit data.
 
-**Culture card:** signal_id; source links; published_at; collected_at; platform; topic; available metrics and windows; baseline; candidate cohort; relevance evidence; counterevidence; trend stage; next freshness review; creative implication; reviewer.
+**Weekly:** At most three evidence-backed creative opportunities with thesis, source/timecodes, cohort, feasibility, originality/rights review, experiment and predefined success metric. Producer/showrunner decide what to pursue. Daily Learning Planner review remains; the weekly shortlist is a distinct commitment decision.
 
-**Opportunity card:** opportunity_id; audience hypothesis version; goal; reference_ids; signal_ids; evidence gate result; inspected competitors; differentiation; five dimension ratings with evidence/rationale/confidence; provisional total; test proposal; safety/rights/feasibility status; decision owner; next action; approved version.
+Use the [brief and decode templates](INTELLIGENCE_TEMPLATES.md). Templates are empty contracts, not fabricated findings.
 
-## Implementation acceptance
+## First-party measurement and feedback
 
-Start with one permitted content source, user-reference intake and the daily research loop in shadow mode. Engineer owns ingestion/state; research lead owns tagging/evidence; producer/showrunner own opportunities and decisions.
+Before any new release, engineer and analyst establish the F10 event/report availability register and hypothesis/version tagging. Define each metric's denominator, eligibility, observation window and platform access route. Record unavailable measures as NULL/not measurable with a reason.
 
-Accept the first implementation only when a reference can be traced to its exact inspected segment, a social signal retains its actual time window, cohort assumptions are explicit, repeated scans do not duplicate evidence, missing data cannot become a high score, and a company ranking cannot substitute for a creative case. Evaluate useful-signal yield, reviewer correction rate, latency, cost and time saved before expanding sources.
+Measure when available: 3s/15s hold, retention, duration-normalized completion, deliberate episode 1→2 choice, continuation, D1/D7 series return, returning viewers, watch time, repeat viewing, shares and character fandom. Separate paid/organic traffic, Shorts/long-form, impressions/clicks, and actual demographic data/cohort proxies. Autoplay, reward collection and player activity alone are not deliberate story interest. Public competitor episode views are not retention; do not assume YouTube user-level data or complete metric availability.
 
-Daily scraping/collection and review are specified here but not activated by editing the chart. The [agent contracts](agent_contracts.json) and [watchlist](agent_watchlist.json) retain inactive status.
+Match internal baselines where possible; state actual sample size, exposure, spend and confounders. Human review checks emotional authenticity, payoff, dialogue, game-native execution and continuity. A3 reports results; A8 proposes a revised hypothesis or next test. Preserve prior versions and rejected recommendations.
+
+Evaluate qualified early discoveries/week; measured lead time versus large-creator coverage; seven-day independent corroboration; story opportunities worth testing; time/cost per useful insight; tests completed; and eventual continuation, return, completion and character fandom versus baseline. Data volume is not success.
+
+## Build sequence and activation gates
+
+**Weeks 1–2 target:** Validate access and implement F01–F04 and F07 metadata snapshots, bounded candidate review, deduplication and history. Establish F10 instrumentation and hypothesis tagging before publication. Verify the authority panel; do not invent handles or claim unavailable feeds are connected. Validate the first connector in shadow mode, then expand to the P0 scope.
+
+**Weeks 3–4 target:** Add F05/F06 narrative benchmarks. Add F08/F09 only when they demonstrate distinct useful insights. Validation surfaces do not become duplicate ingestion programs. Review distinct useful yield at four weeks and reduce or replace low-yield feeds.
+
+These are relative rollout targets after implementation begins, not completed calendar commitments. The [implementation backlog](BUILD_BACKLOG.md) contains owners and acceptance criteria. Source permissions, verified identities, freshness, source tracing, privacy and budget controls must pass before scheduling. No active scheduler, paid jobs, external notifications, rights outreach or generated episode is created by this documentation update.

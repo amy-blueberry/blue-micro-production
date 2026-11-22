@@ -220,3 +220,7 @@ The first useful engine is a reliable path from an approved specification to a r
 ## Agent automation layer
 
 The [agent operating model](AGENT_OPERATING_MODEL.md) maps eight logical responsibilities to the 18-step Miro playbook. It defines research, production and learning loops, data permissions, version-bound approvals and rollout gates. The accompanying configurations are inactive specifications; no continuous monitoring has been deployed.
+
+## Intelligence input contract, version 2
+
+Production now receives an editorially approved packet from DISCOVER → DECODE → CREATE/TEST → LEARN. The [content intelligence playbook](CONTENT_INTELLIGENCE_PLAYBOOK.md) specifies ten evolving feeds, one primary behavioral cohort, separate viral/story/execution assessments and a preregistered outcome. A single viral score cannot authorize a show. F10 instrumentation is required before publication, and the existing script, preview, spend, rights, quality and release gates remain.

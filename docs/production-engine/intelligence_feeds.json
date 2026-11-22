@@ -1,0 +1,363 @@
+{
+  "schema_version": "2.0",
+  "status": "PROPOSED_NOT_DEPLOYED",
+  "source_specification": "references/README.md",
+  "feeds": [
+    {
+      "id": "F01",
+      "name": "Roblox game / game-origin IP breakout",
+      "kind": "external",
+      "priority": "P0",
+      "entry_points": [
+        "https://www.roblox.com/charts"
+      ],
+      "cadence_proposed": "Daily",
+      "universe": "20 relevant popular/engaged experiences plus 10 fastest rising; deduplicate",
+      "relevance_filter": "Social roleplay, school/fashion, story, horror/mystery, meme/collection, multiplayer competition",
+      "collect_fields": [
+        "experience_id",
+        "name",
+        "category",
+        "concurrent_users_if_available",
+        "visits",
+        "favorites_likes_if_available",
+        "update_date",
+        "growth_1_3_7_day",
+        "rank_movement",
+        "mechanics",
+        "story_affordances",
+        "production_fit",
+        "external_creator_coverage"
+      ],
+      "alert_rule_proposed": "Sharp relative acceleration, repeated new mechanic or cross-platform adoption",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Retain 30 days of history after rank exit; no fixed named-game list",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    },
+    {
+      "id": "F02",
+      "name": "YouTube emerging scripted series",
+      "kind": "external",
+      "priority": "P0",
+      "entry_points": [
+        "https://www.youtube.com"
+      ],
+      "cadence_proposed": "Daily",
+      "universe": "Top 20 emerging series, not videos; include small/new channels",
+      "relevance_filter": "Episodic scripted Roblox/Minecraft fiction with recurring characters; exclude routine gameplay and compilation spam",
+      "collect_fields": [
+        "series_channel_video_ids",
+        "episode_order",
+        "publication_time",
+        "runtime",
+        "view_snapshots",
+        "view_velocity",
+        "public_subscriber_count",
+        "relative_channel_median",
+        "comments_per_1k_views",
+        "character_ship_mentions",
+        "fan_edits_theories",
+        "next_episode_demand",
+        "public_follow_on_view_proxy"
+      ],
+      "alert_rule_proposed": "Early 2–4 episodes exceed channel baseline; character fandom or follow-on demand",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Competitor views are not actual retention, conversion, age or rewatch",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null,
+      "seed_queries": [
+        "roblox series episode 1",
+        "roblox high school drama episode",
+        "roblox academy series",
+        "roblox love story episode",
+        "roblox roleplay movie",
+        "roblox voice acted series",
+        "minecraft roleplay series",
+        "roblox horror series episode"
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "TikTok meme / POV / fandom velocity",
+      "kind": "external",
+      "priority": "P0",
+      "entry_points": [
+        "https://www.tiktok.com"
+      ],
+      "cadence_proposed": "Daily",
+      "universe": "20 fastest-accelerating cohort-relevant sounds, phrases, hashtags, POVs and fan edits",
+      "relevance_filter": "Roblox, rising games/series, avatar fashion, romance/school POV, horror lore and game memes",
+      "collect_fields": [
+        "canonical_signal_id",
+        "first_seen",
+        "post_growth_if_available",
+        "creator_diversity",
+        "velocity",
+        "cross_platform_echoes",
+        "use_context",
+        "shelf_life_estimate",
+        "cohort_relevance"
+      ],
+      "alert_rule_proposed": "Independent small-account spread; not one large account alone",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Creative Center is supporting validation, not feed 11; no forced slang",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null,
+      "supporting_surface": "https://ads.tiktok.com/business/creativecenter/"
+    },
+    {
+      "id": "F04",
+      "name": "YouTube emerging gaming / meme creators",
+      "kind": "external",
+      "priority": "P0",
+      "entry_points": [
+        "https://www.youtube.com"
+      ],
+      "cadence_proposed": "Daily",
+      "universe": "10 breakout videos per day outside authority panel plus 20 rolling emerging channels",
+      "relevance_filter": "Currently rising games from F01 plus Roblox/Minecraft adjacent gaming memes",
+      "collect_fields": [
+        "creator_video_ids",
+        "game_mentions",
+        "first_coverage_date",
+        "uploads_per_game",
+        "view_velocity",
+        "relative_creator_baseline",
+        "jokes_mechanics",
+        "collaborations",
+        "comment_themes"
+      ],
+      "alert_rule_proposed": "3+ independent emerging creators cover a previously small phenomenon in a short declared window",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Record the chosen window; panel members excluded from emerging discovery",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null,
+      "seed_queries": [
+        "current rising game names from F01",
+        "roblox new game",
+        "roblox update",
+        "roblox horror",
+        "roblox funny moments",
+        "roblox meme",
+        "roblox challenge"
+      ]
+    },
+    {
+      "id": "F05",
+      "name": "MyDramaList narrative intelligence",
+      "kind": "external",
+      "priority": "P1",
+      "entry_points": [
+        "https://mydramalist.com"
+      ],
+      "cadence_proposed": "Daily snapshots",
+      "universe": "10 currently trending relevant Korean dramas; original and filtered ranks separate",
+      "relevance_filter": "Youth/young-adult romance, school/college, friendship, fantasy, revenge, mystery, character comedy",
+      "collect_fields": [
+        "title_url",
+        "release_status",
+        "rank_changes",
+        "ratings_review_counts",
+        "discussion_themes",
+        "characters_ships",
+        "emotional_payoffs",
+        "audience_disagreement"
+      ],
+      "alert_rule_proposed": "Rank ascent or unusually concentrated character/relationship discussion",
+      "worker": "A1/A2",
+      "accountable_owner": "Research lead",
+      "limitation": "No fixed shows; deep-review allocation shared with F06",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    },
+    {
+      "id": "F06",
+      "name": "WEBTOON serialized story breakout",
+      "kind": "external",
+      "priority": "P1",
+      "entry_points": [
+        "https://www.webtoons.com/en/"
+      ],
+      "cadence_proposed": "Daily snapshots",
+      "universe": "10 rising relevant series plus separate newer fast-growing titles",
+      "relevance_filter": "Romance, drama, fantasy and mystery",
+      "collect_fields": [
+        "series_episode_urls",
+        "rank_movement",
+        "published_views_likes_if_available",
+        "episode_likes",
+        "comments",
+        "characters_shipping",
+        "continuation_demand"
+      ],
+      "alert_rule_proposed": "Early engagement, rank ascent and repeated character-specific discussion",
+      "worker": "A1/A2",
+      "accountable_owner": "Research lead",
+      "limitation": "Episode views/likes do not measure reader retention",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    },
+    {
+      "id": "F07",
+      "name": "Established creator authority panel",
+      "kind": "external",
+      "priority": "P0",
+      "entry_points": [],
+      "cadence_proposed": "Daily for five priority members; 2–3 times weekly for five others",
+      "universe": "10 verified candidates; latest 3–5 relevant uploads since prior scan per account",
+      "relevance_filter": "New games, memes, series and platform/taste changes; exclude repetitive/personal uploads",
+      "collect_fields": [
+        "creator_video_ids",
+        "publication_time",
+        "mentions",
+        "first_mention_date",
+        "relative_view_velocity",
+        "topic_frequency",
+        "cross_creator_adoption",
+        "response_themes"
+      ],
+      "alert_rule_proposed": "2+ independent panel members amplify an emerging phenomenon",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Confirmation/amplification; never required before early-discovery alert; monthly panel review",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    },
+    {
+      "id": "F08",
+      "name": "Reddit targeted fandom discussions",
+      "kind": "external",
+      "priority": "P1",
+      "entry_points": [
+        "https://www.reddit.com"
+      ],
+      "cadence_proposed": "Daily when enabled",
+      "universe": "Up to 10 high-signal threads from reviewed community/query allowlist",
+      "relevance_filter": "Roblox, narrative/romance, horror and newly watched game communities; never r/all",
+      "collect_fields": [
+        "post_url",
+        "community",
+        "created_at",
+        "score_comment_velocity",
+        "community_baseline",
+        "distinct_commenters_if_available",
+        "repeated_mentions",
+        "theories_disagreements",
+        "unmet_needs"
+      ],
+      "alert_rule_proposed": "Independent repeated mention of small IP or a new trope",
+      "worker": "A1",
+      "accountable_owner": "Research lead",
+      "limitation": "Qualitative, population mismatch flagged; no private messages or inferred ages",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null,
+      "candidate_community_allowlist": [
+        "r/roblox",
+        "r/RobloxDevelopers",
+        "r/KDRAMA",
+        "r/webtoons",
+        "r/romancebooks",
+        "r/analog_horror",
+        "Game-specific communities only after game enters F01 watchlist"
+      ]
+    },
+    {
+      "id": "F09",
+      "name": "ReelShort + DramaBox mechanics",
+      "kind": "external",
+      "priority": "P2",
+      "entry_points": [
+        "https://www.reelshort.com",
+        "https://www.dramabox.com"
+      ],
+      "cadence_proposed": "Daily snapshots when enabled",
+      "universe": "10 relevant promoted/trending titles combined, not 10 each",
+      "relevance_filter": "Youth-compatible relationship conflicts, romance, reversals and hidden identity",
+      "collect_fields": [
+        "title_url",
+        "ranking_method",
+        "premise",
+        "trailer_hook",
+        "chapter_length",
+        "cliffhanger_placement",
+        "protagonist_objective",
+        "emotional_reversal",
+        "public_proxy"
+      ],
+      "alert_rule_proposed": "Useful packaging/pacing mechanism with inspected evidence",
+      "worker": "A1/A2",
+      "accountable_owner": "Research lead",
+      "limitation": "Promoted is not necessarily popular; no invented universal rank; no demographic transfer",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    },
+    {
+      "id": "F10",
+      "name": "Bumpp first-party creative learning",
+      "kind": "internal",
+      "priority": "P0",
+      "entry_points": [],
+      "cadence_proposed": "On fresh authorized analytics; daily freshness check",
+      "universe": "Every published pilot, episode, series and short, linked to preregistered hypothesis",
+      "relevance_filter": "Owned app/channel only; platform, paid/organic, runtime and format kept separate",
+      "collect_fields": [
+        "hypothesis_id",
+        "primary_cohort",
+        "platform",
+        "distribution_source",
+        "content_version",
+        "runtime",
+        "launch_date",
+        "spend",
+        "exposure_denominator",
+        "hold_3s_15s_if_available",
+        "retention_curve_if_available",
+        "duration_normalized_completion",
+        "deliberate_episode_1_to_2",
+        "continuation",
+        "D1_D7_series_return",
+        "returning_viewers",
+        "watch_time",
+        "repeat_viewing_if_available",
+        "shares",
+        "character_fandom"
+      ],
+      "alert_rule_proposed": "Matched-baseline outcome change with sample and confounders",
+      "worker": "A3",
+      "accountable_owner": "Analyst + research lead",
+      "limitation": "Unavailable fields NULL with reason; no assumed YouTube user-level data",
+      "activation_state": "NOT_CONNECTED",
+      "access_validation": "REQUIRED",
+      "last_run_at": null
+    }
+  ],
+  "supporting_not_counted": [
+    "TikTok Creative Center validates F03",
+    "Google Trends corroborates already-detected terms",
+    "User-selected A24/other reference works feed DECODE on submission"
+  ],
+  "global_controls": [
+    "No age inference from comments or profiles",
+    "No copying or automatic model training on public content",
+    "Date observations and metric windows separately",
+    "Deduplicate syndication and independent creator identity",
+    "Missing is null with reason, not zero",
+    "No production or outbound rights outreach automatically authorized"
+  ],
+  "original_source_filename": "Secret_Sauce_Live_Intelligence_Sources.md",
+  "original_source_included": false
+}

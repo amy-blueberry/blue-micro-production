@@ -1,0 +1,99 @@
+{
+  "feed_id": "F07",
+  "status": "CANDIDATES_NOT_VERIFIED",
+  "review_cadence": "Monthly",
+  "pull_limit": "3–5 relevant new public uploads since previous scan per creator",
+  "panel": [
+    {
+      "candidate_name": "Lana Rae / Lana's Life",
+      "proposed_specialty": "Female Roblox culture, fashion, avatar identity and viral games",
+      "cadence": "Daily",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "KreekCraft",
+      "proposed_specialty": "Platform news, launches and community shifts",
+      "cadence": "Daily",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "Flamingo",
+      "proposed_specialty": "Roblox humor, social experiments and meme mechanics",
+      "cadence": "Daily",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "ItsFunneh / KREW",
+      "proposed_specialty": "Ensemble dynamics, group play and personality formats",
+      "cadence": "Daily",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "iamSanna",
+      "proposed_specialty": "Roleplay, relationships and avatar/social play",
+      "cadence": "Daily",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "Foltyn",
+      "proposed_specialty": "Breakout games, challenges and discovery",
+      "cadence": "2–3 times weekly",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "Caylus / CaylusBlox",
+      "proposed_specialty": "Gaming crossover, horror and challenges",
+      "cadence": "2–3 times weekly",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "Vindooly",
+      "proposed_specialty": "Fast-moving entertainment and short-form formats",
+      "cadence": "2–3 times weekly",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "callmehhaley",
+      "proposed_specialty": "Fashion/DTI, fandom and avatar aesthetics",
+      "cadence": "2–3 times weekly",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    },
+    {
+      "candidate_name": "Techy Plays",
+      "proposed_specialty": "New games, gameplay formats and challenges",
+      "cadence": "2–3 times weekly",
+      "official_accounts": [],
+      "verified_at": null,
+      "current_activity_verified": false,
+      "cohort_fit_verified": false
+    }
+  ],
+  "not_early_discovery_gate": true
+}

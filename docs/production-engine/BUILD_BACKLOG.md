@@ -2,6 +2,24 @@
 
 November 22, 2026. Proposed work; no tickets below are implemented. Parent specification: [Engine blueprint](ENGINE_BLUEPRINT.md).
 
+## Intelligence implementation comes first
+
+Relative targets after implementation begins; all work remains proposed. Production tasks in the existing table depend on explicit development authorization.
+
+| Stage | Deliverable | Owner | Acceptance |
+|---|---|---|---|
+| Before scheduling | Source access, canonical IDs and candidate account verification | Engineer + research lead | No unverified handles, unsupported access path or missing permissions represented as connected |
+| Weeks 1–2 | F01–F04 + F07 dynamic discovery snapshots | Engineer + research lead | Correct bounded universes; new/small creators included; panel excluded from emerging-creator feed; timestamped baselines and deduplication |
+| Weeks 1–2 | History and signal triage | Engineer + analyst | Missing not zero; 1/3/7-day comparisons require real snapshots; game rank-exit history retained 30 days; independent adoption distinguished from reposts |
+| Before new publication | F10 metrics and creative-hypothesis tagging | Engineer + analyst + producer | Metric availability/denominators verified; deliberate continuation distinct from autoplay; paid/organic and formats separate |
+| Weeks 1–2 | A2 decode and A8 brief workflow | Story editor + research lead | 3–5 candidate screens and at most 3 full decodes/week; timecoded evidence; at most 5 new daily findings and 3 weekly opportunities |
+| Weeks 1–2 | Separate scorecards and editorial routes | Producer + showrunner | Three weight sets sum to 100 each; incomplete scores stay incomplete; no combined rank or hard viral gate; rights review cannot initiate outreach |
+| Weeks 3–4 | F05/F06 narrative benchmarks | Research lead + story editor | Relevant dynamic universes and shared deep-review capacity; published likes are not labeled retention |
+| Weeks 3–4 | Conditional F08/F09 | Research lead | Only enable after distinct useful yield is demonstrated; Reddit is scoped qualitative evidence; promotion/ranking methods explicit |
+| Four-week review | Feed yield and panel governance | Producer + research lead | Measure useful insight cost, actual early lead time and corroboration; reduce low-yield feeds; review authority panel monthly |
+
+## Production backlog after authorization
+
 | Order | Deliverable | Owner | Acceptance criterion |
 |---:|---|---|---|
 | 1 | Quality and rights brief | Producer + director | Agreed delivery format, artistic criteria, permitted assets/voices and unresolved audience assumptions |

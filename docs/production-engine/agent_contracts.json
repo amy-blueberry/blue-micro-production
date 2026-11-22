@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "2.0",
   "prepared_date": "2026-11-22",
   "deployment_state": "NOT_DEPLOYED",
   "scheduler_active": false,
@@ -18,21 +18,21 @@
       "trigger_proposed": "Daily permitted content/social collection; on new user-supplied references",
       "accountable_human": "Research lead",
       "required_inputs": [
-        "User-supplied titles, scenes, clips and creative reference notes",
-        "Approved culture topics and platform sources",
-        "Versioned target-audience hypothesis",
-        "Dated prior observations"
+        "Enabled dynamic feed definitions",
+        "Verified accounts/access where required",
+        "Versioned cohort design brief",
+        "Prior snapshots and submitted reference works"
       ],
       "allowed_actions_after_activation": [
-        "Inspect permitted content and tag story/craft mechanisms with timestamps",
-        "Collect current social interests, formats and viral moments through permitted sources",
-        "Compare publication-age-adjusted signals; deduplicate reposts",
-        "Separate audience relevance evidence from creative inspiration and general popularity"
+        "Collect bounded snapshots from enabled F01–F09 universes",
+        "Resolve entities and series; separate emerging discovery from authority amplification",
+        "Compare source-specific baselines, deduplicate and maintain rank-exit history",
+        "Shortlist original story opportunities without inferring viewer demographics"
       ],
       "outputs": [
-        "Reference mechanism cards with inspection coverage",
-        "Daily culture radar with audience relevance and trend maturity",
-        "Source-linked opportunity candidates"
+        "Dated observations with source and metric definitions",
+        "Emerging, rising, peaking and fading signal history",
+        "At most five genuinely new daily findings for review"
       ],
       "restrictions": [
         "Cannot infer ages or private retention from public profiles or comments",
@@ -46,14 +46,14 @@
     },
     {
       "id": "evidence_reviewer",
-      "name": "Evidence Reviewer",
+      "name": "Evidence Reviewer & Story Decoder",
       "chart_steps": [
         1,
         2,
         3
       ],
-      "trigger_proposed": "Whenever a new signal is proposed",
-      "accountable_human": "Research lead",
+      "trigger_proposed": "New signal; editorially shortlisted property or supplied reference",
+      "accountable_human": "Research lead + story editor",
       "required_inputs": [
         "Candidate signal",
         "Original source and collection details"
@@ -62,11 +62,15 @@
         "Check period, scope, denominators and permissions",
         "Compare like-for-like observations",
         "Find contradictions and separate claims from interpretations",
-        "Check inspection coverage, cohort relevance and trend freshness separately from source credibility"
+        "Check inspection coverage, cohort relevance and trend freshness separately from source credibility",
+        "Decode shortlisted stories with source/timecodes: character, relationships, payoff, continuation, fandom and Roblox fit",
+        "Record one primary cohort and evidence type D/O/I/FP",
+        "Keep shallow screening separate from full story decoding"
       ],
       "outputs": [
         "Accepted-for-scope evidence record or unresolved/rejected claim",
-        "Research question with supporting and contrary evidence"
+        "Research question with supporting and contrary evidence",
+        "Timestamped story-decoding packet and cohort scorecard with missing fields explicit"
       ],
       "restrictions": [
         "Cannot verify a claim merely because another model agrees",
@@ -87,7 +91,9 @@
       "accountable_human": "Analyst + research lead",
       "required_inputs": [
         "Owner-authorized aggregate analytics",
-        "Versioned experiment definitions"
+        "Versioned experiment definitions",
+        "F10 authorized data and metric availability register",
+        "Preregistered creative hypothesis, primary cohort and exposure definition"
       ],
       "allowed_actions_after_activation": [
         "Check freshness, missing data and sample size",
@@ -96,7 +102,8 @@
       ],
       "outputs": [
         "Dated performance brief",
-        "Anomalies with uncertainty and competing explanations"
+        "Anomalies with uncertainty and competing explanations",
+        "Deliberate episode-two choice, series return, completion and character-fandom findings where measurable"
       ],
       "restrictions": [
         "Cannot access competitor private analytics",
@@ -120,7 +127,9 @@
       "required_inputs": [
         "Approved brief",
         "Evidence records",
-        "Current character and relationship canon"
+        "Current character and relationship canon",
+        "Editorially approved story/relationship thesis and decoding packet",
+        "One primary behavioral cohort and preregistered test objective"
       ],
       "allowed_actions_after_activation": [
         "Draft premise or outline alternatives within the approved scope",
@@ -246,7 +255,7 @@
         17,
         18
       ],
-      "trigger_proposed": "Daily review, newly accepted evidence, or completed experiment decision window",
+      "trigger_proposed": "Daily triage; weekly creative shortlist; completed experiment window",
       "accountable_human": "Producer + showrunner",
       "required_inputs": [
         "Reviewed trend evidence",
@@ -257,19 +266,22 @@
         "Approved objectives and competitive content comparisons"
       ],
       "allowed_actions_after_activation": [
-        "Compare market signals with actual Bumpp behavior",
-        "Propose one testable change and a disconfirming result",
-        "Prepare scale/revise/stop options",
-        "Prepare an evidence-linked audience appeal, differentiation and virality-potential assessment"
+        "Synthesize separate viral, story/IP and execution assessments with confidence, sample size and rights status",
+        "Prepare at most five new daily findings and at most three weekly creative opportunities",
+        "Compare first-party outcomes with preregistered hypotheses and matched baselines where possible",
+        "Recommend WATCH, INVESTIGATE, TEST, DEVELOP_PILOT or RIGHTS_REVIEW for human decision"
       ],
       "outputs": [
-        "Daily decision brief with no-change option",
-        "Proposed test, creative opportunity scorecard and backlog change"
+        "Daily intelligence brief (maximum five new findings; no-change valid)",
+        "Weekly creative shortlist (maximum three opportunities)",
+        "Separate scorecards, test proposal and human decision packet"
       ],
       "restrictions": [
         "Cannot auto-change audience strategy, model prompts or spending",
         "Cannot silently train on raw viewer data or auto-publish",
-        "A virality-potential score is an uncalibrated editorial assessment, never a probability or observed audience result"
+        "A virality-potential score is an uncalibrated editorial assessment, never a probability or observed audience result",
+        "Cannot combine three scores into a master rank or require high virality for a high-story opportunity",
+        "Cannot initiate rights outreach or development without explicit authorization"
       ],
       "activation_state": "DESIGN_ONLY",
       "last_run_at": null,
@@ -315,24 +327,84 @@
     "decision_recorded",
     "reference_content_submitted",
     "daily_culture_scan_completed",
-    "creative_opportunity_reviewed"
+    "creative_opportunity_reviewed",
+    "weekly_creative_shortlist_ready",
+    "story_decode_completed",
+    "rights_review_requested"
   ],
   "creative_gate": {
     "status": "PROPOSED_UNCALIBRATED",
     "rubric_document": "CONTENT_INTELLIGENCE_PLAYBOOK.md",
-    "proposed_high_score_minimum": 80,
-    "scale_max": 100,
-    "all_dimensions_required": true,
-    "null_means": "NOT_SCORED",
-    "audience_appeal_minimum": 3,
-    "differentiation_minimum": 3,
-    "dimension_scale_max": 4,
+    "scores": {
+      "viral_opportunity": {
+        "momentum": 30,
+        "independent_creator_adoption": 25,
+        "cross_platform_spread": 25,
+        "behavioral_cohort_relevance": 20
+      },
+      "story_ip_potential": {
+        "character_attachment": 30,
+        "relationship_emotional_stakes": 25,
+        "next_episode_reasons": 25,
+        "world_character_extensibility": 20
+      },
+      "execution_opportunity": {
+        "roblox_filming_feasibility": 30,
+        "speed_to_test": 25,
+        "originality_rights_feasibility": 25,
+        "distribution_fit": 20
+      }
+    },
+    "score_range": [
+      0,
+      100
+    ],
+    "single_composite_score_allowed": false,
+    "numeric_greenlight_cutoff": null,
+    "missing_component_policy": "NULL_WITH_REASON; affected score incomplete; do not reweight or rank as complete",
+    "confidence_sample_size_rights_separate": true,
+    "evidence_types": [
+      "D",
+      "O",
+      "I",
+      "FP"
+    ],
     "human_review_required": true,
     "additional_requirements": [
-      "Evidence review passed for scope",
-      "Project goals, age safety, rights and feasible scope satisfied",
-      "Explicit authorization to resume development"
+      "Source evidence accepted for scope",
+      "Primary cohort, character/relationship engine and goals specified",
+      "Originality, rights, age safety, budget and feasibility reviewed",
+      "Development explicitly authorized; experiment preregistered before release"
     ],
-    "score_is_viral_probability": false
+    "score_is_viral_probability": false,
+    "routing": {
+      "high_viral_low_story": "Consider original marketing/meme test, not an automatic pilot",
+      "high_story_moderate_viral": "Consider original pilot development with editorial approval",
+      "all_three_high": "Prioritize editorial development or rights review; no automatic commitment"
+    }
+  },
+  "workflow_stages": [
+    "DISCOVER",
+    "DECODE",
+    "CREATE_TEST",
+    "LEARN"
+  ],
+  "feed_registry": "intelligence_feeds.json",
+  "authority_panel": "authority_panel.json",
+  "cadence_and_caps": {
+    "daily_new_findings_max": 5,
+    "weekly_creative_opportunities_max": 3,
+    "weekly_candidate_screens": [
+      3,
+      5
+    ],
+    "weekly_full_story_decodes_max": 3,
+    "capacity_resolution": "Implementation default: 3–5 candidate screens; up to 3 full decodes total, with MDL/WEBTOON sharing this cap. Source wording overlaps; do not treat per-feed caps as additive.",
+    "investigate_target_hours": 24,
+    "test_target_hours": [
+      48,
+      72
+    ],
+    "timing_note": "Targets after prerequisites and explicit authorization, not promised service levels; paused production cannot dispatch"
   }
 }

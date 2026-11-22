@@ -6,11 +6,12 @@ Prepared November 22, 2026. Maps to steps 01–18 of the Miro production playboo
 
 ## The system we should build
 
-Use a shared operating system with three loops:
+Use four explicit stages:
 
-1. **Observe and research:** watch approved public sources, identify changes, verify evidence and propose opportunities.
-2. **Develop and produce:** run bounded creative/planning/production jobs against approved, versioned inputs.
-3. **Measure and improve:** reconcile actual audience response with production cost, then recommend the next test.
+1. **DISCOVER:** watch enabled dynamic feeds, identify emerging changes and distinguish discovery from amplification.
+2. **DECODE:** verify evidence and analyze character, relationship, payoff, continuation and fandom mechanisms.
+3. **CREATE / TEST:** editorially approve original hypotheses and run bounded work against versioned inputs only after authorization.
+4. **LEARN:** compare first-party audience response and full cost with the declared hypothesis, then revise future decisions.
 
 A coordinator starts tasks on a schedule or when an event arrives. Eight agent roles below describe responsibilities, not eight independent models thinking continuously. Most polling, arithmetic, deduplication, media inspection, permissions and scheduling should be ordinary code. Use language models where interpretation and drafting help.
 
@@ -27,13 +28,13 @@ The core cycle is: **observe → verify → recommend → human decision → exe
 - **Hand off:** Reference mechanism cards; Daily culture radar; Source-linked opportunity candidates.
 - **Limits:** Cannot infer viewer ages or private retention; Cannot copy scripts or treat popularity as causal evidence; Company reputation is not creative audience evidence.
 
-### Evidence Reviewer — chart steps 01, 02, 03
+### Evidence Reviewer & Story Decoder — chart steps 01, 02, 03
 
-- **Trigger:** Whenever a new signal is proposed.
-- **Accountable person:** Research lead.
+- **Trigger:** New signal or editorially shortlisted property/reference.
+- **Accountable person:** Research lead + story editor.
 - **Inputs:** Candidate signal; Original source and collection details.
 - **Work:** Check period, scope, denominators and permissions; Compare like-for-like observations; Find contradictions and separate claims from interpretations.
-- **Hand off:** Accepted-for-scope evidence record or unresolved/rejected claim; Research question with supporting and contrary evidence.
+- **Hand off:** Accepted-for-scope evidence record or unresolved/rejected claim; Timecoded story-decoding packet with character, relationship, payoff, continuation, fandom and cohort notes.
 - **Limits:** Cannot verify a claim merely because another model agrees; Cannot upgrade evidence after retry exhaustion.
 
 ### Audience Analyst — chart steps 16, 17
@@ -83,11 +84,11 @@ The core cycle is: **observe → verify → recommend → human decision → exe
 
 ### Learning Planner — chart steps 03, 17, 18
 
-- **Trigger:** Daily review, new accepted evidence, or after an experiment decision window closes.
+- **Trigger:** Daily triage, weekly creative shortlist, or after an experiment decision window closes.
 - **Accountable person:** Producer + showrunner.
 - **Inputs:** Reviewed trend evidence; Audience findings; Full production costs; Prior experiment log.
 - **Work:** Compare market signals with actual Bumpp behavior; Propose one testable change and a disconfirming result; Prepare scale/revise/stop options.
-- **Hand off:** Daily decision brief; Evidence-linked creative opportunity scorecard; Proposed experiment and backlog change.
+- **Hand off:** At most five new daily findings; At most three weekly opportunities; Separate viral, story/IP and execution scores; Proposed experiment and backlog change.
 - **Limits:** Cannot auto-change audience strategy, model prompts or spending; Cannot silently train on raw viewer data or auto-publish.
 
 ## What the first intelligence loop actually does
@@ -228,4 +229,8 @@ Not completed: live source authorization, analytics ingestion, a running schedul
 
 ## Content-first revision from board feedback
 
-The [content intelligence playbook](CONTENT_INTELLIGENCE_PLAYBOOK.md) defines the two primary input streams, daily collection and review, reference intake, audience relevance checks, and the proposed creative greenlight rubric. A source can be reliable without the opportunity being compelling or differentiated. Both checks are required. Company analysis remains a separate business-intelligence track.
+The [content intelligence playbook](CONTENT_INTELLIGENCE_PLAYBOOK.md) defines ten dynamic feeds (nine external plus one internal), supplementary curated references, daily discovery and weekly editorial decisions, and three independent scorecards. It supersedes the earlier single-score 80-point gate. High story potential can advance with moderate virality. A source can be reliable without the opportunity being compelling or differentiated. Both checks are required. Company analysis remains a separate business-intelligence track.
+
+## Canonical intelligence structure
+
+Use [intelligence_feeds.json](intelligence_feeds.json) for F01–F10, [authority_panel.json](authority_panel.json) for the ten unverified amplification candidates, and [INTELLIGENCE_TEMPLATES.md](INTELLIGENCE_TEMPLATES.md) for bounded briefs and decoding packets. Existing creator references are seed examples, not a fixed discovery universe. All connectors remain inactive. The eight logical agents remain, with A2 explicitly owning evidence review and story decoding and A8 separating daily triage from weekly editorial selection.
