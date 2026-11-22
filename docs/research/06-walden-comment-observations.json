@@ -1,0 +1,135 @@
+{
+  "observed_on": "2026-11-21",
+  "video": "https://www.youtube.com/watch?v=n2Cn9n3In-g",
+  "selection": "First 20 Top-sorted comments exposed during unauthenticated browser inspection; replies not expanded",
+  "limitations": [
+    "Algorithm-ranked convenience sample",
+    "One analyst; subjective primary coding",
+    "No demographic inference",
+    "Not representative of silent viewers",
+    "Newest sample attempt incomplete and excluded",
+    "Paraphrases, not verbatim quotations"
+  ],
+  "observations": [
+    {
+      "sample_order": 1,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugx2JmrAaCNhUyUnuqd4AaABAg",
+      "primary_code": "roleplay_aspiration",
+      "paraphrase": "Compares the experience with an imagined high-school roleplay."
+    },
+    {
+      "sample_order": 2,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugxev8eCSBFnU7q-Adl4AaABAg",
+      "primary_code": "streaming_comparison",
+      "paraphrase": "Compares the entertainment experience with Netflix."
+    },
+    {
+      "sample_order": 3,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgxBi3hhVCoBWrPA6Gd4AaABAg",
+      "primary_code": "roleplay_aspiration",
+      "paraphrase": "Describes the kind of roleplay experience they imagine."
+    },
+    {
+      "sample_order": 4,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugwl0CVwcSDMjJRXAhx4AaABAg",
+      "primary_code": "dialogue_humor",
+      "paraphrase": "Reacts to the awkward dog comparison."
+    },
+    {
+      "sample_order": 5,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgyBvwL3yCqwp_r4fgl4AaABAg",
+      "primary_code": "story_theory",
+      "paraphrase": "Speculates about hidden family wealth."
+    },
+    {
+      "sample_order": 6,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgxGT6T4X8w5beSSEjV4AaABAg",
+      "primary_code": "dialogue_humor",
+      "paraphrase": "Reacts to the awkward dog comparison."
+    },
+    {
+      "sample_order": 7,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugy3Z9wQsLsUP-G-OKV4AaABAg",
+      "primary_code": "negative_character_reaction",
+      "paraphrase": "Expresses hostility toward characters; not automatically a positive engagement signal."
+    },
+    {
+      "sample_order": 8,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugy9OGfxTXikCCuUGmZ4AaABAg",
+      "primary_code": "streaming_comparison",
+      "paraphrase": "Compares the entertainment experience with Netflix."
+    },
+    {
+      "sample_order": 9,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgynFNm1_U4vfIPHiiN4AaABAg",
+      "primary_code": "dialogue_humor",
+      "paraphrase": "Notes the contradiction between claiming not to be awkward and an awkward remark."
+    },
+    {
+      "sample_order": 10,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugxq0kjVleSaFSPZwz94AaABAg",
+      "primary_code": "streaming_comparison",
+      "paraphrase": "Compares the entertainment experience with Netflix."
+    },
+    {
+      "sample_order": 11,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgzaHqCKIWfI0rb9kIh4AaABAg",
+      "primary_code": "voice_performance",
+      "paraphrase": "Responds to a character voice or accent."
+    },
+    {
+      "sample_order": 12,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugx7sZclH4h2DNRer4l4AaABAg",
+      "primary_code": "dialogue_humor",
+      "paraphrase": "Reacts to a specific insult near 18:18."
+    },
+    {
+      "sample_order": 13,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgyailE-mSiUulNzfel4AaABAg",
+      "primary_code": "production_detail",
+      "paraphrase": "Notices hockey uniform numbering."
+    },
+    {
+      "sample_order": 14,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugz6xXUc8SwJsTGQf-B4AaABAg",
+      "primary_code": "dialogue_humor",
+      "paraphrase": "Reacts to the awkward dog comparison."
+    },
+    {
+      "sample_order": 15,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugzzif_Q4YeC1H2QM4J4AaABAg",
+      "primary_code": "romantic_interpretation",
+      "paraphrase": "Interprets a late-episode interaction romantically."
+    },
+    {
+      "sample_order": 16,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgwShdfYUj8caTvGPld4AaABAg",
+      "primary_code": "class_interpretation",
+      "paraphrase": "Interprets the reaction to a scholarship in terms of privilege."
+    },
+    {
+      "sample_order": 17,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgzxLnlfyVj3MvNLMUR4AaABAg",
+      "primary_code": "intertextual_comparison",
+      "paraphrase": "Compares the hockey material with another entertainment property."
+    },
+    {
+      "sample_order": 18,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgyoFjagvIvF5QpvpnF4AaABAg",
+      "primary_code": "intertextual_comparison",
+      "paraphrase": "Compares the series with Gossip Girl."
+    },
+    {
+      "sample_order": 19,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=UgweGwEUYG9ykZyUjah4AaABAg",
+      "primary_code": "release_occasion",
+      "paraphrase": "Responds positively to the release occasion."
+    },
+    {
+      "sample_order": 20,
+      "url": "https://www.youtube.com/watch?v=n2Cn9n3In-g&lc=Ugz9yFydoV8BagFVMl54AaABAg",
+      "primary_code": "story_theory",
+      "paraphrase": "Speculates that Roman funded the scholarship."
+    }
+  ]
+}

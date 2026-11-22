@@ -1,0 +1,181 @@
+{
+  "research_date": "2026-11-21",
+  "stage": "AUDIENCE_DISCOVERY",
+  "episode_development": "HOLD_BY_USER_INSTRUCTION",
+  "demographic_majority": "UNKNOWN",
+  "actual_participant_count": 0,
+  "status_values": [
+    "UNTESTED",
+    "EXPLORING",
+    "SUPPORTED_FOR_SCOPE",
+    "MIXED",
+    "NOT_SUPPORTED"
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "title": "Friendship under change",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H02",
+      "title": "Belonging at a price",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H03",
+      "title": "Public reputation versus private self",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H04",
+      "title": "Recognition versus collaboration",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H05",
+      "title": "Attraction versus loyalty",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H06",
+      "title": "Group competition versus solidarity",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H07",
+      "title": "Character attachment",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H08",
+      "title": "Source of humor",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H09",
+      "title": "Desirable world",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H10",
+      "title": "Role of style",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H11",
+      "title": "Audience knowledge",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H12",
+      "title": "Continuation reward",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H13",
+      "title": "Viewing occasion and format",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H14",
+      "title": "Roblox specificity",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    },
+    {
+      "id": "H15",
+      "title": "Tone and intensity",
+      "status": "UNTESTED",
+      "scope": "Not yet established",
+      "owner": "Audience research lead",
+      "evidence_type": "Public-source-informed creative hypothesis",
+      "participant_evidence": [],
+      "decision": null,
+      "next_action": "See corresponding hypothesis and validation playbook"
+    }
+  ]
+}
