@@ -10,6 +10,7 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 | --- | --- |
 | [Research overview](docs/research/README.md) | Scope, provenance, completed work and limitations |
 | [Supplied Bumpp documents](docs/bumpp-reference/README.md) | Audience bible, story framework, ten-show script volume and Roblox theater spec |
+| [Detailed industry report and Claude Design handoff](docs/research/industry-report-2026-11-22/README.md) | Market and company analysis, dated statistics, 36-slide brief and chart-ready data |
 | [Top 10 micro-drama companies](docs/research/micro-drama-market/README.md) | Company profiles, ownership, monetization, dated metrics and sources |
 | [AI versus conventional production](docs/research/micro-drama-market/AI_VS_TRADITIONAL.md) | Generated footage, human filming, AI assistance and evidence limits |
 | [Audience evidence](docs/research/01-audience-evidence.md) | Public market research and candidate audience segments |

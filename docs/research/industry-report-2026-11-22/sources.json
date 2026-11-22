@@ -1,0 +1,461 @@
+[
+  {
+    "id": "S01",
+    "title": "Sensor Tower: State of Short Drama Apps 2026",
+    "url": "https://sensortower.com/blog/state-of-short-drama-apps-2026-report",
+    "publication_date": "2026-06",
+    "evidence_type": "third-party modeled estimates",
+    "limitations": "App Store/Google Play estimates; downloads exclude reinstalls, pre-installs and third-party Android stores. IAP excludes advertising and other payment channels; not audited corporate revenue.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S02",
+    "title": "Adjust: Short drama apps report, ranking on page 4",
+    "url": "https://a.storyblok.com/f/47007/x/9a9afd9c10/short-drama-apps-report.pdf",
+    "publication_date": "2026; exact publication day not established",
+    "evidence_type": "third-party ranking",
+    "limitations": "Q1 2026 worldwide IAP ranking credited to Sensor Tower; visually checked. Not a November 2026 ranking or parent-company revenue league table.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S03",
+    "title": "Omdia: Global revenue and mobile engagement",
+    "url": "https://omdia.tech.informa.com/pr/2026/feb/microdramas-overtake-streamers-on-mobile-engagement-says-omdia",
+    "publication_date": "2026-02-23",
+    "evidence_type": "analyst estimate and forecast",
+    "limitations": "Global category revenue model; forecasts are not reported results. Engagement comparison covers mobile only.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S04",
+    "title": "Omdia: Audience composition varies by country",
+    "url": "https://omdia.tech.informa.com/pr/2026/oct/men-account-for-54percent-of-uk-microdrama-users-challenging-industry-assumptions",
+    "publication_date": "2026-10-13",
+    "evidence_type": "consumer survey and forecast",
+    "limitations": "April 2026 consumer research; release does not disclose sample size, weighting or full sample frame. Not Roblox audience data.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S05",
+    "title": "Deloitte: 2026 short-form video predictions",
+    "url": "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/short-form-video-series.html",
+    "publication_date": "2026 predictions edition",
+    "evidence_type": "analyst forecast",
+    "limitations": "In-app micro-series forecast; coverage cannot be reconciled completely to Sensor Tower or Omdia from public summaries.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S06",
+    "title": "HOLYWATER and Owl & Co: Audience report announcement",
+    "url": "https://www.holywater.tech/blog/holywater-tech-and-owl-co-publish-first-industry-report-on-the-vertical-series-audience",
+    "publication_date": "2026-07-23",
+    "evidence_type": "company and research-partner disclosure",
+    "limitations": "Announcement reviewed, not gated full report. May 2026 survey n=2,737 My Drama users; My Muse conversion comparison is observational, not randomized.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S07",
+    "title": "Kunlun Tech: Q3 2026 report, page 9",
+    "url": "https://static.cninfo.com.cn/finalpage/2026-10-30/1225644210.PDF",
+    "publication_date": "2026-10-30",
+    "evidence_type": "listed-company filing",
+    "limitations": "AI share concerns September new releases; monthly billings refer to the combined short-drama portfolio, not DramaWave alone.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S08",
+    "title": "COL Group: H1 2026 report, pages 15, 18–19, 25 and 157",
+    "url": "https://static.cninfo.com.cn/finalpage/2026-08-26/1225504423.PDF",
+    "publication_date": "2026-08-26",
+    "evidence_type": "listed-company filing",
+    "limitations": "Catalog mix, legal-entity financials and associate ownership are different scopes; subsidiary results are not a fully allocated app unit-economics statement.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S09",
+    "title": "WEBTOON SEC filing: Tap Future and DramaBox transaction",
+    "url": "https://www.sec.gov/Archives/edgar/data/1997859/000199785926000099/R26.htm",
+    "publication_date": "2026 filing; transaction 2026-10-08",
+    "evidence_type": "regulatory filing",
+    "limitations": "Reports investor transaction; does not provide a full DramaBox cap table or name GoodShort in this transaction note.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S10",
+    "title": "Disney: 2025 Accelerator companies",
+    "url": "https://sites.disney.com/accelerator/2025/07/28/disney-accelerator-announces-its-2025-class-of-companies-animaj-dramabox-haddy-and-liminal-space-join-the-portfolio-of-companies-to-participate-in-the-successful-growth-development-and-innovation/",
+    "publication_date": "2025-07-28",
+    "evidence_type": "company announcement",
+    "limitations": "Accelerator participation is not acquisition.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S11",
+    "title": "Zero Takes: DramaBox production case studies",
+    "url": "https://zerotakes.com/",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "supplier testimony",
+    "limitations": "Named generated series and human workflow; platform episode links were blocked. No independent production audit.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S12",
+    "title": "TIME: Crazy Maple Studio CEO interview",
+    "url": "https://time.com/7173765/reelshort-crazy-maple-studio-joey-jia-interview/",
+    "publication_date": "2024",
+    "evidence_type": "primary executive interview",
+    "limitations": "Historical operating testimony; not proof of current catalog-wide production mix.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S13",
+    "title": "ReelShort: Tenth Wedding, New Groom",
+    "url": "https://www.reelshort.com/movie/tenth-wedding-new-groom-6aa8a5d7f08dff1bf80a3bda",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "indexed first-party title disclosure",
+    "limitations": "AI description available in indexed FAQ; direct fetch blocked. Not a complete audiovisual review.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S14",
+    "title": "ReelShort: Suzanna",
+    "url": "https://www.reelshort.com/movie/suzanna-695f4bae531d22e1e204057c",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "first-party title disclosure",
+    "limitations": "Title-specific cast-and-crew statement; no catalog share.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S15",
+    "title": "CQNews: Maiya partnership and generation workflow",
+    "url": "https://www.cqnews.net/web/content_1572223207679287296.html",
+    "publication_date": "2026-11-17",
+    "evidence_type": "partner reporting and company claims",
+    "limitations": "Parent capability and distribution route; does not quantify generated share of NetShort.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S16",
+    "title": "The Trade Desk: NetShort CTV acquisition case",
+    "url": "https://www.thetradedesk.com/case-studies/netshort-drives-growth-with-full-funnel-ctv-user-acquisition-strategy",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "vendor case study",
+    "limitations": "Selected campaign and vendor attribution; no independently audited incremental CAC.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S17",
+    "title": "BidMachine: NetShort advertising case",
+    "url": "https://www.bidmachine.com/blog/how-netshort-grew-ad-revenue",
+    "publication_date": "2026-04-16",
+    "evidence_type": "vendor case study",
+    "limitations": "Ad-stack case results, not total corporate revenue growth or randomized evidence.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S18",
+    "title": "GoodShort: Service terms",
+    "url": "https://www.goodshort.com/other/static_file/term_of_use.html",
+    "publication_date": "Live terms inspected 2026-11-21",
+    "evidence_type": "legal operator disclosure",
+    "limitations": "Operator identity does not by itself establish ultimate beneficial ownership.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S19",
+    "title": "GoodShort: Official cast discussion",
+    "url": "https://www.goodshort.com/drama/goodchat-with-emily-gately-jackson-tiller-31000984593",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "first-party production evidence",
+    "limitations": "Named actors discussing filming; no AI share disclosed.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S20",
+    "title": "Jiuzhou: International operations",
+    "url": "https://www.jxjzwh.cn/business-abroad.html",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "company operations description",
+    "limitations": "Production bases and local teams described; no title-level audited economics.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S21",
+    "title": "NetDragon and Jiuzhou: AI joint venture announcement",
+    "url": "https://www.prnewswire.com/news-releases/netdragon-partners-with-jiuzhou-culture-to-establish-joint-venture-302913397.html",
+    "publication_date": "2026-10-19",
+    "evidence_type": "company announcement",
+    "limitations": "Binding MOU; proposed JV contribution is not closed ShortMax financing. Peak MAU month not specified.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S22",
+    "title": "Zhangwan: Business portfolio",
+    "url": "https://zhangwan.com/business/",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "company description",
+    "limitations": "Titles described as hits without public title-level receipts.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S23",
+    "title": "FlickReels: US App Store listing",
+    "url": "https://apps.apple.com/us/app/flickreels-ai-story-drama/id6514312894",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "developer claims and storefront",
+    "limitations": "AI marketing is not a verified production stack. Prices vary by offer and region.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S24",
+    "title": "HOLYWATER: $22m funding announcement",
+    "url": "https://www.holywater.tech/blog/holywater-raises-record-22-million-to-turn-microdramas-into-mainstream-entertainment-in-the-u-s",
+    "publication_date": "2026-01-15",
+    "evidence_type": "company financing announcement",
+    "limitations": "Parent financing; circa 2x FY2025 revenue growth explicitly refers to My Drama in the app description; no absolute app revenue.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S25",
+    "title": "FOX: HOLYWATER investment and production commitment",
+    "url": "https://www.foxcorporation.com/news/business/2025/fox-entertainment-deepens-creative-content-portfolio-and-audience-reach-with-strategic-investment-in-vertical-video-technology-platform-holywater/",
+    "publication_date": "2025-10-09",
+    "evidence_type": "investor announcement",
+    "limitations": "More than 200 titles over the following two years is a commitment, not completed output.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S26",
+    "title": "HOLYWATER R&D executive interview",
+    "url": "https://www.streaming-radar.com/p/interview-with-illia-berestovskyi-holywater-tech",
+    "publication_date": "2026-10-29",
+    "evidence_type": "primary executive interview",
+    "limitations": "Reported operating process; private thresholds, model vendors and causal experiment results are not disclosed.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S27",
+    "title": "My Drama: H1 2025 company review",
+    "url": "https://www.linkedin.com/posts/holywatertech_the-first-half-of-2025-is-in-the-booksso-activity-7353334244275904513-SNP9",
+    "publication_date": "H1 2025 review, posted 2025",
+    "evidence_type": "company social disclosure",
+    "limitations": "Cumulative downloads, catalog and historical cadence; not a 2026 monthly release rate.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S28",
+    "title": "CRI: Shanhai/Stardust localization operations",
+    "url": "https://pandashorts.cri.cn/20260115/51d448c4-d1d1-4cae-a27f-4c0fc6a292de.html",
+    "publication_date": "2026-01-15",
+    "evidence_type": "reported company operations",
+    "limitations": "Over 1,000 localized episodes monthly by June 2025; not original series produced monthly.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S29",
+    "title": "Stardust TV: Code Queen",
+    "url": "https://www.stardusttv.net/episodes/01-code-queen-23449",
+    "publication_date": "Undated; inspected 2026-11-21",
+    "evidence_type": "indexed first-party title label",
+    "limitations": "Contains AI-generated content label; not percentage of shots or whole-catalog share.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S30",
+    "title": "Whale TV: FlareFlow distribution partnership",
+    "url": "https://www.whaletv.com/pt-br/news/flareflow-launches-on-whale-tv-bringing-micro-dramas-to-the-big-screen-in-south-america-for-the-first-time",
+    "publication_date": "2026-09-09",
+    "evidence_type": "distribution-partner announcement",
+    "limitations": "Registered users and catalog are partner-reported stocks, not MAU or newly produced originals.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S31",
+    "title": "US Copyright Office: AI copyrightability report",
+    "url": "https://www.copyright.gov/newsnet/2025/1060.html",
+    "publication_date": "2025-01-29",
+    "evidence_type": "government guidance",
+    "limitations": "US copyrightability guidance only; not a global rights clearance or legal opinion on any title.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S32",
+    "title": "ByteDance: Products and services",
+    "url": "https://www.bytedance.com/products-services?locale=en",
+    "publication_date": "Live page inspected 2026-11-22",
+    "evidence_type": "company product directory",
+    "limitations": "Establishes Hongguo product identity, not short-drama revenue.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S33",
+    "title": "Kuaishou: Q3 2026 results",
+    "url": "https://ir.kuaishou.com/node/11901/pdf",
+    "publication_date": "2026-11; Q3 results",
+    "evidence_type": "listed-company report",
+    "limitations": "Whole-platform user figures must not be attributed to the micro-drama category.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S34",
+    "title": "DramaBox and The Trade Desk: Programmatic advertising partnership",
+    "url": "https://www.prnewswire.com/apac/news-releases/the-trade-desk-powers-open-internet-growth-with-dramabox-short-drama-partnership-302752834.html",
+    "publication_date": "2026-04-26",
+    "evidence_type": "company and partner announcement",
+    "limitations": "Advertising inventory monetization; distinct from NetShort paid acquisition case.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S35",
+    "title": "DramaBox: US App Store",
+    "url": "https://apps.apple.com/us/app/dramabox-stream-drama-shorts/id6445905219",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Membership duration not established for every listed SKU.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S36",
+    "title": "ReelShort: US App Store",
+    "url": "https://apps.apple.com/us/app/reelshort-stream-drama-tv/id1636235979",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Offer-specific US prices; not universal effective price per series.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S37",
+    "title": "NetShort: US App Store",
+    "url": "https://apps.apple.com/us/app/netshort-popular-dramas-tv/id6504849169",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Multiple weekly SKUs; which offer is shown depends on product context.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S38",
+    "title": "DramaWave: US App Store",
+    "url": "https://apps.apple.com/us/app/dramawave-dramas-reels/id6670430706",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Regional offer snapshot.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S39",
+    "title": "GoodShort: US App Store",
+    "url": "https://apps.apple.com/us/app/goodshort-short-dramas-hub/id6448176203",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Coin packs do not establish number of episodes or total series cost.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S40",
+    "title": "ShortMax: US App Store",
+    "url": "https://apps.apple.com/us/app/shortmax-short-dramas-tv/id6464002625",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Regional offer snapshot.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S41",
+    "title": "Stardust TV: US App Store",
+    "url": "https://apps.apple.com/us/app/stardusttv-short-drama-movie/id6502377927",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Multiple weekly offers; coin-to-episode cost varies.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S42",
+    "title": "FlareFlow: US App Store",
+    "url": "https://apps.apple.com/us/app/flareflow-short-dramas/id6744237126",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Duration not established for all unlimited SKUs.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S43",
+    "title": "My Drama: Service terms",
+    "url": "https://my-drama.com/terms-of-use",
+    "publication_date": "Live terms inspected 2026-11-21",
+    "evidence_type": "legal operator disclosure",
+    "limitations": "Separate web/app subscription routes; no universal US subscription price established.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S44",
+    "title": "HOLYWATER: Product report landing page",
+    "url": "https://www.holywater.tech/report",
+    "publication_date": "2026 report landing page",
+    "evidence_type": "company product description",
+    "limitations": "Identifies My Drama live action and My Muse AI; full report gated and not read in full.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S45",
+    "title": "GoodShort: Company profile",
+    "url": "https://www.linkedin.com/company/goodshort",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "brand self-description",
+    "limitations": "Hollywood headquarters is brand-reported; legal operator is Singaporean.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S46",
+    "title": "Zhangwan: Careers and office location",
+    "url": "https://www.zhangwan.com/join/",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "company self-description",
+    "limitations": "Hangzhou parent location; not Singapore operator address.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S47",
+    "title": "Shanhai: Company website",
+    "url": "https://m.gxshxc.com/",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "company self-description",
+    "limitations": "Parent and operating brand must be distinguished.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S48",
+    "title": "Stardust TV: Privacy policy",
+    "url": "https://www.stardusttv.net/de/privacy-agreement",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "legal operator disclosure",
+    "limitations": "Hong Kong service operator, not Nanning parent headquarters.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S49",
+    "title": "GoodShort: Google Play listing",
+    "url": "https://play.google.com/store/apps/details?hl=en&id=com.newreading.goodreels",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Cumulative Android download bucket; not exact worldwide users.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S50",
+    "title": "FlickReels: Google Play listing",
+    "url": "https://play.google.com/store/apps/details?hl=en_US&id=com.zyhwplatform.shortplay",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Cumulative Android download bucket; not MAU.",
+    "checked_through": "2026-11-22"
+  },
+  {
+    "id": "S51",
+    "title": "Stardust TV: Google Play listing",
+    "url": "https://play.google.com/store/apps/details?hl=en&id=com.shdj.test",
+    "publication_date": "Snapshot 2026-11-21",
+    "evidence_type": "storefront",
+    "limitations": "Cumulative Android download bucket; not exact worldwide downloads.",
+    "checked_through": "2026-11-22"
+  }
+]

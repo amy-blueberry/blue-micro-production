@@ -20,7 +20,7 @@ Coins and auto-renewing subscriptions coexist; web and app-store subscriptions h
 
 • H1 2025 company review: **10m+ My Drama downloads**; cumulative, not monthly users.
 • Same H1 2025 review: **70+ live series**, with **4–5 titles launched per month** reported at that time. These are company claims and not an audited release log. [Company review](https://www.linkedin.com/posts/holywatertech_the-first-half-of-2025-is-in-the-booksso-activity-7353334244275904513-SNP9).
-• FY2025: HOLYWATER reported approximately **2× group revenue growth**, without an absolute My Drama app revenue figure. [January 15, 2026 statement](https://www.holywater.tech/blog/holywater-raises-record-22-million-to-turn-microdramas-into-mainstream-entertainment-in-the-u-s).
+• FY2025: HOLYWATER reported approximately **2× My Drama app revenue growth**, without an absolute My Drama app revenue figure. [January 15, 2026 statement](https://www.holywater.tech/blog/holywater-raises-record-22-million-to-turn-microdramas-into-mainstream-entertainment-in-the-u-s).
 
 ## Notable Titles & IP
 

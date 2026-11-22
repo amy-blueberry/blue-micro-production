@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "research_cut": "2026-11-22",
+  "company_profiles": 10,
+  "sources": 51,
+  "datasets": 16,
+  "dataset_records": 78,
+  "main_slides": 36,
+  "appendix_topics": 10,
+  "report_words_whitespace": 9096,
+  "checks": [
+    "source and dataset identifiers",
+    "source fields",
+    "fixed ten-app order",
+    "geographic and demographic sums",
+    "AI bound qualifiers",
+    "synthetic model arithmetic",
+    "profile and slide counts",
+    "local Markdown links"
+  ],
+  "limit": "Checks establish internal consistency, not external truth, audited finances or audience validation."
+}

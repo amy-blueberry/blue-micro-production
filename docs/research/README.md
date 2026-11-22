@@ -30,3 +30,7 @@ The [top-ten market research](micro-drama-market/README.md) adds company profile
 ## Supplied Bumpp brief
 
 The subsequently supplied [audience bible, story framework, scripts and theater spec](../bumpp-reference/README.md) are preserved separately. The bible describes a 16–19 core target as a company decision; that is a strategic target rather than a newly measured demographic majority. Its cohort claims and the scripts' reported audit scores have not been independently reproduced in this import. Use these documents as brief inputs when continuing company analysis, preserving the distinction between research verification, editorial scoring and actual viewer testing.
+
+## Detailed industry report for presentation design
+
+The [November 22 industry report](industry-report-2026-11-22/README.md) expands the company work into a self-contained market guide and Claude Design handoff: ten profiles, market-size definitions, audience evidence, AI versus conventional production, workflows, monetization, a synthetic economics model and Bumpp implications. It includes 36 main-slide briefs, ten appendix topics, chart data and a source register. These additions do not establish the Roblox audience demographic or resume episode development.

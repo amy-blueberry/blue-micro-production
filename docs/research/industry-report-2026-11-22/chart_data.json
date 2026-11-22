@@ -1,0 +1,925 @@
+{
+  "report_date": "2026-11-22",
+  "schema_version": "1.0",
+  "instructions": "Preserve qualifiers, dates, scopes and source IDs. Null or omitted values are not zero. Do not add unsupported estimates.",
+  "datasets": [
+    {
+      "id": "D01",
+      "title": "Omdia broad global category revenue",
+      "unit": "USD billion",
+      "period": "2025 estimate; 2026 and 2031 forecasts",
+      "geography": "Worldwide",
+      "evidence_type": "analyst estimate / forecast",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "records": [
+        {
+          "period": "2025",
+          "value": 11,
+          "qualifier": "estimated"
+        },
+        {
+          "period": "2026",
+          "value": 14,
+          "qualifier": "forecast"
+        },
+        {
+          "period": "2031",
+          "value": 25,
+          "qualifier": "nearly; forecast"
+        }
+      ],
+      "interpretation_limits": "Do not merge with Deloitte in-app forecasts or Sensor Tower IAP. 2031 value is approximate; non-equally-spaced years require a proportional time axis.",
+      "recommended_visual": "Separate estimate and forecast markers; dashed forecast line if connected"
+    },
+    {
+      "id": "D02",
+      "title": "Omdia 2026 geographic revenue forecast",
+      "unit": "USD billion",
+      "period": "2026 forecast",
+      "geography": "Worldwide",
+      "evidence_type": "analyst forecast / derived subtraction",
+      "source_ids": [
+        "S03"
+      ],
+      "records": [
+        {
+          "market": "China",
+          "value": 11,
+          "qualifier": "derived",
+          "formula": "14 - 3"
+        },
+        {
+          "market": "US",
+          "value": 1.5,
+          "qualifier": "forecast"
+        },
+        {
+          "market": "Rest of world excluding China and US",
+          "value": 1.5,
+          "qualifier": "derived",
+          "formula": "3 - 1.5"
+        }
+      ],
+      "interpretation_limits": "Parts of one Omdia model; China and rest-of-world values are arithmetic derivations. Do not combine with other vendors.",
+      "recommended_visual": "Stacked bar with forecast label and derived footnote"
+    },
+    {
+      "id": "D03",
+      "title": "Deloitte in-app micro-series forecast",
+      "unit": "USD billion",
+      "period": "2025 and 2026 forecasts",
+      "geography": "Global as described by Deloitte",
+      "evidence_type": "analyst forecast",
+      "source_ids": [
+        "S05"
+      ],
+      "records": [
+        {
+          "period": "2025",
+          "value": 3.8,
+          "qualifier": "forecast in source"
+        },
+        {
+          "period": "2026",
+          "value": 7.8,
+          "qualifier": "forecast"
+        }
+      ],
+      "interpretation_limits": "Separate model and coverage. Neither value should be labeled audited actual.",
+      "recommended_visual": "Two forecast bars in a separate panel"
+    },
+    {
+      "id": "D04",
+      "title": "Sensor Tower Q1 2026 market snapshot",
+      "unit": "mixed; see each record",
+      "period": "Q1 2026",
+      "geography": "Worldwide measured stores",
+      "evidence_type": "vendor estimates",
+      "source_ids": [
+        "S01"
+      ],
+      "records": [
+        {
+          "metric": "Downloads",
+          "value": 850000000,
+          "unit": "downloads",
+          "qualifier": "more than"
+        },
+        {
+          "metric": "IAP",
+          "value": 750000000,
+          "unit": "USD",
+          "qualifier": "approximately"
+        },
+        {
+          "metric": "Download YoY growth",
+          "value": 140,
+          "unit": "percent",
+          "qualifier": "reported"
+        },
+        {
+          "metric": "IAP YoY growth",
+          "value": 20,
+          "unit": "percent",
+          "qualifier": "reported"
+        }
+      ],
+      "interpretation_limits": "Downloads are not people; IAP excludes ad/web receipts. Never put downloads and USD on one unlabeled axis. Do not derive LTV from these aggregates.",
+      "recommended_visual": "Two KPI cards plus paired growth bars"
+    },
+    {
+      "id": "D05",
+      "title": "Share of Q1 2026 downloads",
+      "unit": "percent",
+      "period": "Q1 2026",
+      "geography": "Worldwide measured stores",
+      "evidence_type": "vendor estimates and derived remainder",
+      "source_ids": [
+        "S01"
+      ],
+      "records": [
+        {
+          "region": "Southeast Asia",
+          "value": 32
+        },
+        {
+          "region": "Latin America",
+          "value": 23
+        },
+        {
+          "region": "India",
+          "value": 22
+        },
+        {
+          "region": "Other regions",
+          "value": 23,
+          "qualifier": "derived",
+          "formula": "100 - 32 - 23 - 22"
+        }
+      ],
+      "interpretation_limits": "Download shares, not revenue shares. Regions form one displayed partition.",
+      "recommended_visual": "100% stacked bar or horizontal bars"
+    },
+    {
+      "id": "D06",
+      "title": "Gender composition of micro-drama users",
+      "unit": "percent",
+      "period": "April 2026 survey; published 2026-10-13",
+      "geography": "Four surveyed countries",
+      "evidence_type": "consumer research",
+      "source_ids": [
+        "S04"
+      ],
+      "records": [
+        {
+          "market": "UK",
+          "male": 54,
+          "female": 46
+        },
+        {
+          "market": "US",
+          "male": 50,
+          "female": 50
+        },
+        {
+          "market": "Spain",
+          "male": 47,
+          "female": 53
+        },
+        {
+          "market": "Brazil",
+          "male": 29,
+          "female": 71
+        }
+      ],
+      "interpretation_limits": "Source reports male/female categories. No sample sizes or full weighting disclosed in release. Not Roblox, payer or teen data.",
+      "recommended_visual": "Four 100% stacked bars; do not aggregate countries"
+    },
+    {
+      "id": "D07",
+      "title": "Reported cross-app paying conversion",
+      "unit": "percent",
+      "period": "Reported 2026-07-23; conversion window not specified in release",
+      "geography": "HOLYWATER products; geography not specified in release",
+      "evidence_type": "company / research-partner observational disclosure",
+      "source_ids": [
+        "S06"
+      ],
+      "records": [
+        {
+          "product": "My Muse",
+          "value": 23.6,
+          "production_context": "AI series"
+        },
+        {
+          "product": "My Drama",
+          "value": 23.9,
+          "production_context": "live action"
+        }
+      ],
+      "interpretation_limits": "Nonrandomized comparison, not causal equivalence. Sample n=2,737 applies to My Drama survey, not necessarily either conversion cohort.",
+      "recommended_visual": "Two dots on common 0–100 scale; prominent observational label"
+    },
+    {
+      "id": "D08",
+      "title": "Fixed ten-app cohort by Q1 2026 IAP rank",
+      "unit": "ordinal rank",
+      "period": "Q1 2026 ranking; production evidence through 2026-11-22",
+      "geography": "Worldwide measured stores",
+      "evidence_type": "third-party ranking plus attributed company evidence",
+      "source_ids": [
+        "S02"
+      ],
+      "records": [
+        {
+          "rank": 1,
+          "app": "DramaBox",
+          "parent_operator": "StoryMatrix; Dianzhong origin; Drama Times transaction",
+          "headquarters_context": "Singapore operator; Beijing origin",
+          "production_class": "Conventional base plus supplier-disclosed generated series",
+          "company_source_ids": [
+            "S09",
+            "S11",
+            "S35"
+          ]
+        },
+        {
+          "rank": 2,
+          "app": "ReelShort",
+          "parent_operator": "Crazy Maple Studio; COL non-controlling stake",
+          "headquarters_context": "Sunnyvale, California",
+          "production_class": "Mixed title evidence",
+          "company_source_ids": [
+            "S08",
+            "S13",
+            "S14"
+          ]
+        },
+        {
+          "rank": 3,
+          "app": "NetShort",
+          "parent_operator": "Maiya; NETSTORY",
+          "headquarters_context": "Chongqing parent; Singapore operator",
+          "production_class": "Parent AI capability; app share unquantified",
+          "company_source_ids": [
+            "S15",
+            "S37"
+          ]
+        },
+        {
+          "rank": 4,
+          "app": "DramaWave",
+          "parent_operator": "Kunlun Tech; SKYWORK AI",
+          "headquarters_context": "Beijing parent; Singapore operator",
+          "production_class": "AI-led September 2026 new releases, per parent",
+          "company_source_ids": [
+            "S07",
+            "S38"
+          ]
+        },
+        {
+          "rank": 5,
+          "app": "GoodShort",
+          "parent_operator": "New Reading Technology; full holding chain not established",
+          "headquarters_context": "Brand reports Hollywood; Singapore operator",
+          "production_class": "Conventional filming evidenced; AI share unestablished",
+          "company_source_ids": [
+            "S18",
+            "S19",
+            "S45"
+          ]
+        },
+        {
+          "rank": 6,
+          "app": "ShortMax",
+          "parent_operator": "Jiuzhou Culture; ShortTV",
+          "headquarters_context": "Jiaxing, Zhejiang parent",
+          "production_class": "Conventional base; parent AI venture announced",
+          "company_source_ids": [
+            "S20",
+            "S21"
+          ]
+        },
+        {
+          "rank": 7,
+          "app": "FlickReels",
+          "parent_operator": "Zhangwan; FARSUN",
+          "headquarters_context": "Hangzhou parent; Singapore operator",
+          "production_class": "AI marketed; implementation insufficiently disclosed",
+          "company_source_ids": [
+            "S22",
+            "S23",
+            "S46"
+          ]
+        },
+        {
+          "rank": 8,
+          "app": "MyDrama",
+          "parent_operator": "HOLYWATER; regional service entities",
+          "headquarters_context": "Kyiv group; US/Cyprus service entities",
+          "production_class": "Live-action product; My Muse is AI sibling",
+          "company_source_ids": [
+            "S24",
+            "S43",
+            "S44"
+          ]
+        },
+        {
+          "rank": 9,
+          "app": "Stardust TV",
+          "parent_operator": "Shanhai; Hongxing",
+          "headquarters_context": "Nanning parent; Hong Kong operator",
+          "production_class": "Localization plus AI-containing title label",
+          "company_source_ids": [
+            "S28",
+            "S29",
+            "S48"
+          ]
+        },
+        {
+          "rank": 10,
+          "app": "FlareFlow",
+          "parent_operator": "COL via Creative Omni Life",
+          "headquarters_context": "Singapore operator/international division",
+          "production_class": "Quantified mixed catalog",
+          "company_source_ids": [
+            "S08",
+            "S30"
+          ]
+        }
+      ],
+      "interpretation_limits": "Ranking is not current November rank, not company revenue, not top ten all-global-platforms. Do not draw ownership arrows for uncertain holding chains.",
+      "recommended_visual": "Ranked table; no implied revenue bar lengths"
+    },
+    {
+      "id": "D09",
+      "title": "Comparable leader IAP estimates",
+      "unit": "USD million",
+      "period": "Q1 2026",
+      "geography": "Worldwide measured stores",
+      "evidence_type": "vendor estimates",
+      "source_ids": [
+        "S01"
+      ],
+      "records": [
+        {
+          "app": "DramaBox",
+          "value": 140,
+          "qualifier": "close to"
+        },
+        {
+          "app": "ReelShort",
+          "value": 140,
+          "qualifier": "close to"
+        }
+      ],
+      "interpretation_limits": "Rounded estimates; same displayed magnitude does not erase ordinal ranking. Do not extrapolate annual results.",
+      "recommended_visual": "Two approximate value cards or bars"
+    },
+    {
+      "id": "D10",
+      "title": "AI production disclosures with different denominators",
+      "unit": "percent",
+      "period": "September 2026 / H1 2026",
+      "geography": "Company reported scopes",
+      "evidence_type": "management disclosures",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "records": [
+        {
+          "app": "DramaWave",
+          "value": 95,
+          "bound": "at least",
+          "denominator": "September 2026 new additions",
+          "source_id": "S07"
+        },
+        {
+          "app": "FlareFlow",
+          "value": 10,
+          "bound": "greater than",
+          "denominator": "H1 2026 catalog",
+          "source_id": "S08"
+        }
+      ],
+      "interpretation_limits": "Release flow versus catalog stock. Not a direct efficiency comparison; cannot calculate conventional remainder exactly.",
+      "recommended_visual": "Two annotated cards, never a shared pie or exact share split"
+    },
+    {
+      "id": "D11",
+      "title": "Selected company scale evidence",
+      "unit": "mixed; see records",
+      "period": "Mixed dated periods",
+      "geography": "As specified per record",
+      "evidence_type": "company claims / storefront / filing",
+      "source_ids": [
+        "S15",
+        "S21",
+        "S24",
+        "S27",
+        "S28",
+        "S30",
+        "S49",
+        "S50",
+        "S51",
+        "S08",
+        "S07"
+      ],
+      "records": [
+        {
+          "entity": "NetShort",
+          "metric": "Cumulative worldwide downloads",
+          "value": 130000000,
+          "unit": "downloads",
+          "qualifier": "more than",
+          "period": "2026-11-17 announcement",
+          "source_id": "S15"
+        },
+        {
+          "entity": "ShortMax",
+          "metric": "Cumulative downloads",
+          "value": 200000000,
+          "unit": "downloads",
+          "qualifier": "more than",
+          "period": "2026-10-19 announcement",
+          "source_id": "S21"
+        },
+        {
+          "entity": "ShortMax",
+          "metric": "Peak MAU",
+          "value": 30000000,
+          "unit": "users",
+          "qualifier": "more than",
+          "period": "Reported 2026-10-19; peak month unspecified",
+          "source_id": "S21"
+        },
+        {
+          "entity": "HOLYWATER group",
+          "metric": "Closed funding round",
+          "value": 22000000,
+          "unit": "USD capital",
+          "period": "2026-01-15",
+          "source_id": "S24"
+        },
+        {
+          "entity": "My Drama",
+          "metric": "FY revenue multiple",
+          "value": 2,
+          "unit": "times previous year",
+          "qualifier": "circa",
+          "period": "FY2025",
+          "source_id": "S24"
+        },
+        {
+          "entity": "My Drama",
+          "metric": "Cumulative downloads",
+          "value": 10000000,
+          "unit": "downloads",
+          "qualifier": "more than",
+          "period": "H1 2025 company review",
+          "source_id": "S27"
+        },
+        {
+          "entity": "My Drama",
+          "metric": "Live catalog",
+          "value": 70,
+          "unit": "series",
+          "qualifier": "more than",
+          "period": "H1 2025 company review",
+          "source_id": "S27"
+        },
+        {
+          "entity": "My Drama",
+          "metric": "Launch cadence",
+          "minimum": 4,
+          "maximum": 5,
+          "unit": "titles per month",
+          "period": "H1 2025 company review",
+          "source_id": "S27"
+        },
+        {
+          "entity": "Shanhai / Stardust operation",
+          "metric": "Localization throughput",
+          "value": 1000,
+          "unit": "episodes per month",
+          "qualifier": "more than",
+          "period": "By June 2025; reported 2026-01-15",
+          "source_id": "S28"
+        },
+        {
+          "entity": "FlareFlow",
+          "metric": "Registered accounts",
+          "value": 52000000,
+          "unit": "accounts",
+          "period": "2026-09-09 announcement",
+          "source_id": "S30"
+        },
+        {
+          "entity": "FlareFlow",
+          "metric": "Catalog stock",
+          "value": 7000,
+          "unit": "titles",
+          "qualifier": "nearly",
+          "period": "2026-09-09 announcement",
+          "source_id": "S30"
+        },
+        {
+          "entity": "Flareflow legal entity",
+          "metric": "Revenue",
+          "value": 252677833.32,
+          "unit": "RMB",
+          "period": "H1 2026",
+          "source_id": "S08"
+        },
+        {
+          "entity": "Kunlun AI short-drama portfolio",
+          "metric": "Monthly gross billings",
+          "value": 100000000,
+          "unit": "USD",
+          "qualifier": "approaching",
+          "period": "September 2026",
+          "source_id": "S07"
+        },
+        {
+          "entity": "GoodShort",
+          "metric": "Google Play download bucket",
+          "value": 100000000,
+          "unit": "Android downloads",
+          "qualifier": "at least",
+          "period": "2026-11-21 snapshot",
+          "source_id": "S49"
+        },
+        {
+          "entity": "FlickReels",
+          "metric": "Google Play download bucket",
+          "value": 10000000,
+          "unit": "Android downloads",
+          "qualifier": "at least",
+          "period": "2026-11-21 snapshot",
+          "source_id": "S50"
+        },
+        {
+          "entity": "Stardust TV",
+          "metric": "Google Play download bucket",
+          "value": 10000000,
+          "unit": "Android downloads",
+          "qualifier": "at least",
+          "period": "2026-11-21 snapshot",
+          "source_id": "S51"
+        }
+      ],
+      "interpretation_limits": "Heterogeneous measures, entity scopes, dates and evidence classes. No common scale ranking, revenue sum or cross-company bar race.",
+      "recommended_visual": "Dated fact cards within individual company profiles"
+    },
+    {
+      "id": "D12",
+      "title": "Selected US iOS offer examples",
+      "unit": "USD per stated billing period",
+      "period": "2026-11-21 snapshot",
+      "geography": "US iOS",
+      "evidence_type": "storefront observations",
+      "source_ids": [
+        "S36",
+        "S37",
+        "S38",
+        "S39",
+        "S40",
+        "S23",
+        "S41"
+      ],
+      "records": [
+        {
+          "app": "ReelShort",
+          "billing_period": "weekly",
+          "prices": [
+            19.99
+          ],
+          "source_id": "S36"
+        },
+        {
+          "app": "NetShort",
+          "billing_period": "weekly",
+          "prices": [
+            5.99,
+            19.99,
+            24.99,
+            29.99
+          ],
+          "source_id": "S37"
+        },
+        {
+          "app": "DramaWave",
+          "billing_period": "weekly",
+          "prices": [
+            19.99
+          ],
+          "source_id": "S38"
+        },
+        {
+          "app": "DramaWave",
+          "billing_period": "monthly",
+          "prices": [
+            36.99
+          ],
+          "source_id": "S38"
+        },
+        {
+          "app": "GoodShort",
+          "billing_period": "weekly",
+          "prices": [
+            5.99,
+            9.99,
+            19.99
+          ],
+          "source_id": "S39"
+        },
+        {
+          "app": "ShortMax",
+          "billing_period": "weekly",
+          "prices": [
+            19.99
+          ],
+          "source_id": "S40"
+        },
+        {
+          "app": "FlickReels",
+          "billing_period": "weekly",
+          "prices": [
+            12.99,
+            19.99
+          ],
+          "source_id": "S23"
+        },
+        {
+          "app": "FlickReels",
+          "billing_period": "monthly",
+          "prices": [
+            39.99
+          ],
+          "source_id": "S23"
+        },
+        {
+          "app": "Stardust TV",
+          "billing_period": "weekly",
+          "prices": [
+            19.99,
+            29.99
+          ],
+          "source_id": "S41"
+        }
+      ],
+      "interpretation_limits": "Examples, not exhaustive menus or realized average spend. Keep weekly and monthly separate. Omitted apps lack a comparable verified US interval in this review.",
+      "recommended_visual": "Offer table, not average-price ranking"
+    },
+    {
+      "id": "D13",
+      "title": "Strategic relationships: capital and ownership",
+      "unit": "mixed; see records",
+      "period": "Dated disclosures",
+      "geography": "Company/legal entity specific",
+      "evidence_type": "filings and company announcements",
+      "source_ids": [
+        "S08",
+        "S21",
+        "S25",
+        "S09",
+        "S10"
+      ],
+      "records": [
+        {
+          "relationship": "COL interest in Crazy Maple Studio",
+          "value": 49.24,
+          "unit": "percent equity interest",
+          "period": "H1 2026 filing",
+          "source_id": "S08"
+        },
+        {
+          "relationship": "NetDragon proposed JV stake",
+          "value": 51,
+          "unit": "percent proposed JV stake",
+          "period": "2026-10-19 MOU announcement",
+          "source_id": "S21"
+        },
+        {
+          "relationship": "NetDragon proposed JV cash contribution",
+          "value": 50000000,
+          "unit": "RMB proposed capital",
+          "period": "2026-10-19 MOU announcement",
+          "source_id": "S21"
+        },
+        {
+          "relationship": "FOX production commitment for My Drama",
+          "value": 200,
+          "unit": "titles",
+          "qualifier": "more than",
+          "period": "Two years following 2025-10-09 announcement",
+          "source_id": "S25"
+        }
+      ],
+      "interpretation_limits": "Do not label proposed JV as closed ShortMax funding, slate as delivered, associate as wholly owned, accelerator as acquisition.",
+      "recommended_visual": "Relationship diagram with labeled edge types"
+    },
+    {
+      "id": "D14",
+      "title": "Broad vertical-video economy versus app subset",
+      "unit": "USD billion",
+      "period": "2026 forecast",
+      "geography": "Outside China",
+      "evidence_type": "Owl & Co estimate reported by partner",
+      "source_ids": [
+        "S06"
+      ],
+      "records": [
+        {
+          "scope": "Broad vertical-video economy",
+          "value": 150
+        },
+        {
+          "scope": "Dedicated micro-drama apps subset",
+          "value": 4
+        }
+      ],
+      "interpretation_limits": "App subset is included in broader total. Broad total is not micro-drama TAM. Not reconciled to Omdia forecast.",
+      "recommended_visual": "Nested scope boxes, not two additive bars"
+    },
+    {
+      "id": "D15",
+      "title": "Illustrative cohort economics",
+      "unit": "USD unless input specifies otherwise",
+      "period": "Synthetic 90-day window",
+      "geography": "No real company or market",
+      "evidence_type": "synthetic illustration",
+      "source_ids": [],
+      "records": [
+        {
+          "scenario": "Conventional content allocation",
+          "payer_conversion": 0.05,
+          "cost_per_acquired_user": 1.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 120000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 150000.0,
+          "contribution_before_content": -10000.0,
+          "contribution_after_content": -60000.0
+        },
+        {
+          "scenario": "Hypothetical lower AI content allocation",
+          "payer_conversion": 0.05,
+          "cost_per_acquired_user": 1.5,
+          "content_allocation": 20000,
+          "net_payer_receipts": 120000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 150000.0,
+          "contribution_before_content": -10000.0,
+          "contribution_after_content": -30000.0
+        }
+      ],
+      "interpretation_limits": "Invented teaching inputs, not market benchmarks, budgets or expected returns. Excludes fixed overhead. Lower content cost is assumed, not researched AI savings.",
+      "recommended_visual": "Waterfall with large SYNTHETIC EXAMPLE label",
+      "inputs": {
+        "window_days": 90,
+        "acquired_users": 100000,
+        "cost_per_acquired_user": 1.5,
+        "payer_conversion": 0.05,
+        "gross_receipts_per_payer": 30,
+        "net_collection_factor": 0.8,
+        "net_ad_receipts_per_acquired_user": 0.3,
+        "variable_service_cost_per_acquired_user": 0.1,
+        "conventional_content_allocation": 50000,
+        "hypothetical_ai_content_allocation": 20000
+      },
+      "formula": "N * (conversion * payer_gross_receipts * net_collection_factor + net_ads_per_user - variable_service_cost_per_user - acquisition_cost_per_user) - content_allocation",
+      "breakeven_payer_conversion": {
+        "conventional": 0.075,
+        "hypothetical_ai": 0.0625
+      }
+    },
+    {
+      "id": "D16",
+      "title": "Synthetic sensitivity to payer conversion and acquisition cost",
+      "unit": "USD contribution after content",
+      "period": "Synthetic 90-day window",
+      "geography": "No real company or market",
+      "evidence_type": "synthetic illustration",
+      "source_ids": [],
+      "records": [
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.03,
+          "cost_per_acquired_user": 0.75,
+          "content_allocation": 50000,
+          "net_payer_receipts": 72000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 75000.0,
+          "contribution_before_content": 17000.0,
+          "contribution_after_content": -33000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.03,
+          "cost_per_acquired_user": 1.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 72000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 150000.0,
+          "contribution_before_content": -58000.0,
+          "contribution_after_content": -108000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.03,
+          "cost_per_acquired_user": 2.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 72000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 250000.0,
+          "contribution_before_content": -158000.0,
+          "contribution_after_content": -208000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.05,
+          "cost_per_acquired_user": 0.75,
+          "content_allocation": 50000,
+          "net_payer_receipts": 120000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 75000.0,
+          "contribution_before_content": 65000.0,
+          "contribution_after_content": 15000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.05,
+          "cost_per_acquired_user": 1.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 120000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 150000.0,
+          "contribution_before_content": -10000.0,
+          "contribution_after_content": -60000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.05,
+          "cost_per_acquired_user": 2.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 120000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 250000.0,
+          "contribution_before_content": -110000.0,
+          "contribution_after_content": -160000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.08,
+          "cost_per_acquired_user": 0.75,
+          "content_allocation": 50000,
+          "net_payer_receipts": 192000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 75000.0,
+          "contribution_before_content": 137000.0,
+          "contribution_after_content": 87000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.08,
+          "cost_per_acquired_user": 1.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 192000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 150000.0,
+          "contribution_before_content": 62000.0,
+          "contribution_after_content": 12000.0
+        },
+        {
+          "scenario": "Conventional",
+          "payer_conversion": 0.08,
+          "cost_per_acquired_user": 2.5,
+          "content_allocation": 50000,
+          "net_payer_receipts": 192000.0,
+          "net_ad_receipts": 30000.0,
+          "variable_service_cost": 10000.0,
+          "acquisition_spend": 250000.0,
+          "contribution_before_content": -38000.0,
+          "contribution_after_content": -88000.0
+        }
+      ],
+      "interpretation_limits": "Same synthetic inputs as D15; conventional content allocation held at $50k. No confidence intervals or implied real forecast.",
+      "recommended_visual": "3x3 sensitivity table with both axes labeled"
+    }
+  ]
+}
