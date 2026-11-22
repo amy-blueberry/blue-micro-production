@@ -1,0 +1,85 @@
+{
+  "status": "PROPOSED_NOT_CONNECTED",
+  "creator_watchlist": [
+    {
+      "creator": "adoreesydd",
+      "reference": "Walden Academy",
+      "url": "https://www.youtube.com/@adoreesydd",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "selvienneproductions",
+      "reference": "Finders Keepers",
+      "url": "https://www.youtube.com/@selvienneproductions",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "xoetherealuv",
+      "reference": "Strings Attached",
+      "url": "https://www.youtube.com/@xoetherealuv",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "IlluminationTheatre",
+      "reference": "Multiple series",
+      "url": "https://www.youtube.com/@IlluminationTheatre",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "novasfilms.x",
+      "reference": "The Shift",
+      "url": "https://www.youtube.com/@novasfilms.x",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "RevolutionizedStudio",
+      "reference": "Crucible",
+      "url": "https://www.youtube.com/@RevolutionizedStudio",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    },
+    {
+      "creator": "stinkella",
+      "reference": "Mini-dramas",
+      "url": "https://www.youtube.com/@stinkella/videos",
+      "basis": "User-supplied reference; popularity ranking and demographics not independently established",
+      "access": "Approved public metadata; licensed or authorized content inspection only"
+    }
+  ],
+  "additional_references": [
+    {
+      "reference": "User-supplied reality-show example",
+      "url": "https://www.youtube.com/watch?v=LprcW4MS-MQ&list=PLPA30jCfketDlOcWBl3pOO8jNxMure8Ms"
+    },
+    {
+      "reference": "Illumination Theatre TikTok example",
+      "url": "https://www.tiktok.com/@illuminationtheatre/video/7522223959228697886"
+    }
+  ],
+  "company_watchlist": [
+    "DramaBox",
+    "ReelShort",
+    "NetShort",
+    "DramaWave",
+    "GoodShort",
+    "ShortMax",
+    "FlickReels",
+    "MyDrama / HOLYWATER",
+    "Stardust TV",
+    "FlareFlow"
+  ],
+  "company_source_register": "../research/industry-report-2026-11-22/sources.json",
+  "collection_rules": [
+    "Resolve channel IDs through permitted access before polling",
+    "Record collected_at and source data period separately",
+    "Store missing metrics as missing, never zero",
+    "Do not assume public access grants caption-download or media-reuse permission",
+    "Use authorized exports or permitted/licensed access for TikTok; do not assume Research API eligibility",
+    "Store private analytics in controlled storage, not this public repository"
+  ]
+}

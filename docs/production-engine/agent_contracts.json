@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.0",
+  "prepared_date": "2026-11-22",
+  "deployment_state": "NOT_DEPLOYED",
+  "scheduler_active": false,
+  "connected_data_sources": [],
+  "production_development_authorized": false,
+  "paid_generation_budget_usd": 0,
+  "architecture_note": "Eight logical responsibilities; not eight continuously running models. A durable coordinator invokes bounded tasks. This file does not create an app automation.",
+  "agents": [
+    {
+      "id": "trend_scout",
+      "name": "Trend Scout",
+      "chart_steps": [
+        1,
+        2
+      ],
+      "trigger_proposed": "Daily creator watch; weekly company and tool review",
+      "accountable_human": "Research lead",
+      "required_inputs": [
+        "Approved public-source watchlist",
+        "Dated prior observations"
+      ],
+      "allowed_actions_after_activation": [
+        "Fetch permitted public metadata and announcements",
+        "Identify new releases and meaningful changes",
+        "Deduplicate reposts and repeated announcements"
+      ],
+      "outputs": [
+        "Source-linked change log",
+        "Candidate trend cards"
+      ],
+      "restrictions": [
+        "Cannot infer viewer ages or private retention",
+        "Cannot copy scripts or treat popularity as causal evidence"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "evidence_reviewer",
+      "name": "Evidence Reviewer",
+      "chart_steps": [
+        1,
+        2,
+        3
+      ],
+      "trigger_proposed": "Whenever a new signal is proposed",
+      "accountable_human": "Research lead",
+      "required_inputs": [
+        "Candidate signal",
+        "Original source and collection details"
+      ],
+      "allowed_actions_after_activation": [
+        "Check period, scope, denominators and permissions",
+        "Compare like-for-like observations",
+        "Find contradictions and separate claims from interpretations"
+      ],
+      "outputs": [
+        "Accepted-for-scope evidence record or unresolved/rejected claim",
+        "Research question with supporting and contrary evidence"
+      ],
+      "restrictions": [
+        "Cannot verify a claim merely because another model agrees",
+        "Cannot upgrade evidence after retry exhaustion"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "audience_analyst",
+      "name": "Audience Analyst",
+      "chart_steps": [
+        16,
+        17
+      ],
+      "trigger_proposed": "After a fresh authorized analytics export or completed study",
+      "accountable_human": "Analyst + research lead",
+      "required_inputs": [
+        "Owner-authorized aggregate analytics",
+        "Versioned experiment definitions"
+      ],
+      "allowed_actions_after_activation": [
+        "Check freshness, missing data and sample size",
+        "Compare exposed cohorts and observation windows",
+        "Flag changes in completion, continuation and voluntary return"
+      ],
+      "outputs": [
+        "Dated performance brief",
+        "Anomalies with uncertainty and competing explanations"
+      ],
+      "restrictions": [
+        "Cannot access competitor private analytics",
+        "Cannot infer age from comments or make person-level youth profiles"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "development_assistant",
+      "name": "Development Assistant",
+      "chart_steps": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "trigger_proposed": "Only after an approved brief and production-development authorization",
+      "accountable_human": "Writer + showrunner",
+      "required_inputs": [
+        "Approved brief",
+        "Evidence records",
+        "Current character and relationship canon"
+      ],
+      "allowed_actions_after_activation": [
+        "Draft premise or outline alternatives within the approved scope",
+        "Check motivation, continuity and script constraints",
+        "Prepare a writer review packet"
+      ],
+      "outputs": [
+        "Drafts marked unapproved",
+        "Continuity report and cited hypothesis links"
+      ],
+      "restrictions": [
+        "Cannot greenlight a story or change canon",
+        "Cannot claim simulated viewers validate resonance",
+        "Disabled while episode development is paused"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "production_planner",
+      "name": "Production Planner",
+      "chart_steps": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "trigger_proposed": "After exact script version is approved",
+      "accountable_human": "Director + producer",
+      "required_inputs": [
+        "Approved script",
+        "Asset registry",
+        "Route benchmarks"
+      ],
+      "allowed_actions_after_activation": [
+        "Extract scene and shot requirements",
+        "Retrieve licensed assets and identify missing dependencies",
+        "Propose timing, render route and bounded cost estimates"
+      ],
+      "outputs": [
+        "Versioned shot manifest",
+        "Asset/voice requests and preview plan"
+      ],
+      "restrictions": [
+        "Cannot silently change dialogue or approved character identity",
+        "Cannot dispatch paid production before preview and budget approval"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "production_coordinator",
+      "name": "Production Coordinator",
+      "chart_steps": [
+        10,
+        11
+      ],
+      "trigger_proposed": "When approved jobs become ready; on worker/provider events",
+      "accountable_human": "Production engineer",
+      "required_inputs": [
+        "Approved job graph",
+        "Budget reservations",
+        "Provider task state"
+      ],
+      "allowed_actions_after_activation": [
+        "Dispatch independent ready jobs within limits",
+        "Reconcile external task IDs and charges",
+        "Resume work and invalidate stale dependent outputs"
+      ],
+      "outputs": [
+        "Candidate takes with receipts and provenance",
+        "Blocked-job or budget exception records"
+      ],
+      "restrictions": [
+        "Use deterministic queue logic for permissions, retries and budgets",
+        "Cannot duplicate paid work on an ambiguous timeout",
+        "Cannot override spending caps or publish content"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "quality_assistant",
+      "name": "Quality Assistant",
+      "chart_steps": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "trigger_proposed": "After a take, cut or master arrives",
+      "accountable_human": "Director + editor + producer",
+      "required_inputs": [
+        "Candidate media",
+        "Approved references and rubric",
+        "Rights records"
+      ],
+      "allowed_actions_after_activation": [
+        "Run technical media checks",
+        "Flag likely identity, action, timing or continuity defects",
+        "Prepare timestamped repair requests and delivery checklist"
+      ],
+      "outputs": [
+        "Review packet with evidence and defect reasons",
+        "Technical pass/fail distinct from creative approval"
+      ],
+      "restrictions": [
+        "Cannot approve emotional quality, rights or release alone",
+        "Cannot treat a model score as audience demand"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    },
+    {
+      "id": "learning_planner",
+      "name": "Learning Planner",
+      "chart_steps": [
+        3,
+        17,
+        18
+      ],
+      "trigger_proposed": "Weekly or after an experiment decision window closes",
+      "accountable_human": "Producer + showrunner",
+      "required_inputs": [
+        "Reviewed trend evidence",
+        "Audience findings",
+        "Full production costs",
+        "Prior experiment log"
+      ],
+      "allowed_actions_after_activation": [
+        "Compare market signals with actual Bumpp behavior",
+        "Propose one testable change and a disconfirming result",
+        "Prepare scale/revise/stop options"
+      ],
+      "outputs": [
+        "Weekly decision brief",
+        "Proposed experiment and backlog change"
+      ],
+      "restrictions": [
+        "Cannot auto-change audience strategy, model prompts or spending",
+        "Cannot silently train on raw viewer data or auto-publish"
+      ],
+      "activation_state": "DESIGN_ONLY",
+      "last_run_at": null,
+      "credential_refs": []
+    }
+  ],
+  "shared_controls": {
+    "external_content_is_untrusted": true,
+    "require_source_dates_and_scope": true,
+    "public_repo_allows_only_public_or_approved_aggregate_outputs": true,
+    "human_approval_binds_to_input_version": true,
+    "no_automatic_publication": true,
+    "no_outbound_messages": true,
+    "research_retry_exhaustion": "UNRESOLVED",
+    "production_retry_exhaustion": "BLOCKED",
+    "missing_or_stale_data": "DO_NOT_SCORE",
+    "credentials_in_git": false
+  },
+  "work_states": [
+    "READY",
+    "RUNNING",
+    "REVIEW_REQUIRED",
+    "ACCEPTED_FOR_SCOPE",
+    "REJECTED",
+    "UNRESOLVED",
+    "BLOCKED",
+    "SUPERSEDED"
+  ],
+  "event_types": [
+    "public_observation_received",
+    "signal_proposed",
+    "evidence_review_completed",
+    "analytics_snapshot_received",
+    "brief_approved",
+    "script_version_approved",
+    "preview_approved",
+    "shot_job_ready",
+    "take_received",
+    "human_take_reviewed",
+    "cut_ready",
+    "master_approved",
+    "experiment_window_closed",
+    "decision_recorded"
+  ]
+}

@@ -216,3 +216,7 @@ This is a role map, not an established staffing ratio or a claim that five full-
 **Milestone 5 — controlled scale.** Increase concurrency after proving budget caps, duplicate-job prevention, review throughput and consistent quality. Validate actual audience response separately before commissioning a series slate.
 
 The first useful engine is a reliable path from an approved specification to a reviewed take and a traceable edit. It should earn the right to scale through measured performance rather than a promise of unlimited automated shows.
+
+## Agent automation layer
+
+The [agent operating model](AGENT_OPERATING_MODEL.md) maps eight logical responsibilities to the 18-step Miro playbook. It defines research, production and learning loops, data permissions, version-bound approvals and rollout gates. The accompanying configurations are inactive specifications; no continuous monitoring has been deployed.
