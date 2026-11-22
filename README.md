@@ -12,6 +12,7 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 | [Supplied Bumpp documents](docs/bumpp-reference/README.md) | Audience bible, story framework, ten-show script volume and Roblox theater spec |
 | [Detailed industry report and Claude Design handoff](docs/research/industry-report-2026-11-22/README.md) | Market and company analysis, dated statistics, 36-slide brief and chart-ready data |
 | [Top 10 micro-drama companies](docs/research/micro-drama-market/README.md) | Company profiles, ownership, monetization, dated metrics and sources |
+| [Content intelligence playbook](docs/production-engine/CONTENT_INTELLIGENCE_PLAYBOOK.md) | User-supplied reference content, daily culture radar, audience relevance and creative opportunity scoring |
 | [Agent operating model](docs/production-engine/AGENT_OPERATING_MODEL.md) | Eight agent roles mapped to the 18 steps, continuous research, data access and implementation gates |
 | [Production-engine blueprint](docs/production-engine/ENGINE_BLUEPRINT.md) | How AI shows are made; proposed Bumpp pipeline, tools, roles, quality gates and build backlog |
 | [AI versus conventional production](docs/research/micro-drama-market/AI_VS_TRADITIONAL.md) | Generated footage, human filming, AI assistance and evidence limits |

@@ -80,6 +80,77 @@
     "Store missing metrics as missing, never zero",
     "Do not assume public access grants caption-download or media-reuse permission",
     "Use authorized exports or permitted/licensed access for TikTok; do not assume Research API eligibility",
-    "Store private analytics in controlled storage, not this public repository"
-  ]
+    "Store private analytics in controlled storage, not this public repository",
+    "Content references are inspected for mechanisms; studio prestige is not audience evidence",
+    "Daily collection does not require a daily trend or recommendation; record no material change",
+    "Separate curated evergreen references from current social signals",
+    "Any planned scrape must use a permitted route and respect source access limits"
+  ],
+  "primary_unit": "Specific content and audience-culture signals; company identity is context only",
+  "creative_collection_cadence": "DAILY_PROPOSED_NOT_ACTIVE",
+  "company_watchlist_usage": "Separate business/production intelligence; excluded as a proxy for creative audience demand",
+  "reference_intake": {
+    "accepted_inputs": [
+      "Specific film/show titles",
+      "Episode or scene links with timestamps",
+      "User-provided clips or files with access basis",
+      "Creative notes explaining what to learn"
+    ],
+    "studio_examples": [
+      {
+        "name": "A24",
+        "basis": "User requested a source of creative reference content",
+        "specific_works": [],
+        "status": "SPECIFIC_WORKS_NOT_YET_SUPPLIED",
+        "audience_fit": "Not established by studio association"
+      }
+    ],
+    "inspect_on": "Submission and when new approved reference content arrives",
+    "required_fields": [
+      "reference_id",
+      "title",
+      "source_or_file_pointer",
+      "selected_segment",
+      "why_selected",
+      "inspection_mode_and_coverage",
+      "access_basis",
+      "story_mechanism",
+      "craft_observation",
+      "audience_fit_evidence",
+      "adaptation_hypothesis",
+      "do_not_transfer"
+    ]
+  },
+  "culture_radar": {
+    "status": "PROPOSED_NOT_CONNECTED",
+    "cadence": "DAILY",
+    "source_types": [
+      "Permitted YouTube/TikTok public or licensed feeds",
+      "Roblox content and community culture sources",
+      "User-supplied examples and appropriately scoped audience research"
+    ],
+    "topics": [
+      "Current interests and fandoms",
+      "Memes and emerging social formats",
+      "Viral moments and audience conversations",
+      "Gaming identities, relationship tensions and status dynamics"
+    ],
+    "record_fields": [
+      "signal_id",
+      "source_urls",
+      "published_at",
+      "collected_at",
+      "platform",
+      "topic",
+      "observed_metrics_and_windows",
+      "comparison_baseline",
+      "target_cohort_hypothesis",
+      "relevance_evidence",
+      "counterevidence",
+      "trend_stage",
+      "freshness_review_at",
+      "creative_implication"
+    ],
+    "audience_warning": "Do not equate general platform popularity with target demographic resonance"
+  }
 }

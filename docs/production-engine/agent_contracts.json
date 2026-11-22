@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "prepared_date": "2026-11-22",
   "deployment_state": "NOT_DEPLOYED",
   "scheduler_active": false,
@@ -10,29 +10,35 @@
   "agents": [
     {
       "id": "trend_scout",
-      "name": "Trend Scout",
+      "name": "Content & Culture Scout",
       "chart_steps": [
         1,
         2
       ],
-      "trigger_proposed": "Daily creator watch; weekly company and tool review",
+      "trigger_proposed": "Daily permitted content/social collection; on new user-supplied references",
       "accountable_human": "Research lead",
       "required_inputs": [
-        "Approved public-source watchlist",
+        "User-supplied titles, scenes, clips and creative reference notes",
+        "Approved culture topics and platform sources",
+        "Versioned target-audience hypothesis",
         "Dated prior observations"
       ],
       "allowed_actions_after_activation": [
-        "Fetch permitted public metadata and announcements",
-        "Identify new releases and meaningful changes",
-        "Deduplicate reposts and repeated announcements"
+        "Inspect permitted content and tag story/craft mechanisms with timestamps",
+        "Collect current social interests, formats and viral moments through permitted sources",
+        "Compare publication-age-adjusted signals; deduplicate reposts",
+        "Separate audience relevance evidence from creative inspiration and general popularity"
       ],
       "outputs": [
-        "Source-linked change log",
-        "Candidate trend cards"
+        "Reference mechanism cards with inspection coverage",
+        "Daily culture radar with audience relevance and trend maturity",
+        "Source-linked opportunity candidates"
       ],
       "restrictions": [
-        "Cannot infer viewer ages or private retention",
-        "Cannot copy scripts or treat popularity as causal evidence"
+        "Cannot infer ages or private retention from public profiles or comments",
+        "Cannot copy plots, dialogue, characters or unlicensed media",
+        "Cannot substitute company reputation or revenue for content appeal",
+        "Cannot treat public virality as verified demand in our target cohort"
       ],
       "activation_state": "DESIGN_ONLY",
       "last_run_at": null,
@@ -55,7 +61,8 @@
       "allowed_actions_after_activation": [
         "Check period, scope, denominators and permissions",
         "Compare like-for-like observations",
-        "Find contradictions and separate claims from interpretations"
+        "Find contradictions and separate claims from interpretations",
+        "Check inspection coverage, cohort relevance and trend freshness separately from source credibility"
       ],
       "outputs": [
         "Accepted-for-scope evidence record or unresolved/rejected claim",
@@ -239,26 +246,30 @@
         17,
         18
       ],
-      "trigger_proposed": "Weekly or after an experiment decision window closes",
+      "trigger_proposed": "Daily review, newly accepted evidence, or completed experiment decision window",
       "accountable_human": "Producer + showrunner",
       "required_inputs": [
         "Reviewed trend evidence",
         "Audience findings",
         "Full production costs",
-        "Prior experiment log"
+        "Prior experiment log",
+        "Reviewed content mechanism cards and daily culture signals",
+        "Approved objectives and competitive content comparisons"
       ],
       "allowed_actions_after_activation": [
         "Compare market signals with actual Bumpp behavior",
         "Propose one testable change and a disconfirming result",
-        "Prepare scale/revise/stop options"
+        "Prepare scale/revise/stop options",
+        "Prepare an evidence-linked audience appeal, differentiation and virality-potential assessment"
       ],
       "outputs": [
-        "Weekly decision brief",
-        "Proposed experiment and backlog change"
+        "Daily decision brief with no-change option",
+        "Proposed test, creative opportunity scorecard and backlog change"
       ],
       "restrictions": [
         "Cannot auto-change audience strategy, model prompts or spending",
-        "Cannot silently train on raw viewer data or auto-publish"
+        "Cannot silently train on raw viewer data or auto-publish",
+        "A virality-potential score is an uncalibrated editorial assessment, never a probability or observed audience result"
       ],
       "activation_state": "DESIGN_ONLY",
       "last_run_at": null,
@@ -301,6 +312,27 @@
     "cut_ready",
     "master_approved",
     "experiment_window_closed",
-    "decision_recorded"
-  ]
+    "decision_recorded",
+    "reference_content_submitted",
+    "daily_culture_scan_completed",
+    "creative_opportunity_reviewed"
+  ],
+  "creative_gate": {
+    "status": "PROPOSED_UNCALIBRATED",
+    "rubric_document": "CONTENT_INTELLIGENCE_PLAYBOOK.md",
+    "proposed_high_score_minimum": 80,
+    "scale_max": 100,
+    "all_dimensions_required": true,
+    "null_means": "NOT_SCORED",
+    "audience_appeal_minimum": 3,
+    "differentiation_minimum": 3,
+    "dimension_scale_max": 4,
+    "human_review_required": true,
+    "additional_requirements": [
+      "Evidence review passed for scope",
+      "Project goals, age safety, rights and feasible scope satisfied",
+      "Explicit authorization to resume development"
+    ],
+    "score_is_viral_probability": false
+  }
 }

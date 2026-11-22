@@ -18,14 +18,14 @@ The core cycle is: **observe → verify → recommend → human decision → exe
 
 ## Agent responsibilities and chart mapping
 
-### Trend Scout — chart steps 01, 02
+### Content & Culture Scout — chart steps 01, 02
 
-- **Trigger:** Daily creator watch; weekly company and tool review.
+- **Trigger:** Daily permitted content/social collection; new user-supplied references on arrival.
 - **Accountable person:** Research lead.
-- **Inputs:** Approved public-source watchlist; Dated prior observations.
-- **Work:** Fetch permitted public metadata and announcements; Identify new releases and meaningful changes; Deduplicate reposts and repeated announcements.
-- **Hand off:** Source-linked change log; Candidate trend cards.
-- **Limits:** Cannot infer viewer ages or private retention; Cannot copy scripts or treat popularity as causal evidence.
+- **Inputs:** User-selected works/scenes/clips; Approved culture radar; Versioned audience hypothesis; Dated prior observations.
+- **Work:** Inspect story and craft mechanisms in reference content; Track relevant social interests and viral moments; Compare dated signals and deduplicate reposts.
+- **Hand off:** Reference mechanism cards; Daily culture radar; Source-linked opportunity candidates.
+- **Limits:** Cannot infer viewer ages or private retention; Cannot copy scripts or treat popularity as causal evidence; Company reputation is not creative audience evidence.
 
 ### Evidence Reviewer — chart steps 01, 02, 03
 
@@ -83,20 +83,20 @@ The core cycle is: **observe → verify → recommend → human decision → exe
 
 ### Learning Planner — chart steps 03, 17, 18
 
-- **Trigger:** Weekly or after an experiment decision window closes.
+- **Trigger:** Daily review, new accepted evidence, or after an experiment decision window closes.
 - **Accountable person:** Producer + showrunner.
 - **Inputs:** Reviewed trend evidence; Audience findings; Full production costs; Prior experiment log.
 - **Work:** Compare market signals with actual Bumpp behavior; Propose one testable change and a disconfirming result; Prepare scale/revise/stop options.
-- **Hand off:** Weekly decision brief; Proposed experiment and backlog change.
+- **Hand off:** Daily decision brief; Evidence-linked creative opportunity scorecard; Proposed experiment and backlog change.
 - **Limits:** Cannot auto-change audience strategy, model prompts or spending; Cannot silently train on raw viewer data or auto-publish.
 
 ## What the first intelligence loop actually does
 
 ### A. Observe the approved watchlist
 
-Start with the user's reference creators and the ten researched companies. Record new uploads, available public metrics, official launch announcements and production-tool disclosures. Keep publication time separate from collection time. Do not expand into broad scraping or copying full episodes/scripts by default.
+Start with specific content the user supplies, including Roblox dramas and selected works/scenes from A24 or other production houses. Accept titles, links, clips and creative notes; no specific A24 work has been supplied or inspected in this revision. Study character dynamics, emotional mechanisms, structure and craft. In a separate daily culture radar, track relevant social interests, formats and viral moments. Keep company/business research separate: revenue and studio reputation are not story-demand evidence. Keep publication and collection times distinct; use permitted source access.
 
-Proposed starting cadence: one daily creator/market collection and one weekly company/tool synthesis. These are planning defaults, not active scheduled jobs. Production tasks run on events such as an approved script or completed render. Analytics runs wait for fresh data rather than repeatedly querying unchanged reports.
+Updated cadence: daily content/culture collection and daily Learning Planner review, with user-supplied references inspected on arrival. A no-material-change result is valid. These are proposed workflow settings, not active scheduled jobs. Production tasks run on events such as an approved script or completed render. Analytics runs wait for fresh data rather than repeatedly querying unchanged reports.
 
 ### B. Create evidence records
 
@@ -195,7 +195,7 @@ Engineer connects one permitted public-source route, stores dated snapshots and 
 
 ### Milestone 2: evidence review and decision briefs
 
-Implement Trend Scout, Evidence Reviewer and Learning Planner in research-only mode. Evaluate a human-labeled set containing genuine changes, repeated articles, scope mismatches, unavailable data and unsupported claims. Measure source accuracy, useful-signal yield, reviewer correction rate, cost and review time. Do not call the system reliable because it produced fluent reports.
+Implement Content & Culture Scout, Evidence Reviewer and Learning Planner in research-only mode. Evaluate a human-labeled set containing genuine changes, repeated articles, scope mismatches, unavailable data and unsupported claims. Measure source accuracy, useful-signal yield, reviewer correction rate, cost and review time. Do not call the system reliable because it produced fluent reports.
 
 ### Milestone 3: our own audience analytics
 
@@ -218,10 +218,14 @@ A concise decision inbox should contain only:
 - Production exceptions such as repeated failures or a budget limit.
 - Specific approvals needed, each with a recommended action and its consequence.
 
-A weekly brief compares trends, experiments, costs and decisions, then proposes the next research or production adjustment. The useful outcome is better decisions and less repetitive work, not a larger volume of automated reports.
+A daily brief compares fresh content/culture signals, available experiment findings, costs and decisions, then proposes the next research or production adjustment or reports no meaningful change. Do not re-score stale experiments as new evidence. The useful outcome is better decisions and less repetitive work, not a larger volume of automated reports.
 
 ## Current readiness
 
 Completed in this package: agent responsibilities, step mapping, inactive contracts, source watchlist, data-access research and rollout gates.
 
 Not completed: live source authorization, analytics ingestion, a running scheduler, deployed workers, generated episodes, real viewer tests or measured savings. The next concrete implementation is the public-source intelligence loop; the private-analytics and production stages depend on their respective permissions, instrumentation and approvals.
+
+## Content-first revision from board feedback
+
+The [content intelligence playbook](CONTENT_INTELLIGENCE_PLAYBOOK.md) defines the two primary input streams, daily collection and review, reference intake, audience relevance checks, and the proposed creative greenlight rubric. A source can be reliable without the opportunity being compelling or differentiated. Both checks are required. Company analysis remains a separate business-intelligence track.
