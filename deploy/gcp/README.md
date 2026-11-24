@@ -22,7 +22,9 @@ Build an allowlisted archive containing `intelligence/` (excluding tests/caches)
 
 Upload code through `gcloud compute scp --tunnel-through-iap`. Run `install.sh` as root with `RELEASE_DIR` set to the uploaded archive directory and `IAP_AUDIENCE` set to `/projects/736625392869/global/backendServices/3928542396117919800`. The uploaded application archive must be named `application.tgz`.
 
-Migration of the existing database and saved provider keys requires separate explicit approval. The first code-only deployment creates an empty research database with the public seed registry. It does not claim to have migrated the user's private research history.
+The user explicitly approved migration on November 24, 2026. The existing database and private connection files were copied through IAP SSH after checking that no research job was active. Integrity checks and counts matched: 97 candidates, 4 finding versions, 5 research runs. Saved credentials have mode 0600 and belong to the service user. No private runtime files were committed.
+
+Daily data-disk snapshots are scheduled for 04:00 UTC with seven-day retention. They are crash-consistent disk snapshots, not a tested full disaster-recovery procedure. Restoring a backup must include database integrity checks and the purge command before reopening access, so expired source records are not reintroduced. Backups also contain private connection settings and require restricted project access.
 
 Before subsequent releases, check that no research run is active, preserve a consistent SQLite backup, stage the new code, restart the service, and check health/authentication and retained record counts. Never overwrite an existing database with a seed or older snapshot. Keep a previous code release for rollback; schema changes need a separate migration/rollback plan.
 
@@ -39,3 +41,7 @@ Use explicit `--project=bumpp-intelligence-prod --account=devops@houseofblueberr
 - Verify persistent DB and service survive restart. Never infer provider connectivity from a saved key; validate with an authorized small research run.
 
 Google guidance: [Enable IAP for Compute Engine](https://docs.cloud.google.com/iap/docs/enabling-compute-howto).
+
+## Launch verification (November 24, 2026)
+
+Server active; backend HEALTHY; persistent disk mounted; application restart verified; missing and forged IAP tokens rejected with 401. 57 Python tests and voice interaction tests passed. Hostname DNS is correct; Google-managed HTTPS certificate was still provisioning at the last check. Browser sign-in and a successful cloud provider research run are not yet verified. Provider credentials being present does not prove API credit or model access.
