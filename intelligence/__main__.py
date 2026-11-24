@@ -16,10 +16,14 @@ def main():
     brief=sub.add_parser('brief');brief.add_argument('--dataset',choices=['demo','live'],default='live');brief.add_argument('--kind',choices=['daily','weekly'],default='daily')
     analysis=sub.add_parser('analyze');analysis.add_argument('candidate_id')
     worker=sub.add_parser('worker');worker.add_argument('--once',action='store_true')
+    imp=sub.add_parser('import-v2');imp.add_argument('path');imp.add_argument('--apply',action='store_true')
     args=parser.parse_args()
     store=Store(args.data_dir)
     try:
-        if args.command=='init':
+        if args.command=='import-v2':
+            from .import_v2 import run
+            print(json.dumps(run(store,args.path,args.apply),indent=2))
+        elif args.command=='init':
             path=store.dir/'config.json'
             if not path.exists():
                 path.write_text((ROOT/'config.example.json').read_text());os.chmod(path,0o600)

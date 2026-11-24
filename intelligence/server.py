@@ -6,6 +6,7 @@ import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from .core import COHORTS, Invalid, REPO, ROOT, ROUTES, WEIGHTS, config, now
 from .store import Store
+from .frameworks import listing as framework_list
 
 STATIC={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
 TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}
@@ -32,6 +33,8 @@ def brief_markdown(brief):
     return '\n'.join(lines)
 
 def make_server(data_dir,port=8765):
+    from .frameworks import initialize as init_frameworks
+    initial=Store(data_dir);init_frameworks(initial);initial.close()
     token=secrets.token_urlsafe(32)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):
@@ -82,6 +85,9 @@ def make_server(data_dir,port=8765):
                     registry={'feeds':feed_list(store)}
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
+                        'frameworks':framework_list(store),
+                        'registry_imports':[dict(r) for r in store.db.execute('SELECT digest,created_at,report FROM registry_imports ORDER BY created_at DESC')],
+                        'performance_records':store.db.execute('SELECT count(*) FROM first_party_outcomes').fetchone()[0],
                         'sources':sources,'authority_panel':json.loads((REPO/'docs/production-engine/authority_panel.json').read_text())['panel'],'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
                         'settings':{'live_enabled':cfg['live_collection_enabled'],'model_enabled':cfg['model']['enabled'],
                             'panel_configured':len(cfg['authority_channels']),'max_daily_requests':cfg['max_requests_per_day'],
@@ -111,7 +117,13 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/feed':
+                if path=='/api/framework':
+                    from .frameworks import save
+                    result={'id':save(store,value)}
+                elif path=='/api/framework/approve':
+                    from .frameworks import approve
+                    result={'id':approve(store,value)}
+                elif path=='/api/feed':
                     from .feeds import save as save_feed
                     result={'id':save_feed(store,value)}
                 elif path=='/api/source':

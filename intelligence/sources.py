@@ -3,11 +3,18 @@ import json
 import urllib.parse
 import uuid
 from .core import Invalid, REPO, text
+from .registry_utils import canonical
 
 KINDS = ['Creator / channel', 'Show / series', 'Episode / scene', 'Creative reference', 'Trend / topic']
 
 def initialize(store):
     store.db.execute('CREATE TABLE IF NOT EXISTS sources(id TEXT PRIMARY KEY,url TEXT UNIQUE NOT NULL,payload TEXT NOT NULL)')
+    if not store.db.execute("SELECT 1 FROM meta WHERE key='source_url_keys_v3'").fetchone():
+        with store.db:
+            for row in store.db.execute('SELECT id,payload FROM sources').fetchall():
+                body=json.loads(row['payload']); key=body['feed_id']+'|'+canonical(body['url']) if body.get('url') else 'unlinked:'+row['id']
+                store.db.execute('UPDATE sources SET url=? WHERE id=?',(key,row['id']))
+            store.db.execute("INSERT INTO meta VALUES ('source_url_keys_v3','1')")
     if not store.db.execute("SELECT 1 FROM meta WHERE key='source_seeds_v1'").fetchone():
         seed=json.loads((REPO/'docs/production-engine/agent_watchlist.json').read_text())
         for row in seed['creator_watchlist']+seed['additional_references']:
@@ -43,18 +50,27 @@ def save(store,value,seed=False,seed_id=None):
         raise Invalid('Choose an active feed for a new assignment.')
     role=value.get('role','Creative reference')
     if role not in ['Discovery','Creative reference','Authority panel','Supporting research']:raise Invalid('Choose a valid research role.')
-    url_key=url or 'unlinked:'+(sid or seed_id or uuid.uuid4().hex)
+    url_key=(feed+'|'+canonical(url)) if url else 'unlinked:'+(sid or seed_id or uuid.uuid4().hex)
     duplicate=store.db.execute('SELECT id FROM sources WHERE url=?',(url_key,)).fetchone()
     if duplicate and duplicate[0]!=sid:
         if seed:return duplicate[0]
         raise Invalid('This link is already saved. Edit the existing source instead.')
     body={'name':text(value.get('name'),'Name',200),'url':url,'kind':kind,'feed_id':feed,
-        'role':role,'notes':text(value.get('notes',''),'Notes',2000,optional=True),'active':value.get('active',True) is True,
+        'role':role,'notes':text(value.get('notes',''),'Notes',30000,optional=True),'active':value.get('active',True) is True,
         'created_at':json.loads(existing['payload'])['created_at'] if existing else store.clock(),
         'updated_at':store.clock(),'origin':json.loads(existing['payload'])['origin'] if existing else 'Amy / supplied references' if seed else 'Added in admin',
         'status':'SAVED' if url else 'NEEDS_LINK','monitoring':False}
+    if existing:
+        previous=json.loads(existing['payload'])
+        body=dict(previous,**body)
+        if previous.get('url')!=url:
+            body.update(verification_status='UNVERIFIED',verification_required=True)
     sid=sid or seed_id or uuid.uuid4().hex
-    with store.db:store.db.execute('INSERT INTO sources VALUES (?,?,?) ON CONFLICT(id) DO UPDATE SET url=excluded.url,payload=excluded.payload',(sid,url_key,json.dumps(body)))
+    from .frameworks import initialize as init_frameworks, archive_record
+    init_frameworks(store)
+    with store.db:
+        archive_record(store,'source',sid,json.loads(existing['payload']) if existing else None)
+        store.db.execute('INSERT INTO sources VALUES (?,?,?) ON CONFLICT(id) DO UPDATE SET url=excluded.url,payload=excluded.payload',(sid,url_key,json.dumps(body)))
     return sid
 
 def listing(store):

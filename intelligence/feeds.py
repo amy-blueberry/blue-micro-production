@@ -31,7 +31,9 @@ def lines(value,name,urls=False):
 
 def save(store,value):
     initialize(store)
-    clean={k:text(value.get(k),k,n) for k,n in [('name',200),('universe',2000),('relevance_filter',2000),('cadence_proposed',200)]}
+    from .frameworks import initialize as init_frameworks, archive_record
+    init_frameworks(store)
+    clean={k:text(value.get(k),k,n) for k,n in [('name',200),('universe',30000),('relevance_filter',2000),('cadence_proposed',200)]}
     if value.get('priority') not in ['P0','P1','P2'] or value.get('kind') not in ['external','internal']:
         raise Invalid('Choose a valid priority and feed kind.')
     if type(value.get('active')) is not bool:raise Invalid('Feed active status must be true or false.')
@@ -54,6 +56,7 @@ def save(store,value):
         duplicate=store.db.execute('SELECT payload FROM feed_definitions WHERE id<>?',(sid,)).fetchall()
         if any(json.loads(r[0])['name'].casefold()==clean['name'].casefold() for r in duplicate):
             raise Invalid('A feed with this name already exists.')
+        archive_record(store,'feed',sid,dict(feed) if feed['version'] else None)
         feed.update(clean);feed.update(version=feed['version']+1,updated_at=store.clock())
         store.db.execute('INSERT INTO feed_definitions VALUES (?,?) ON CONFLICT(id) DO UPDATE SET payload=excluded.payload',(sid,json.dumps(feed)))
     return sid
