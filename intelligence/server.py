@@ -76,10 +76,12 @@ def make_server(data_dir,port=8765):
                     runs=[dict(r) for r in store.db.execute('SELECT * FROM runs WHERE dataset=? ORDER BY started_at DESC,rowid DESC LIMIT 20',(dataset,))]
                     for r in runs:
                         r['counts']=json.loads(r['counts']);r['errors']=json.loads(r['errors'])
+                    from .sources import listing
+                    sources=listing(store)
                     registry=json.loads((REPO/'docs/production-engine/intelligence_feeds.json').read_text())
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
-                        'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
+                        'sources':sources,'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
                         'settings':{'live_enabled':cfg['live_collection_enabled'],'model_enabled':cfg['model']['enabled'],
                             'panel_configured':len(cfg['authority_channels']),'max_daily_requests':cfg['max_requests_per_day'],
                             'scheduler':'Not installed; explicit foreground worker available','production_authorized':False},
@@ -108,7 +110,11 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/demo':
+                if path=='/api/source':
+                    from .sources import initialize, save
+                    initialize(store)
+                    result={'id':save(store,value)}
+                elif path=='/api/demo':
                     from .demo import seed
                     result=seed(store)
                 elif path=='/api/collect':

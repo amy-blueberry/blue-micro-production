@@ -1,3 +1,13 @@
+# Admin source library update — November 23, 2026
+
+The browser admin now opens **Sources** in the real research workspace. Demo fixtures remain available only through the CLI for software testing; they are not shown as research.
+
+Use **Sources → Add source** to save a name, HTTPS link, type, feed and research notes. Nine previously supplied references are preloaded once; duplicates are rejected. Use **Edit source** to update or archive a reference. Saved references persist privately in SQLite and are independent of collected candidates. Saving does not verify a source or start monitoring. The existing collector still uses private query/panel configuration; automatic collection from the new source library is a subsequent integration step.
+
+The ten-feed list under Connections describes implementation coverage, not the source-entry form. API keys still belong in private configuration, never source notes.
+
+The earlier demo walkthrough below documents the CLI test fixture workflow; the browser dataset selector no longer exposes demo mode.
+
 # Secret Sauce intelligence workbench
 
 Local pilot, November 23, 2026. Python 3.9+ on macOS/Linux; standard library only. No LangChain, package installation, cloud account or model key is needed for demo mode. This is a single-user desk, not a team deployment.
