@@ -69,11 +69,11 @@ class Store:
         text(item.get('source_id'), 'source ID', 100)
         observed = item['observed_at']
         parse_time(observed)
-        parse_time(item['published_at'])
+        if item.get('published_at') is not None:parse_time(item['published_at'])
         if parse_time(observed) > parse_time(self.clock()) + dt.timedelta(minutes=5):
             raise Invalid('Observation time cannot be in the future.')
-        if dataset == 'live' and item.get('origin') != 'youtube_api':
-            raise Invalid('Live collector only accepts YouTube API records.')
+        if dataset == 'live' and item.get('origin') not in ('youtube_api','firecrawl'):
+            raise Invalid('Live collector accepts only supported connector records.')
         if dataset == 'demo' and item.get('origin') != 'synthetic':
             raise Invalid('Demo must contain synthetic fixtures only.')
         cid = ident(dataset, item['source_id'])
@@ -84,6 +84,9 @@ class Store:
         return cid
 
     def purge(self):
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='collection_previews'").fetchone():
+            from .web_collection import initialize
+            initialize(self)
         boundary = (parse_time(self.clock()) - dt.timedelta(days=29)).isoformat().replace('+00:00','Z')
         with self.db:
             self.db.execute("DELETE FROM observations WHERE observed_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')", (boundary,))
@@ -109,6 +112,9 @@ class Store:
         row['analysis'] = row['analyses'][0] if row['analyses'] else None
         row['review_state'] = 'REVIEWED' if row['decision'] else 'NEEDS_REVIEW'
         row['derived_metrics'] = None
+        if row['latest'].get('origin')=='firecrawl':
+            row['measurement_note']='Website text capture. No audience metrics or audiovisual inspection.'
+            return row
         row['measurement_note'] = 'YouTube source counters only. Custom derived metrics are disabled.' if row['dataset']=='live' else 'Synthetic fixtures. Not audience or market evidence.'
         return row
 

@@ -87,7 +87,7 @@ def collect(store, settings=None, transport=None, key=None, scheduled=False):
         client = YouTube(store, settings, key, transport)
         errors, counts = [], {'searched':0, 'refreshed':0, 'removed':0}
         found = {}
-        tracked = store.list('live')[:settings['max_tracked_items']]
+        tracked = [x for x in store.list('live') if x['latest'].get('origin')=='youtube_api'][:settings['max_tracked_items']]
         for item in tracked:
             found[item['source_id']] = set(item['latest']['feed_ids'])
         panel_ids = {x['channel_id'] for x in settings['authority_channels']}

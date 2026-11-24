@@ -11,7 +11,7 @@ def main():
     parser=argparse.ArgumentParser(description='Secret Sauce local intelligence workbench')
     parser.add_argument('--data-dir',default=os.environ.get('BUMPP_DATA_DIR',str(ROOT.parent/'.runtime/intelligence')))
     sub=parser.add_subparsers(dest='command',required=True)
-    sub.add_parser('init');sub.add_parser('doctor');sub.add_parser('demo');sub.add_parser('collect');sub.add_parser('purge')
+    sub.add_parser('connect-firecrawl');sub.add_parser('init');sub.add_parser('doctor');sub.add_parser('demo');sub.add_parser('collect');sub.add_parser('purge')
     serve=sub.add_parser('serve');serve.add_argument('--port',type=int,default=8765)
     brief=sub.add_parser('brief');brief.add_argument('--dataset',choices=['demo','live'],default='live');brief.add_argument('--kind',choices=['daily','weekly'],default='daily')
     analysis=sub.add_parser('analyze');analysis.add_argument('candidate_id')
@@ -20,7 +20,13 @@ def main():
     args=parser.parse_args()
     store=Store(args.data_dir)
     try:
-        if args.command=='import-v2':
+        if args.command=='connect-firecrawl':
+            import getpass
+            key=getpass.getpass('Firecrawl API key (hidden): ').strip()
+            from .web_collection import save_credential
+            save_credential(store,key)
+            print('Key saved privately on this computer. Refresh Connections. No requests or schedules started.')
+        elif args.command=='import-v2':
             from .import_v2 import run
             print(json.dumps(run(store,args.path,args.apply),indent=2))
         elif args.command=='init':

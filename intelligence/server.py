@@ -7,6 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from .core import COHORTS, Invalid, REPO, ROOT, ROUTES, WEIGHTS, config, now
 from .store import Store
 from .frameworks import listing as framework_list
+from . import web_collection
 
 STATIC={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
 TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}
@@ -85,6 +86,8 @@ def make_server(data_dir,port=8765):
                     registry={'feeds':feed_list(store)}
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
+                        'website_collection':web_collection.readiness(store),
+                        'collection_previews':web_collection.history(store),
                         'frameworks':framework_list(store),
                         'registry_imports':[dict(r) for r in store.db.execute('SELECT digest,created_at,report FROM registry_imports ORDER BY created_at DESC')],
                         'performance_records':store.db.execute('SELECT count(*) FROM first_party_outcomes').fetchone()[0],
@@ -117,7 +120,13 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/framework':
+                if path=='/api/connection/firecrawl':
+                    result=web_collection.save_credential(store,value.get('key'))
+                elif path=='/api/collection/test':
+                    result=web_collection.run(store,value.get('source_ids'))
+                elif path=='/api/collection/save':
+                    result=web_collection.save_preview(store,value.get('preview_id'),value.get('source_ids'))
+                elif path=='/api/framework':
                     from .frameworks import save
                     result={'id':save(store,value)}
                 elif path=='/api/framework/approve':
