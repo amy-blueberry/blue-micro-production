@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from intelligence.store import Store
-from intelligence import research_agent as agent, findings, feeds, frameworks
+from intelligence import research_agent as agent, findings, feeds, frameworks, editorial
 from intelligence.core import Invalid
 
 class ResearchTests(unittest.TestCase):
@@ -73,3 +73,57 @@ class ResearchTests(unittest.TestCase):
   result,_=self.call(packet,{})
   result['action']='DEVELOP_PILOT'
   with self.assertRaises(Invalid):agent.validate(result,packet['evidence'])
+
+ def test_feedback_revision_receives_comments_and_preserves_prior_version(self):
+  self.run_agent([self.ids[0]])
+  old=findings.listing(self.s,'live')[0]
+  cid=editorial.comment(self.s,dict(finding_id=old['id'],section='meaning',kind='PREFERENCE',author='Editor',text='Explain costly character choices.'))
+  rid=agent.begin(self.s,[self.ids[0]],revision=True)
+  def revised(packet,cfg):
+   self.assertEqual(packet['revision']['comments'][0]['id'],cid)
+   result,usage=self.call(packet,cfg)
+   result['meaning']='Hypothesis: investigate whether belonging requires a costly choice; the synopsis does not establish it.'
+   result['feedback_response']='Added the requested question, without claiming scene evidence.'
+   return result,usage
+  agent.execute(self.tmp.name,rid,self.fetch,revised)
+  rows=findings.listing(self.s,'live');self.assertEqual(len(rows),2)
+  newest=max(rows,key=lambda x:x['version'])
+  self.assertEqual(newest['agent']['revises'],old['id']);self.assertEqual(newest['agent']['feedback_ids'],[cid])
+  self.assertNotEqual(newest['meaning'],old['meaning'])
+
+ def test_memory_requires_approval_is_scoped_and_can_be_retired(self):
+  lid=editorial.propose(self.s,dict(kind='PREFERENCE',feed_id='F01',author='Editor',text='Explain costly choices.',retention_confirmed=True))
+  self.assertEqual(editorial.context(self.s,['F01']),[])
+  editorial.decide(self.s,dict(id=lid,status='APPROVED',author='Editor'))
+  self.assertEqual(editorial.context(self.s,['F02']),[])
+  self.assertEqual(editorial.context(self.s,['F01'])[0]['id'],lid)
+  packets=[]
+  def call(packet,cfg):packets.append(packet);return self.call(packet,cfg)
+  self.run_agent([self.ids[0]],call=call)
+  self.assertEqual(packets[0]['editorial_lessons'][0]['id'],lid)
+  editorial.decide(self.s,dict(id=lid,status='RETIRED',author='Editor'))
+  self.assertEqual(editorial.context(self.s,['F01']),[])
+
+ def test_source_corrections_cannot_be_promoted_as_enduring_truth(self):
+  with self.assertRaises(Invalid):editorial.propose(self.s,dict(kind='CORRECTION',feed_id='F01',author='Editor',text='Unsupported age claim',retention_confirmed=True))
+  with self.assertRaises(Invalid):editorial.propose(self.s,dict(kind='PREFERENCE',feed_id='F01',author='Editor',text='A lesson'))
+  self.run_agent([self.ids[0]])
+  with self.assertRaises(Invalid):agent.begin(self.s,[self.ids[0]],revision=True)
+
+ def test_memory_survives_source_deletion_comments_do_not(self):
+  self.run_agent([self.ids[0]])
+  old=findings.listing(self.s,'live')[0]
+  editorial.comment(self.s,dict(finding_id=old['id'],section='meaning',kind='PREFERENCE',author='Editor',text='Use character choices.'))
+  lid=editorial.propose(self.s,dict(kind='PREFERENCE',feed_id='F01',author='Editor',text='Use character choices.',retention_confirmed=True))
+  self.s.delete(self.ids[0])
+  state=editorial.listing(self.s)
+  self.assertEqual(state['comments'],[]);self.assertEqual(state['lessons'][0]['id'],lid)
+
+ def test_revision_without_feedback_explanation_fails_without_overwrite(self):
+  self.run_agent([self.ids[0]])
+  old=findings.listing(self.s,'live')[0]
+  editorial.comment(self.s,dict(finding_id=old['id'],section='meaning',kind='PREFERENCE',author='Editor',text='Explain character choices.'))
+  rid=agent.begin(self.s,[self.ids[0]],revision=True)
+  agent.execute(self.tmp.name,rid,self.fetch,self.call)
+  self.assertEqual(agent.state(self.s)['runs'][0]['status'],'FAILED')
+  self.assertEqual(len(findings.listing(self.s,'live')),1)

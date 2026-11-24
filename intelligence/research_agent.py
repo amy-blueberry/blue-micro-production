@@ -9,7 +9,7 @@ import urllib.request
 import uuid
 from .core import Invalid, ROOT, text, parse_time
 from .store import Store
-from . import findings, frameworks, feeds, web_collection
+from . import findings, frameworks, feeds, web_collection, editorial
 from .title_extraction import title_url
 
 DEFAULT_MODEL='claude-sonnet-5-5'
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS finding_reviews(id TEXT PRIMARY KEY,finding_id TEXT N
 '''
 
 def initialize(store,recover=False):
-    findings.initialize(store);store.db.executescript(SCHEMA)
+    findings.initialize(store);store.db.executescript(SCHEMA);editorial.initialize(store)
     if recover:
         with store.db:
             for r in store.db.execute("SELECT * FROM research_runs WHERE status='RUNNING'").fetchall():
@@ -68,7 +68,7 @@ def review(store,value):
         store.db.execute('INSERT INTO finding_reviews VALUES (?,?,?,?)',(uuid.uuid4().hex,fid,store.clock(),json.dumps({'status':status,'author':author,'note':note})))
     return {'status':status}
 
-def begin(store,ids):
+def begin(store,ids,revision=False):
     initialize(store)
     if not isinstance(ids,list) or not 1<=len(ids)<=3 or any(not isinstance(i,str) for i in ids) or len(set(ids))!=len(ids):raise Invalid('Choose one to three different titles.')
     cfg=credentials(store)
@@ -80,6 +80,13 @@ def begin(store,ids):
         if item['dataset']!='live' or s.get('origin')!='catalog_title' or not parsed:raise Invalid('Research currently supports saved A24 and WEBTOON title records.')
         latest=store.db.execute('SELECT MAX(version) FROM finding_versions WHERE candidate_id=?',(cid,)).fetchone()[0] or 0
         jobs.append({'candidate_id':cid,'title':s['title'],'url':parsed[0],'base_version':latest,'status':'QUEUED'})
+    if revision:
+        if len(jobs)!=1:raise Invalid('Revise one brief at a time.')
+        row=store.db.execute('SELECT * FROM finding_versions WHERE candidate_id=? ORDER BY version DESC LIMIT 1',(ids[0],)).fetchone()
+        if not row:raise Invalid('Research this title first.')
+        comments=[c for c in editorial.listing(store)['comments'] if c['finding_id']==row['id']]
+        if not comments:raise Invalid('Add feedback to the current brief before revising.')
+        jobs[0]['revision']={'finding_id':row['id'],'brief':json.loads(row['payload']),'comments':comments[-12:]}
     rid=uuid.uuid4().hex
     with store.db:
         store.db.execute('BEGIN IMMEDIATE')
@@ -96,7 +103,7 @@ def research_objective(feed):
 
 def model_call(packet,cfg):
     prompt=(ROOT/'prompts/title_research.txt').read_text()
-    body={'model':cfg['model'],'max_tokens':3200,'system':prompt,'messages':[{'role':'user','content':json.dumps(packet,ensure_ascii=False)}]}
+    body={'model':cfg['model'],'max_tokens':5000,'system':prompt,'messages':[{'role':'user','content':json.dumps(packet,ensure_ascii=False)}]}
     req=urllib.request.Request('https://api.anthropic.com/v1/messages',data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+cfg['key'],'anthropic-version':'2026-10-21','Content-Type':'application/json'})
     try:
         with urllib.request.urlopen(req,timeout=90) as response:raw=response.read(1_000_001)
@@ -118,6 +125,12 @@ def validate(value,evidence):
         if not isinstance(o,dict):raise Invalid('Invalid observation.')
         text(o.get('text'),'observation',1200);quote=text(o.get('quote'),'quote',600)
         if o.get('evidence_id')!=evidence['id'] or quote not in evidence['text']:raise Invalid('Citation check failed: quote is not in the retrieved evidence.')
+    if 'creative_notes' in value:
+        notes=value['creative_notes']
+        if not isinstance(notes,dict):raise Invalid('Creative notes must be structured.')
+        for k in ('writing','directing','producing','bumpp_opportunity','smallest_test'):
+            notes[k]=text(notes.get(k),k,1800)
+    if 'feedback_response' in value:value['feedback_response']=text(value['feedback_response'],'feedback response',2000)
     return value
 
 def execute(data_dir,rid,fetcher=None,caller=None):
@@ -150,9 +163,12 @@ def execute(data_dir,rid,fetcher=None,caller=None):
                     'evidence':evidence,'research_objective':research_objective(feed),
                     'approved_framework':{'id':lens['id'],'version':lens['version'],'content':lens['content'][:6000]} if lens else None,
                     'audience_context':'Bumpp: Roblox-interested young audience. Fit is a hypothesis, not a verified demographic.',
-                    'known_mature_label':s.get('age_status')=='MATURE_LABEL_REVIEW_REQUIRED'}
+                    'known_mature_label':s.get('age_status')=='MATURE_LABEL_REVIEW_REQUIRED',
+                    'editorial_lessons':editorial.context(store,s['feed_ids']),
+                    'revision':job.get('revision')}
                 job['status']='DRAFTING';persist();store.consume('research_model_calls',5)
                 result,usage=(caller or model_call)(packet,cfg);result=validate(result,evidence)
+                if job.get('revision') and not result.get('feedback_response'):raise Invalid('Revision did not explain its response to feedback. No draft saved.')
                 citations=[dict(o,url=evidence['url'],retrieved_at=evidence['observed_at']) for o in result['observations']]
                 coverage='Title-page text retrieved '+evidence['observed_at']+'. No episodes, video or audio inspected.'
                 gaps=result['gaps']+'\nTitle-page evidence alone does not establish audience fit or causal success.'
@@ -165,7 +181,11 @@ def execute(data_dir,rid,fetcher=None,caller=None):
                 fid=findings.save(store,body,agent={'citations':citations,'evidence_id':evidence['id'],'run_id':rid,'model':cfg['model'],
                     'input_hash':hashlib.sha256(json.dumps(packet,sort_keys=True).encode()).hexdigest(),
                     'prompt_hash':hashlib.sha256((ROOT/'prompts/title_research.txt').read_bytes()).hexdigest(),
-                    'framework_id':lens['id'] if lens else None,'usage':usage})
+                    'framework_id':lens['id'] if lens else None,'usage':usage,
+                    'lesson_ids':[x['id'] for x in packet['editorial_lessons']],
+                    'revises':job.get('revision',{}).get('finding_id'),
+                    'feedback_ids':[x['id'] for x in job.get('revision',{}).get('comments',[])],
+                    'creative_notes':result.get('creative_notes'), 'feedback_response':result.get('feedback_response')})
                 job.update(status='COMPLETED',finding_id=fid)
             except Invalid as exc:job.update(status='FAILED',error=str(exc))
             except Exception:job.update(status='FAILED',error='Research failed unexpectedly. No automatic retry; inspect connection settings.')
