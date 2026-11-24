@@ -30,26 +30,40 @@ def initialize(store,recover=False):
                         job.update(status='INTERRUPTED',error='App restarted. Explicitly run research again; no automatic retry.')
                 store.db.execute("UPDATE research_runs SET status='INTERRUPTED',payload=? WHERE id=?",(json.dumps(p),r['id']))
 
-def credentials(store):
+PROVIDERS={'anthropic':{'model':DEFAULT_MODEL,'env':'ANTHROPIC_API_KEY'},'openai':{'model':'gpt-4.1','env':'OPENAI_API_KEY'}}
+
+def provider_config(store):
     path=store.dir/'research-agent.json'
     cfg=json.loads(path.read_text()) if path.exists() else {}
-    return {'key':os.environ.get('ANTHROPIC_API_KEY','').strip() or cfg.get('key',''),'model':cfg.get('model',DEFAULT_MODEL)}
+    if 'providers' not in cfg:
+        cfg={'provider':'anthropic','providers':{'anthropic':{'key':cfg.get('key',''),'model':cfg.get('model',DEFAULT_MODEL)}}}
+    return cfg
+
+def credentials(store,provider=None):
+    cfg=provider_config(store);provider=provider or cfg.get('provider','anthropic')
+    if provider not in PROVIDERS:raise Invalid('Choose OpenAI or Claude.')
+    settings=cfg['providers'].get(provider,{})
+    return {'provider':provider,'key':os.environ.get(PROVIDERS[provider]['env'],'').strip() or settings.get('key',''),'model':settings.get('model',PROVIDERS[provider]['model'])}
 
 def setup(store,value):
-    model=text(value.get('model',DEFAULT_MODEL),'model ID',100)
-    if not re.fullmatch(r'claude-[a-zA-Z0-9.-]+',model):raise Invalid('Enter an exact Claude model ID.')
-    key=value.get('key','').strip()
-    if not key:key=credentials(store)['key']
-    if not key or len(key)>500 or any(c.isspace() for c in key):raise Invalid('Enter a valid Claude API key.')
-    if os.environ.get('ANTHROPIC_API_KEY','').strip() and key!=os.environ['ANTHROPIC_API_KEY'].strip():raise Invalid('An environment key is active; remove or update it before replacing the key here.')
+    provider=value.get('provider','anthropic')
+    if provider not in PROVIDERS:raise Invalid('Choose OpenAI or Claude.')
+    model=text(value.get('model',PROVIDERS[provider]['model']),'model ID',100)
+    pattern=r'claude-[a-zA-Z0-9.-]+' if provider=='anthropic' else r'[a-zA-Z0-9][a-zA-Z0-9._:-]*'
+    if not re.fullmatch(pattern,model):raise Invalid('Enter an exact model ID for the selected provider.')
+    key=value.get('key','').strip() or credentials(store,provider)['key']
+    if not key or len(key)>500 or any(c.isspace() for c in key):raise Invalid('Enter an API key for the selected provider.')
+    env=os.environ.get(PROVIDERS[provider]['env'],'').strip()
+    if env and key!=env:raise Invalid('An environment key is active for this provider; update it before replacing the key here.')
+    cfg=provider_config(store);cfg['provider']=provider;cfg['providers'][provider]={'key':key,'model':model}
     fd=os.open(str(store.dir/'research-agent.json'),os.O_WRONLY|os.O_CREAT|os.O_TRUNC,0o600)
     os.fchmod(fd,0o600)
-    with os.fdopen(fd,'w') as f:json.dump({'key':key,'model':model},f)
-    return {'configured':True,'verified':False}
+    with os.fdopen(fd,'w') as f:json.dump(cfg,f)
+    return {'configured':True,'verified':False,'provider':provider}
 
 def state(store):
     initialize(store);cfg=credentials(store)
-    return {'model_configured':bool(cfg['key']),'firecrawl_configured':bool(web_collection.credential(store)),
+    return {'provider':cfg['provider'],'providers':{p:{'configured':bool(credentials(store,p)['key']),'model':credentials(store,p)['model']} for p in PROVIDERS},'model_configured':bool(cfg['key']),'firecrawl_configured':bool(web_collection.credential(store)),
         'model':cfg['model'],'max_batch':3,'daily_calls':5,
         'runs':[dict(id=r['id'],created_at=r['created_at'],status=r['status'],**json.loads(r['payload'])) for r in store.db.execute('SELECT * FROM research_runs ORDER BY created_at DESC,rowid DESC LIMIT 8')],
         'reviews':[dict(finding_id=r['finding_id'],created_at=r['created_at'],**json.loads(r['payload'])) for r in store.db.execute('SELECT * FROM finding_reviews ORDER BY created_at DESC,rowid DESC')]}
@@ -83,7 +97,7 @@ def begin(store,ids,revision=False,feedback=None):
             additions.append({'id':uuid.uuid4().hex,'finding_id':feedback.get('finding_id'),'created_at':store.clock(),'author':author,'text':text(c.get('text'),'comment',2000),'section':c['section'],'kind':c['kind']})
         if sum(len(c['text']) for c in additions)>12000:raise Invalid('Keep combined feedback within 12,000 characters.')
     cfg=credentials(store)
-    if not cfg['key']:raise Invalid('Connect Claude in Connections before researching. No requests were sent.')
+    if not cfg['key']:raise Invalid('Connect the selected AI provider in Connections before researching. No requests were sent.')
     if not web_collection.credential(store):raise Invalid('Connect Firecrawl first. No requests were sent.')
     jobs=[]
     for cid in ids:
@@ -110,7 +124,7 @@ def begin(store,ids,revision=False,feedback=None):
         if store.db.execute("SELECT 1 FROM research_runs WHERE status='RUNNING'").fetchone():raise Invalid('A research batch is already running. Its progress is shown in Findings.')
         for c in additions:
             store.db.execute('INSERT INTO finding_comments VALUES (?,?,?,?)',(c['id'],c['finding_id'],c['created_at'],json.dumps({k:c[k] for k in ('author','text','section','kind')})))
-        store.db.execute('INSERT INTO research_runs VALUES (?,?,?,?)',(rid,store.clock(),'RUNNING',json.dumps({'jobs':jobs,'model':cfg['model'],'feedback_request':feedback.get('request_id') if feedback else None})))
+        store.db.execute('INSERT INTO research_runs VALUES (?,?,?,?)',(rid,store.clock(),'RUNNING',json.dumps({'jobs':jobs,'model':cfg['model'],'provider':cfg['provider'],'feedback_request':feedback.get('request_id') if feedback else None})))
     return rid
 
 def research_objective(feed):
@@ -121,6 +135,7 @@ def research_objective(feed):
 
 
 def model_call(packet,cfg):
+    if cfg.get('provider')=='openai':return openai_call(packet,cfg)
     prompt=(ROOT/'prompts/title_research.txt').read_text()
     body={'model':cfg['model'],'max_tokens':5000,'system':prompt,'messages':[{'role':'user','content':json.dumps(packet,ensure_ascii=False)}]}
     req=urllib.request.Request('https://api.anthropic.com/v1/messages',data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+cfg['key'],'anthropic-version':'2026-10-21','Content-Type':'application/json'})
@@ -164,7 +179,7 @@ def execute(data_dir,rid,fetcher=None,caller=None):
             if row['status']!='RUNNING' or payload.get('worker_claimed'):return
             payload['worker_claimed']=True
             store.db.execute('UPDATE research_runs SET payload=? WHERE id=?',(json.dumps(payload),rid))
-        cfg=credentials(store);cfg['model']=payload['model']
+        cfg=credentials(store,payload.get('provider','anthropic'));cfg['model']=payload['model']
         def persist(status='RUNNING'):
             with store.db:store.db.execute('UPDATE research_runs SET status=?,payload=? WHERE id=?',(status,json.dumps(payload),rid))
         for job in payload['jobs']:
@@ -204,7 +219,7 @@ def execute(data_dir,rid,fetcher=None,caller=None):
                     headline=result['headline'],source_url=evidence['url'],coverage=coverage,
                     observed='\n\n'.join(o['text'] for o in result['observations']),meaning=result['meaning'],action=result['action'],rationale=result['rationale'],
                     confidence='Low',gaps=gaps[:3000],next_step=result['next_step'],owner='Admin · review proposed action')
-                fid=findings.save(store,body,agent={'citations':citations,'evidence_id':evidence['id'],'run_id':rid,'model':cfg['model'],
+                fid=findings.save(store,body,agent={'citations':citations,'evidence_id':evidence['id'],'run_id':rid,'model':cfg['model'],'provider':cfg['provider'],
                     'input_hash':hashlib.sha256(json.dumps(packet,sort_keys=True).encode()).hexdigest(),
                     'prompt_hash':hashlib.sha256((ROOT/'prompts/title_research.txt').read_bytes()).hexdigest(),
                     'framework_id':lens['id'] if lens else None,'usage':usage,
@@ -222,3 +237,21 @@ def execute(data_dir,rid,fetcher=None,caller=None):
 
 def launch(data_dir,rid):
     threading.Thread(target=execute,args=(data_dir,rid),daemon=True).start()
+
+
+def openai_call(packet,cfg):
+    body={'model':cfg['model'],'instructions':(ROOT/'prompts/title_research.txt').read_text(),
+          'input':json.dumps(packet,ensure_ascii=False),'max_output_tokens':5000,'store':False,
+          'text':{'format':{'type':'json_object'}}}
+    req=urllib.request.Request('https://api.openai.com/v1/responses',data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+cfg['key'],'Content-Type':'application/json'})
+    try:
+        with urllib.request.urlopen(req,timeout=90) as response:raw=response.read(1_000_001)
+        if len(raw)>1_000_000:raise Invalid('OpenAI response exceeded size limit.')
+        result=json.loads(raw)
+        if result.get('status')!='completed':raise Invalid('OpenAI response was incomplete; no draft saved.')
+        parts=[c for item in result.get('output',[]) if item.get('type')=='message' for c in item.get('content',[])]
+        if any(c.get('type')=='refusal' for c in parts):raise Invalid('OpenAI declined this request. No draft saved.')
+        content=''.join(c.get('text','') for c in parts if c.get('type')=='output_text')
+        return json.loads(content),result.get('usage',{})
+    except urllib.error.HTTPError as exc:raise Invalid('OpenAI HTTP %s. Check key, model access or credits. No automatic retry.'%exc.code) from None
+    except (ValueError,TypeError,urllib.error.URLError,OSError):raise Invalid('OpenAI did not return usable JSON. No draft saved or automatic retry.') from None

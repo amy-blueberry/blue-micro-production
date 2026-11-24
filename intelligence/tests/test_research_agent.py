@@ -155,3 +155,33 @@ class ResearchTests(unittest.TestCase):
   findings.save(self.s,dict(old,base_version=old['version'],inspection_confirmed=True))
   with self.assertRaises(Invalid):agent.begin(self.s,[self.ids[0]],revision=True,feedback=value)
   self.assertEqual(editorial.listing(self.s)['comments'],[])
+
+ def test_provider_migration_preserves_keys_and_pins_queued_run(self):
+  with patch.dict(os.environ,{'ANTHROPIC_API_KEY':'','OPENAI_API_KEY':''}):
+   (self.s.dir/'research-agent.json').write_text(json.dumps({'key':'old-claude-key','model':'claude-test'}))
+   self.assertEqual(agent.credentials(self.s)['key'],'old-claude-key')
+   rid=agent.begin(self.s,[self.ids[0]])
+   agent.setup(self.s,{'provider':'openai','key':'openai-test-key','model':'gpt-4.1'})
+   self.assertEqual(agent.credentials(self.s)['provider'],'openai')
+   self.assertEqual(agent.credentials(self.s,'anthropic')['key'],'old-claude-key')
+   seen=[]
+   def call(packet,cfg):seen.append(cfg);return self.call(packet,cfg)
+   agent.execute(self.tmp.name,rid,self.fetch,call)
+   self.assertEqual(seen[0]['provider'],'anthropic');self.assertEqual(seen[0]['model'],'claude-test')
+   agent.setup(self.s,{'provider':'anthropic','key':'','model':'claude-test'})
+   self.assertEqual(agent.credentials(self.s,'openai')['key'],'openai-test-key')
+   public=json.dumps(agent.state(self.s));self.assertNotIn('old-claude-key',public);self.assertNotIn('openai-test-key',public)
+
+ def test_openai_response_adapter_and_incomplete_output(self):
+  from unittest.mock import MagicMock
+  cfg={'provider':'openai','key':'synthetic-secret','model':'gpt-4.1'}
+  response=MagicMock();response.__enter__.return_value=response
+  response.read.return_value=json.dumps({'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':'{"headline":"Synthetic"}'}]}],'usage':{'output_tokens':10}}).encode()
+  with patch('urllib.request.urlopen',return_value=response) as mock:
+   result,usage=agent.model_call({'evidence':{}},cfg)
+   req=mock.call_args[0][0];body=json.loads(req.data)
+   self.assertEqual(req.full_url,'https://api.openai.com/v1/responses');self.assertFalse(body['store']);self.assertEqual(result['headline'],'Synthetic')
+   response.read.return_value=b'{"status":"incomplete","output":[]}'
+   with self.assertRaises(Invalid):agent.model_call({},cfg)
+   response.read.return_value=b'{"status":"completed","output":[{"type":"message","content":[{"type":"refusal","refusal":"No"}]}]}'
+   with self.assertRaises(Invalid):agent.model_call({},cfg)
