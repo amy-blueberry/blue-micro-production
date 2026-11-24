@@ -25,6 +25,8 @@ class CloudAuthTests(unittest.TestCase):
                 with patch.object(cloud_auth,'verify',return_value='admin@example.com'):
                     req=urllib.request.Request(url+'/',headers={'Host':'intelligence.bumpp.gg'})
                     self.assertEqual(urllib.request.urlopen(req).status,200)
+                    req=urllib.request.Request(url+'/api/state?dataset=live',headers={'Host':'intelligence.bumpp.gg'})
+                    self.assertEqual(urllib.request.urlopen(req).status,200)
                     req=urllib.request.Request(url+'/',headers={'Host':'attacker.example'})
                     with self.assertRaises(urllib.error.HTTPError) as e:urllib.request.urlopen(req)
                     self.assertEqual(e.exception.code,403)
