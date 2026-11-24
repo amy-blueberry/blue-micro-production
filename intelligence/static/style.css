@@ -24,3 +24,5 @@ dialog{background:#38323c;color:var(--ink);box-shadow:0 25px 90px #0006}input::p
 .setup-card a{overflow-wrap:anywhere}.setup-grid{margin-top:18px}
 
 [hidden]{display:none!important}
+
+.source-group{margin:18px 0}.source-group>summary{cursor:pointer;font-size:18px;font-weight:600}.source-group a{overflow-wrap:anywhere}.source-group .score{padding:18px}

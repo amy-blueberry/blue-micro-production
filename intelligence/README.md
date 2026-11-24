@@ -2,7 +2,7 @@
 
 The browser admin now opens **Sources** in the real research workspace. Demo fixtures remain available only through the CLI for software testing; they are not shown as research.
 
-Use **Sources → Add source** to save a name, HTTPS link, type, feed and research notes. Nine previously supplied references are preloaded once; duplicates are rejected. Use **Edit source** to update or archive a reference. Saved references persist privately in SQLite and are independent of collected candidates. Saving does not verify a source or start monitoring. The existing collector still uses private query/panel configuration; automatic collection from the new source library is a subsequent integration step.
+Use **Sources → Add source** to save a name, HTTPS link, type, feed and research notes. Nine previously supplied creative references are preloaded once; duplicates are rejected. The Sources page separately displays all ten feed definitions (nine external plus one internal), ten authority-panel candidates, discovery queries, Reddit community candidates and supporting research surfaces from the existing specification. These definitions do not imply connected collectors or verified accounts. Use **Edit source** to update or archive a reference. Saved references persist privately in SQLite and are independent of collected candidates. Saving does not verify a source or start monitoring. The existing collector still uses private query/panel configuration; automatic collection from the new source library is a subsequent integration step.
 
 The ten-feed list under Connections describes implementation coverage, not the source-entry form. API keys still belong in private configuration, never source notes.
 

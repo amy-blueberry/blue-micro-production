@@ -81,7 +81,7 @@ def make_server(data_dir,port=8765):
                     registry=json.loads((REPO/'docs/production-engine/intelligence_feeds.json').read_text())
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
-                        'sources':sources,'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
+                        'sources':sources,'authority_panel':json.loads((REPO/'docs/production-engine/authority_panel.json').read_text())['panel'],'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
                         'settings':{'live_enabled':cfg['live_collection_enabled'],'model_enabled':cfg['model']['enabled'],
                             'panel_configured':len(cfg['authority_channels']),'max_daily_requests':cfg['max_requests_per_day'],
                             'scheduler':'Not installed; explicit foreground worker available','production_authorized':False},
