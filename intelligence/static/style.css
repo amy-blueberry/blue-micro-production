@@ -30,3 +30,4 @@ dialog{background:#38323c;color:var(--ink);box-shadow:0 25px 90px #0006}input::p
 .longtext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;margin:12px 0}.review-issues{color:#e5cc93;font-size:12px;margin:10px 0}summary{cursor:pointer}
 
 .research-picker{max-height:320px;overflow:auto}.research-picker [hidden]{display:none}
+.brief-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px}.brief-section-heading h3{margin:0;flex:1;min-width:160px}.brief-section-heading button{flex-shrink:0;padding:8px 14px}.section-comment{margin-left:12px;border-left:3px solid var(--accent,#9465ed);padding-left:14px}
