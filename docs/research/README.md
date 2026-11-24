@@ -6,6 +6,8 @@ The original 16-year-old girl in Los Angeles was a user-supplied review persona,
 
 The strongest working audience definition is behavioral: **English-language viewers who seek serialized Roblox roleplay stories and enjoy interpreting relationships, inhabiting a recurring social world and anticipating what happens next.** This is a research hypothesis, not a measured population description. Age, gender, geography, active playing and spending are separate questions.
 
+Use the [Bumpp audience bible](07-microdrama-audience-playbook.md) as the standalone reference for developing a show and auditing a finished cut. Its five named cohorts start with Lore Keepers. Each has a consumer profile, viewing promise, dialogue bank and ten-signal scorecard. The public edition includes a five-cohort comparison, an eight-criterion craft review and guidance for incomplete footage. The brief sets the US first, ages 16–19 at the creative center, and the Philippines as a proposed APAC comparison. The original research records below document the evidence and its limits.
+
 Read in order:
 
 1. [Audience evidence](01-audience-evidence.md): what public research establishes and what remains unknown.
