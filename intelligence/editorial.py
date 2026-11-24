@@ -3,7 +3,7 @@ import json
 import uuid
 from .core import Invalid, text
 
-SECTIONS=('observed','meaning','rationale','gaps','next_step')
+SECTIONS=('general','observed','meaning','rationale','gaps','next_step')
 KINDS=('CORRECTION','PREFERENCE','HYPOTHESIS')
 
 def initialize(store):

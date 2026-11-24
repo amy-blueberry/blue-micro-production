@@ -28,3 +28,10 @@ function attachCommentVoice({Recognition,button,insert,discard,status,preview,fi
   if(!Recognition){button.disabled=true;status.textContent='Browser dictation is unavailable here. Click the comment field and use your device’s keyboard dictation, or open this desk in a browser with speech recognition.';}
   paint();return dispose;
 }
+
+// Conservative local suggestions preserve the user's words; ambiguous notes remain general.
+function suggestFeedbackSections(transcript){
+ const parts=transcript.trim().split(/(?<=[.!?])\s+|\n+/).filter(x=>x.trim());
+ const rules={observed:/\b(observation|observations|facts?|factual|source|citation|citations)\b/i,meaning:/\b(interpretation|bumpp|relevance)\b/i,rationale:/\b(recommendation|recommend|rationale)\b/i,gaps:/\b(missing|gaps?|uncertain|uncertainty)\b/i,next_step:/\b(next step|next action|test|testing)\b/i};
+ return parts.map(text=>{const matches=Object.entries(rules).filter(([,re])=>re.test(text)).map(([k])=>k);return {text,section:matches.length===1?matches[0]:'general',kind:'PREFERENCE'};});
+}

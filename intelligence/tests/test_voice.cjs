@@ -11,3 +11,8 @@ x=setup();x.button.onclick();instance.onerror({error:'not-allowed'});assert.matc
 x=setup();x.button.onclick();const old=instance;x.dispose();assert(old.aborted);assert.equal(old.onresult,null);
 x=setup(null);assert(x.button.disabled);assert.match(x.status.textContent,/keyboard dictation/);
 console.log('6 voice interaction checks passed');
+const grouped=context.suggestFeedbackSections('The observations are correct. The interpretation is generic. Make the next step specific. More emotional detail please.');
+assert.equal(grouped.length,4);assert.equal(grouped[0].section,'observed');assert.equal(grouped[1].section,'meaning');assert.equal(grouped[2].section,'next_step');assert.equal(grouped[3].section,'general');
+assert.equal(context.suggestFeedbackSections('The observations and interpretation disagree.')[0].section,'general');
+assert.equal(grouped.map(r=>r.text).join(' '),'The observations are correct. The interpretation is generic. Make the next step specific. More emotional detail please.');
+console.log('Whole-brief assignment checks passed');

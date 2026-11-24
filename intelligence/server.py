@@ -123,7 +123,13 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/editorial/comment':
+                if path=='/api/editorial/feedback-revise':
+                    row=store.db.execute('SELECT candidate_id FROM finding_versions WHERE id=?',(value.get('finding_id'),)).fetchone()
+                    if not row:raise Invalid('Brief no longer exists. Nothing was saved.')
+                    rid=research_agent.begin(store,[row['candidate_id']],revision=True,feedback=value)
+                    research_agent.launch(data_dir,rid)
+                    result={'id':rid,'status':'QUEUED_OR_EXISTING'}
+                elif path=='/api/editorial/comment':
                     result={'id':editorial.comment(store,value)}
                 elif path=='/api/editorial/lesson':
                     result={'id':editorial.propose(store,value)}

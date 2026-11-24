@@ -127,3 +127,31 @@ class ResearchTests(unittest.TestCase):
   agent.execute(self.tmp.name,rid,self.fetch,self.call)
   self.assertEqual(agent.state(self.s)['runs'][0]['status'],'FAILED')
   self.assertEqual(len(findings.listing(self.s,'live')),1)
+
+ def test_whole_feedback_atomic_idempotent_and_general_reaches_revision(self):
+  self.run_agent([self.ids[0]])
+  old=findings.listing(self.s,'live')[0]
+  value=dict(finding_id=old['id'],author='Editor',request_id='unique-request',comments=[dict(section='general',kind='PREFERENCE',text='Less generic.'),dict(section='meaning',kind='HYPOTHESIS',text='Investigate character choices.')])
+  rid=agent.begin(self.s,[self.ids[0]],revision=True,feedback=value)
+  self.assertEqual(agent.begin(self.s,[self.ids[0]],revision=True,feedback=value),rid)
+  self.assertEqual(len(editorial.listing(self.s)['comments']),2)
+  calls=[]
+  def call(packet,cfg):
+   calls.append(packet)
+   result,usage=self.call(packet,cfg);result['feedback_response']='Made the interpretation specific; audience appeal remains untested.';return result,usage
+  agent.execute(self.tmp.name,rid,self.fetch,call)
+  agent.execute(self.tmp.name,rid,self.fetch,call)
+  self.assertEqual(len(calls),1)
+  self.assertEqual(calls[0]['revision']['comments'][0]['section'],'general')
+
+ def test_whole_feedback_stale_and_busy_save_nothing(self):
+  self.run_agent([self.ids[0]])
+  old=findings.listing(self.s,'live')[0]
+  value=dict(finding_id=old['id'],author='Editor',request_id='test',comments=[dict(section='general',kind='PREFERENCE',text='Make it specific.')])
+  rid=agent.begin(self.s,[self.ids[0]])
+  with self.assertRaises(Invalid):agent.begin(self.s,[self.ids[0]],revision=True,feedback=value)
+  self.assertEqual(editorial.listing(self.s)['comments'],[])
+  agent.initialize(self.s,recover=True)
+  findings.save(self.s,dict(old,base_version=old['version'],inspection_confirmed=True))
+  with self.assertRaises(Invalid):agent.begin(self.s,[self.ids[0]],revision=True,feedback=value)
+  self.assertEqual(editorial.listing(self.s)['comments'],[])

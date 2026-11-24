@@ -68,9 +68,20 @@ def review(store,value):
         store.db.execute('INSERT INTO finding_reviews VALUES (?,?,?,?)',(uuid.uuid4().hex,fid,store.clock(),json.dumps({'status':status,'author':author,'note':note})))
     return {'status':status}
 
-def begin(store,ids,revision=False):
+def begin(store,ids,revision=False,feedback=None):
     initialize(store)
     if not isinstance(ids,list) or not 1<=len(ids)<=3 or any(not isinstance(i,str) for i in ids) or len(set(ids))!=len(ids):raise Invalid('Choose one to three different titles.')
+    additions=[]
+    if feedback is not None:
+        if not revision:raise Invalid('Whole-brief feedback requires a revision.')
+        author=text(feedback.get('author'),'reviewer',100)
+        request_id=text(feedback.get('request_id'),'submission ID',100)
+        rows=feedback.get('comments')
+        if not isinstance(rows,list) or not 1<=len(rows)<=12:raise Invalid('Review between one and twelve comments.')
+        for c in rows:
+            if not isinstance(c,dict) or c.get('section') not in editorial.SECTIONS or c.get('kind') not in editorial.KINDS:raise Invalid('Choose a valid section and feedback type for every comment.')
+            additions.append({'id':uuid.uuid4().hex,'finding_id':feedback.get('finding_id'),'created_at':store.clock(),'author':author,'text':text(c.get('text'),'comment',2000),'section':c['section'],'kind':c['kind']})
+        if sum(len(c['text']) for c in additions)>12000:raise Invalid('Keep combined feedback within 12,000 characters.')
     cfg=credentials(store)
     if not cfg['key']:raise Invalid('Connect Claude in Connections before researching. No requests were sent.')
     if not web_collection.credential(store):raise Invalid('Connect Firecrawl first. No requests were sent.')
@@ -85,13 +96,21 @@ def begin(store,ids,revision=False):
         row=store.db.execute('SELECT * FROM finding_versions WHERE candidate_id=? ORDER BY version DESC LIMIT 1',(ids[0],)).fetchone()
         if not row:raise Invalid('Research this title first.')
         comments=[c for c in editorial.listing(store)['comments'] if c['finding_id']==row['id']]
+        comments+=additions
         if not comments:raise Invalid('Add feedback to the current brief before revising.')
         jobs[0]['revision']={'finding_id':row['id'],'brief':json.loads(row['payload']),'comments':comments[-12:]}
     rid=uuid.uuid4().hex
     with store.db:
         store.db.execute('BEGIN IMMEDIATE')
+        if feedback is not None:
+            for old in store.db.execute('SELECT id,payload FROM research_runs'):
+                if json.loads(old['payload']).get('feedback_request')==request_id:return old['id']
+            current=store.db.execute('SELECT id FROM finding_versions WHERE candidate_id=? ORDER BY version DESC LIMIT 1',(ids[0],)).fetchone()
+            if not current or current['id']!=feedback.get('finding_id') or current['id']!=jobs[0]['revision']['finding_id']:raise Invalid('The brief changed. Refresh and review your assignments against the latest version. Nothing was saved.')
         if store.db.execute("SELECT 1 FROM research_runs WHERE status='RUNNING'").fetchone():raise Invalid('A research batch is already running. Its progress is shown in Findings.')
-        store.db.execute('INSERT INTO research_runs VALUES (?,?,?,?)',(rid,store.clock(),'RUNNING',json.dumps({'jobs':jobs,'model':cfg['model']})))
+        for c in additions:
+            store.db.execute('INSERT INTO finding_comments VALUES (?,?,?,?)',(c['id'],c['finding_id'],c['created_at'],json.dumps({k:c[k] for k in ('author','text','section','kind')})))
+        store.db.execute('INSERT INTO research_runs VALUES (?,?,?,?)',(rid,store.clock(),'RUNNING',json.dumps({'jobs':jobs,'model':cfg['model'],'feedback_request':feedback.get('request_id') if feedback else None})))
     return rid
 
 def research_objective(feed):
@@ -138,7 +157,14 @@ def execute(data_dir,rid,fetcher=None,caller=None):
     try:
         row=store.db.execute('SELECT payload FROM research_runs WHERE id=?',(rid,)).fetchone()
         if not row:return
-        payload=json.loads(row[0]);cfg=credentials(store);cfg['model']=payload['model']
+        with store.db:
+            store.db.execute('BEGIN IMMEDIATE')
+            row=store.db.execute('SELECT payload,status FROM research_runs WHERE id=?',(rid,)).fetchone()
+            payload=json.loads(row['payload'])
+            if row['status']!='RUNNING' or payload.get('worker_claimed'):return
+            payload['worker_claimed']=True
+            store.db.execute('UPDATE research_runs SET payload=? WHERE id=?',(json.dumps(payload),rid))
+        cfg=credentials(store);cfg['model']=payload['model']
         def persist(status='RUNNING'):
             with store.db:store.db.execute('UPDATE research_runs SET status=?,payload=? WHERE id=?',(status,json.dumps(payload),rid))
         for job in payload['jobs']:
