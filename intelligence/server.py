@@ -7,7 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from .core import COHORTS, Invalid, REPO, ROOT, ROUTES, WEIGHTS, config, now
 from .store import Store
 from .frameworks import listing as framework_list
-from . import web_collection, findings
+from . import web_collection, findings, research_agent
 
 STATIC={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
 TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}
@@ -35,7 +35,7 @@ def brief_markdown(brief):
 
 def make_server(data_dir,port=8765):
     from .frameworks import initialize as init_frameworks
-    initial=Store(data_dir);init_frameworks(initial);initial.close()
+    initial=Store(data_dir);init_frameworks(initial);research_agent.initialize(initial,recover=True);initial.close()
     token=secrets.token_urlsafe(32)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):
@@ -87,6 +87,7 @@ def make_server(data_dir,port=8765):
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
                         'findings':findings.listing(store,dataset),
+                        'research_agent':research_agent.state(store),
                         'website_collection':web_collection.readiness(store),
                         'collection_previews':web_collection.history(store),
                         'frameworks':framework_list(store),
@@ -121,7 +122,15 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/finding':
+                if path=='/api/research/start':
+                    rid=research_agent.begin(store,value.get('candidate_ids'))
+                    research_agent.launch(data_dir,rid)
+                    result={'id':rid,'status':'RUNNING'}
+                elif path=='/api/research/connect':
+                    result=research_agent.setup(store,value)
+                elif path=='/api/finding/review':
+                    result=research_agent.review(store,value)
+                elif path=='/api/finding':
                     result={'id':findings.save(store,value)}
                 elif path=='/api/collection/extract':
                     from .title_extraction import process

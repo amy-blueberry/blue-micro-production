@@ -92,6 +92,9 @@ class Store:
             self.db.execute("DELETE FROM observations WHERE observed_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')", (boundary,))
             if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='finding_versions'").fetchone():
                 self.db.execute("DELETE FROM finding_versions WHERE created_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')",(boundary,))
+            for table,col in [('research_evidence','observed_at'),('research_runs','created_at')]:
+                if self.db.execute("SELECT 1 FROM sqlite_master WHERE name=?",(table,)).fetchone():
+                    self.db.execute('DELETE FROM '+table+' WHERE '+col+'<?',(boundary,))
             # Purge annotations too: they could reference expired API material.
             for table in ['notes', 'analyses', 'decisions']:
                 self.db.execute('DELETE FROM '+table+" WHERE created_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')", (boundary,))
