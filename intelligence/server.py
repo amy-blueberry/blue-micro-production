@@ -1,4 +1,4 @@
-"""Loopback-only, single-user review desk. Not a public deployment server."""
+"""Research desk: loopback locally, verified Google IAP in hosted mode."""
 import json
 import re
 import secrets
@@ -15,7 +15,7 @@ TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8'
 def brief_markdown(brief):
     def clean(value):
         return str(value).replace('\r',' ').replace('\n',' ').replace('<','&lt;').replace('>','&gt;')
-    lines=['# Secret Sauce '+brief['kind']+' brief', '', '**Dataset: '+brief['dataset'].upper()+'** · '+brief['period'], '', brief['note'], '']
+    lines=['# Bumpp Intelligence '+brief['kind']+' brief', '', '**Dataset: '+brief['dataset'].upper()+'** · '+brief['period'], '', brief['note'], '']
     if brief['dataset']=='demo':lines+=['**SYNTHETIC SOFTWARE DEMONSTRATION — not market findings.**','']
     if not brief['items']:lines+=['No new reviewed findings in this brief.','']
     for item in brief['items']:
@@ -36,6 +36,8 @@ def brief_markdown(brief):
 def make_server(data_dir,port=8765):
     from .frameworks import initialize as init_frameworks
     initial=Store(data_dir);init_frameworks(initial);research_agent.initialize(initial,recover=True);initial.close()
+    from . import cloud_auth
+    hosted=cloud_auth.settings()
     token=secrets.token_urlsafe(32)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):
@@ -54,17 +56,24 @@ def make_server(data_dir,port=8765):
             self.end_headers();self.wfile.write(payload)
 
         def permitted(self,mutate=False):
-            allowed='127.0.0.1:'+str(self.server.server_port)
+            allowed=urllib.parse.urlsplit(hosted[0]).netloc if hosted else '127.0.0.1:'+str(self.server.server_port)
+            if hosted:
+                try:
+                    self.identity=cloud_auth.verify(self.headers.get('X-Goog-IAP-JWT-Assertion'), hosted[1])
+                except Exception:
+                    self.respond(401,{'error':'Sign in through the Bumpp Intelligence address.'});return False
             if self.headers.get('Host') != allowed:
                 self.respond(403,{'error':'Open this local desk using its 127.0.0.1 address.'});return False
             origin=self.headers.get('Origin')
-            if origin and origin!='http://'+allowed:
+            if origin and origin!=(hosted[0] if hosted else 'http://'+allowed):
                 self.respond(403,{'error':'Cross-origin access is blocked.'});return False
             if mutate and not secrets.compare_digest(self.headers.get('X-Desk-Token',''),token):
                 self.respond(403,{'error':'Refresh the desk before submitting a change.'});return False
             return True
 
         def do_GET(self):
+            if hosted and self.path=='/healthz':
+                return self.respond(200,{'status':'ok'})
             if not self.permitted():return
             path=urllib.parse.urlsplit(self.path)
             if path.path in STATIC:
@@ -98,13 +107,13 @@ def make_server(data_dir,port=8765):
                         'settings':{'live_enabled':cfg['live_collection_enabled'],'model_enabled':cfg['model']['enabled'],
                             'panel_configured':len(cfg['authority_channels']),'max_daily_requests':cfg['max_requests_per_day'],
                             'scheduler':'Not installed; explicit foreground worker available','production_authorized':False},
-                        'now':now()})
+                        'deployment':{'hosted':bool(hosted),'identity':getattr(self,'identity',None)},'now':now()})
                 elif re.fullmatch(r'/api/candidate/[a-f0-9]{24}',path.path):
                     self.respond(200,store.get(path.path.rsplit('/',1)[-1]))
                 elif re.fullmatch(r'/api/brief/[a-f0-9]{24}(?:/export)?',path.path):
                     bid=path.path.split('/')[3];brief=store.brief_view(bid)
                     if path.path.endswith('/export'):
-                        self.respond(200,brief_markdown(brief),'text/markdown; charset=utf-8','secret-sauce-'+brief['kind']+'-'+brief['period']+'.md')
+                        self.respond(200,brief_markdown(brief),'text/markdown; charset=utf-8','bumpp-intelligence-'+brief['kind']+'-'+brief['period']+'.md')
                     else:self.respond(200,brief)
                 else:self.respond(404,{'error':'Not found.'})
             except Invalid as exc:self.respond(400,{'error':str(exc)})
@@ -197,11 +206,11 @@ def make_server(data_dir,port=8765):
             except Exception:
                 self.respond(500,{'error':'Operation failed. No private details logged; inspect the run status before retrying.'})
             finally:store.close()
-    return ThreadingHTTPServer(('127.0.0.1',port),Handler)
+    return ThreadingHTTPServer(('0.0.0.0' if hosted else '127.0.0.1',port),Handler)
 
 def serve(data_dir,port):
     server=make_server(data_dir,port)
-    print('Secret Sauce desk: http://127.0.0.1:%s — local only; no scheduler installed.'%server.server_port,flush=True)
+    print('Bumpp Intelligence server started; no collection scheduler installed.',flush=True)
     try:server.serve_forever()
     except KeyboardInterrupt:pass
     finally:server.server_close()

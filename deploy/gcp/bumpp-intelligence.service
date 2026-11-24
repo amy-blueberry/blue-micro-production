@@ -1,0 +1,22 @@
+[Unit]
+Description=Bumpp Intelligence
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/var/lib/bumpp-intelligence
+[Service]
+User=bumpp
+Group=bumpp
+WorkingDirectory=/opt/bumpp-intelligence/current
+EnvironmentFile=/etc/bumpp-intelligence.env
+ExecStart=/opt/bumpp-intelligence/venv/bin/python -m intelligence --data-dir /var/lib/bumpp-intelligence/data serve --port 8080
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/bumpp-intelligence
+Environment=PYTHONDONTWRITEBYTECODE=1
+[Install]
+WantedBy=multi-user.target
