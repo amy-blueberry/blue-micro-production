@@ -4,6 +4,10 @@ Audience research and creative development for Blueberry / Bumpp's Roblox-native
 
 **Current stage: audience discovery. Episode development is on hold.** The first milestone is an evidence-supported audience brief and a set of testable story hypotheses. No audience study has yet been run, and no demographic majority has been established for the reference shows.
 
+## Run the intelligence workbench
+
+A local, single-user intelligence pilot is now implemented. Start with the [workbench quickstart](intelligence/README.md) and [implementation status](docs/production-engine/IMPLEMENTATION_STATUS.md). It includes synthetic demo data, a YouTube collector, optional Claude-assisted evidence review, editorial decisions and Markdown briefs. Live collection and model calls are off by default; no cloud deployment or automatic episode production is active.
+
 ## Start here
 
 | Document | Purpose |
@@ -52,7 +56,7 @@ See the [validation playbook](docs/research/04-validation-playbook.md) for the d
 
 ## Repository boundaries
 
-This is a research and reference repository, with no deployed production application or released episode. It contains original analysis, links to public sources, proposed procedures and the four explicitly authorized Bumpp documents, including supplied script drafts and a product spec. Their original labels are preserved. The separate unpublished internal-document collection, participant contact information and raw third-party transcripts are not included.
+This repository contains research, references and a local intelligence application; it has no cloud-deployed production system or released episode. It contains original analysis, links to public sources, proposed procedures and the four explicitly authorized Bumpp documents, including supplied script drafts and a product spec. Their original labels are preserved. The separate unpublished internal-document collection, participant contact information and raw third-party transcripts are not included.
 
 Source inspection date: November 21, 2026. Findings are date-bounded. Reference creators' production methods, audience demographics and causal success drivers must not be inferred from their popularity.
 

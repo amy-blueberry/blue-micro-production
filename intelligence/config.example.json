@@ -1,0 +1,19 @@
+{
+  "live_collection_enabled": false,
+  "lookback_days": 14,
+  "max_search_calls_per_day": 30,
+  "max_requests_per_day": 60,
+  "results_per_query": 10,
+  "max_tracked_items": 100,
+  "scripted_queries": ["roblox series episode 1", "roblox academy series", "roblox voice acted series", "minecraft roleplay series"],
+  "gaming_queries": ["roblox new game", "roblox horror", "roblox meme"],
+  "rising_game_terms": [],
+  "authority_channels": [],
+  "model": {
+    "enabled": false,
+    "name": "",
+    "max_calls_per_day": 5,
+    "max_output_tokens": 1200,
+    "api_version": "2026-10-21"
+  }
+}

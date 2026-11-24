@@ -9,3 +9,10 @@ private/
 local/
 research-private/
 *.zip
+
+# Local intelligence runtime and browser verification artifacts
+.runtime/
+output/playwright/
+.playwright-cli/
+*.sqlite3
+*.sqlite3-*

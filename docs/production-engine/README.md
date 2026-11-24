@@ -1,6 +1,6 @@
 # Bumpp operating structure
 
-Current version: Secret Sauce intelligence v2, November 22, 2026. Architecture and configuration only; connectors, schedules and production are inactive.
+Current version: Secret Sauce intelligence v2, with a local pilot implemented November 23, 2026. See [implementation status](IMPLEMENTATION_STATUS.md) and the [runnable workbench](../../intelligence/README.md). Live connections, installed schedules and production remain inactive. The earlier JSON contracts describe the target system, not deployed services.
 
 ## Visual entry points
 
