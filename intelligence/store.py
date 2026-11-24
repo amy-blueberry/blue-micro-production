@@ -90,6 +90,8 @@ class Store:
         boundary = (parse_time(self.clock()) - dt.timedelta(days=29)).isoformat().replace('+00:00','Z')
         with self.db:
             self.db.execute("DELETE FROM observations WHERE observed_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')", (boundary,))
+            if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='finding_versions'").fetchone():
+                self.db.execute("DELETE FROM finding_versions WHERE created_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')",(boundary,))
             # Purge annotations too: they could reference expired API material.
             for table in ['notes', 'analyses', 'decisions']:
                 self.db.execute('DELETE FROM '+table+" WHERE created_at<? AND candidate_id IN (SELECT id FROM candidates WHERE dataset='live')", (boundary,))

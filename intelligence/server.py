@@ -7,7 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from .core import COHORTS, Invalid, REPO, ROOT, ROUTES, WEIGHTS, config, now
 from .store import Store
 from .frameworks import listing as framework_list
-from . import web_collection
+from . import web_collection, findings
 
 STATIC={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
 TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}
@@ -86,6 +86,7 @@ def make_server(data_dir,port=8765):
                     registry={'feeds':feed_list(store)}
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
+                        'findings':findings.listing(store,dataset),
                         'website_collection':web_collection.readiness(store),
                         'collection_previews':web_collection.history(store),
                         'frameworks':framework_list(store),
@@ -120,7 +121,9 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/collection/extract':
+                if path=='/api/finding':
+                    result={'id':findings.save(store,value)}
+                elif path=='/api/collection/extract':
                     from .title_extraction import process
                     result=process(store,value.get('candidate_id'),apply=value.get('save') is True)
                 elif path=='/api/connection/firecrawl':
