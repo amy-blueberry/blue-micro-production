@@ -72,7 +72,7 @@ class Store:
         if item.get('published_at') is not None:parse_time(item['published_at'])
         if parse_time(observed) > parse_time(self.clock()) + dt.timedelta(minutes=5):
             raise Invalid('Observation time cannot be in the future.')
-        if dataset == 'live' and item.get('origin') not in ('youtube_api','firecrawl'):
+        if dataset == 'live' and item.get('origin') not in ('youtube_api','firecrawl','catalog_title'):
             raise Invalid('Live collector accepts only supported connector records.')
         if dataset == 'demo' and item.get('origin') != 'synthetic':
             raise Invalid('Demo must contain synthetic fixtures only.')
@@ -112,6 +112,9 @@ class Store:
         row['analysis'] = row['analyses'][0] if row['analyses'] else None
         row['review_state'] = 'REVIEWED' if row['decision'] else 'NEEDS_REVIEW'
         row['derived_metrics'] = None
+        if row['latest'].get('origin')=='catalog_title':
+            row['measurement_note']='Title listing evidence. Displayed source figures are not audience demographics or independently verified growth.'
+            return row
         if row['latest'].get('origin')=='firecrawl':
             row['measurement_note']='Website text capture. No audience metrics or audiovisual inspection.'
             return row

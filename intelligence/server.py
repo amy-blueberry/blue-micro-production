@@ -120,12 +120,22 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/connection/firecrawl':
+                if path=='/api/collection/extract':
+                    from .title_extraction import process
+                    result=process(store,value.get('candidate_id'),apply=value.get('save') is True)
+                elif path=='/api/connection/firecrawl':
                     result=web_collection.save_credential(store,value.get('key'))
                 elif path=='/api/collection/test':
                     result=web_collection.run(store,value.get('source_ids'))
                 elif path=='/api/collection/save':
                     result=web_collection.save_preview(store,value.get('preview_id'),value.get('source_ids'))
+                    from .title_extraction import process
+                    titles=[]
+                    for cid in result['candidate_ids']:
+                        host=(urllib.parse.urlsplit(store.get(cid)['latest']['url']).hostname or '').removeprefix('www.')
+                        if host in ('a24films.com','webtoons.com'):
+                            titles.extend(process(store,cid,apply=True)['candidate_ids'])
+                    result['title_ids']=titles
                 elif path=='/api/framework':
                     from .frameworks import save
                     result={'id':save(store,value)}

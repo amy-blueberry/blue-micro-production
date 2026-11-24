@@ -108,7 +108,7 @@ def run(store, ids, transport=None):
                     probe=dict(s,url=final)
                     if eligibility(probe,fs):raise Invalid('Capture redirected outside the supported public-page scope.')
                     entry.update(status='CAPTURED',title=str(meta.get('title') or s['name'])[:1000],
-                        text=body[:20000],truncated=len(body)>20000,observed_at=store.clock(),final_url=final,
+                        text=body[:100000],truncated=len(body)>100000,observed_at=store.clock(),final_url=final,
                         warning='Page text only; inspect for consent walls or incomplete content. No video, audience or story-performance analysis.')
                 except Invalid as exc:
                     entry.update(status='FAILED',error=str(exc));errors.append(s['name']+': '+str(exc))
