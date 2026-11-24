@@ -9,7 +9,7 @@ from .store import Store
 from .frameworks import listing as framework_list
 from . import web_collection, findings, research_agent, editorial
 
-STATIC={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
+STATIC={'/':'index.html','/app.js':'app.js','/voice.js':'voice.js','/style.css':'style.css'}
 TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}
 
 def brief_markdown(brief):
