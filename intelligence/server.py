@@ -78,7 +78,8 @@ def make_server(data_dir,port=8765):
                         r['counts']=json.loads(r['counts']);r['errors']=json.loads(r['errors'])
                     from .sources import listing
                     sources=listing(store)
-                    registry=json.loads((REPO/'docs/production-engine/intelligence_feeds.json').read_text())
+                    from .feeds import listing as feed_list
+                    registry={'feeds':feed_list(store)}
                     self.respond(200,{'csrf':token,'dataset':dataset,'candidates':store.list(dataset),'runs':runs,
                         'briefs':[dict(r) for r in store.db.execute('SELECT * FROM briefs WHERE dataset=? ORDER BY created_at DESC',(dataset,))],
                         'sources':sources,'authority_panel':json.loads((REPO/'docs/production-engine/authority_panel.json').read_text())['panel'],'cohorts':COHORTS,'routes':ROUTES,'weights':WEIGHTS,'feeds':registry['feeds'],
@@ -110,7 +111,10 @@ def make_server(data_dir,port=8765):
                 value=json.loads(self.rfile.read(length));store.purge()
                 if not isinstance(value,dict):raise Invalid('Expected a JSON object.')
                 path=urllib.parse.urlsplit(self.path).path
-                if path=='/api/source':
+                if path=='/api/feed':
+                    from .feeds import save as save_feed
+                    result={'id':save_feed(store,value)}
+                elif path=='/api/source':
                     from .sources import initialize, save
                     initialize(store)
                     result={'id':save(store,value)}

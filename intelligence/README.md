@@ -123,3 +123,12 @@ node --check intelligence/static/app.js
 The unit/integration suite covers dataset separation, budgets, deduplication, missing values, expiration/deletion, locks, failed scheduling, evidence citations, model input isolation, version-bound briefs and local HTTP protections. Network services are mocked; passing tests does not establish successful live credentials, coverage or model quality. Browser QA uses synthetic records only.
 
 Next: one real collector run with configured access; analyst review of its coverage; a small rubric-based evaluation of model drafts; then authenticated shared hosting, durable scheduling and additional feeds. Video generation, Roblox production, first-party performance ingestion and automatic experiment execution are not implemented. See [implementation status](../docs/production-engine/IMPLEMENTATION_STATUS.md).
+
+## Manage feeds in the admin
+
+Open **Sources → Platform & learning feeds → Add feed**, or use **Edit feed** on an existing card. Research definitions are initialized from Amy’s existing ten-feed specification once, then persisted privately in SQLite. Updates do not modify the public reference JSON. You can edit the name, internal/external kind, priority, discovery scope, relevance criteria, desired cadence, HTTPS starting links, searches/hashtags and community list. New feed IDs are allocated automatically; stale concurrent edits are rejected rather than overwriting newer changes.
+
+Uncheck **Available for source assignment** to archive; recheck to restore. Existing sources retain their assignment and remain editable, but new assignments to archived feeds are blocked. **Add source to feed** preselects the correct feed. Custom feeds appear in the source dropdown. Archiving changes the research definition only: the existing independently configured collector is unaffected. Cadence and queries here are desired research settings, not an installed schedule or activated connector.
+
+
+All sources now appear within their assigned feed, including supporting research tools and authority-panel candidates. TikTok Creative Center and Google Trends are editable supporting sources initially assigned to F03; reassign them as needed. Ten panel candidates are editable F07 sources with missing account links explicitly shown. Source URLs can remain empty until verified. The source role describes how it is used; it does not create a separate uneditable list. The redundant workspace selector has been removed.
