@@ -158,13 +158,16 @@ def validate(value,evidence):
     for o in obs:
         if not isinstance(o,dict):raise Invalid('Invalid observation.')
         text(o.get('text'),'observation',1200);quote=text(o.get('quote'),'quote',600)
-        if o.get('evidence_id')!=evidence['id'] or quote not in evidence['text']:raise Invalid('Citation check failed: quote is not in the retrieved evidence.')
+        if o.get('evidence_id')!=evidence['id']:raise Invalid('Citation check failed: the response used the wrong source ID. No brief saved.')
+        if quote not in evidence['text']:raise Invalid('Citation check failed: a quote does not exactly match the retrieved source text. No brief saved.')
     if 'creative_notes' in value:
         notes=value['creative_notes']
         if not isinstance(notes,dict):raise Invalid('Creative notes must be structured.')
         for k in ('writing','directing','producing','bumpp_opportunity','smallest_test'):
             notes[k]=text(notes.get(k),k,1800)
-    if 'feedback_response' in value:value['feedback_response']=text(value['feedback_response'],'feedback response',2000)
+    if value.get('feedback_response') is None or value.get('feedback_response')=='':
+        value.pop('feedback_response',None)
+    elif 'feedback_response' in value:value['feedback_response']=text(value['feedback_response'],'feedback response',2000)
     return value
 
 def execute(data_dir,rid,fetcher=None,caller=None):

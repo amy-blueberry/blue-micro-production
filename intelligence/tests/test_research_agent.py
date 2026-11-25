@@ -204,3 +204,10 @@ class ResearchTests(unittest.TestCase):
    with self.assertRaises(Invalid) as raised:agent.openai_call({}, {'model':'gpt-4.1','key':'synthetic-secret'})
   self.assertIn('API credits are exhausted',str(raised.exception))
   self.assertNotIn('private provider text',str(raised.exception))
+
+ def test_new_brief_accepts_empty_optional_feedback_but_not_false_citations(self):
+  value={'headline':'Test','observations':[{'text':'A stated fact','evidence_id':'source','quote':'Exact source text.'}],'meaning':'Hypothesis','rationale':'Investigate','gaps':'Missing scene evidence','next_step':'Inspect scenes','action':'WATCH','feedback_response':''}
+  evidence={'id':'source','text':'Exact source text.'}
+  self.assertNotIn('feedback_response',agent.validate(value,evidence))
+  value['observations'][0]['quote']='Invented source text.'
+  with self.assertRaises(Invalid):agent.validate(value,evidence)
