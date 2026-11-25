@@ -23,6 +23,7 @@ chmod 700 /var/lib/bumpp-intelligence/data
 find /var/lib/bumpp-intelligence/data -type f -exec chmod 600 {} +
 python3 -m venv /opt/bumpp-intelligence/venv
 /opt/bumpp-intelligence/venv/bin/pip install --quiet -r /opt/bumpp-intelligence/current/deploy/gcp/requirements.txt
+(cd /opt/bumpp-intelligence/current && /opt/bumpp-intelligence/venv/bin/python -m deploy.gcp.test_iap_verification)
 printf 'BUMPP_PUBLIC_ORIGIN=https://intelligence.bumpp.gg\nBUMPP_IAP_AUDIENCE=%s\n' "$IAP_AUDIENCE" > /etc/bumpp-intelligence.env
 chmod 600 /etc/bumpp-intelligence.env
 cp /opt/bumpp-intelligence/current/deploy/gcp/bumpp-intelligence.service /etc/systemd/system/

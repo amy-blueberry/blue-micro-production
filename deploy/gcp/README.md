@@ -45,3 +45,7 @@ Google guidance: [Enable IAP for Compute Engine](https://docs.cloud.google.com/i
 ## Launch verification (November 24, 2026)
 
 Server active; backend HEALTHY; persistent disk mounted; application restart verified; missing and forged IAP tokens rejected with 401. 57 Python tests and voice interaction tests passed. Hostname DNS is correct; Google-managed HTTPS certificate was still provisioning at the last check. Browser sign-in and a successful cloud provider research run are not yet verified. Provider credentials being present does not prove API credit or model access.
+
+## Sign-in repair and browser verification
+
+The initial deployment omitted the cryptography dependency needed for ES256 IAP tokens. Added `cryptography==46.0.3` and a deployment-venv regression test that exercises real signatures, wrong audiences, expired tokens, invalid issuers and forged tokens. The installer now runs that test before starting the service. After installing the dependency and restarting, the authenticated Chrome session successfully loaded the live Findings dashboard with 4 briefs and 85 pending leads. HTTPS and browser sign-in are now verified. This does not establish successful provider research calls.
