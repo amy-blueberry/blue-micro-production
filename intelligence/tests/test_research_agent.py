@@ -181,7 +181,18 @@ class ResearchTests(unittest.TestCase):
    result,usage=agent.model_call({'evidence':{}},cfg)
    req=mock.call_args[0][0];body=json.loads(req.data)
    self.assertEqual(req.full_url,'https://api.openai.com/v1/responses');self.assertFalse(body['store']);self.assertEqual(result['headline'],'Synthetic')
+   self.assertIn('json',body['input'].lower())
+   self.assertEqual(json.loads(body['input'].split('\n',1)[1]),{'evidence':{}})
    response.read.return_value=b'{"status":"incomplete","output":[]}'
    with self.assertRaises(Invalid):agent.model_call({},cfg)
    response.read.return_value=b'{"status":"completed","output":[{"type":"message","content":[{"type":"refusal","refusal":"No"}]}]}'
    with self.assertRaises(Invalid):agent.model_call({},cfg)
+
+ def test_openai_bad_request_is_not_mislabeled_as_credentials(self):
+  import io,urllib.error
+  err=urllib.error.HTTPError('https://api.openai.com/v1/responses',400,'Bad Request',{},io.BytesIO(b'{"error":{"message":"private input"}}'))
+  with patch('urllib.request.urlopen',side_effect=err):
+   with self.assertRaises(Invalid) as raised:agent.openai_call({}, {'model':'gpt-4.1','key':'synthetic-secret'})
+  self.assertIn('request format',str(raised.exception))
+  self.assertNotIn('private input',str(raised.exception))
+  self.assertNotIn('credits',str(raised.exception))
