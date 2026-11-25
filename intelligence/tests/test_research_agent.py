@@ -196,3 +196,11 @@ class ResearchTests(unittest.TestCase):
   self.assertIn('request format',str(raised.exception))
   self.assertNotIn('private input',str(raised.exception))
   self.assertNotIn('credits',str(raised.exception))
+
+ def test_openai_credit_error_is_actionable(self):
+  import io,urllib.error
+  err=urllib.error.HTTPError('https://api.openai.com/v1/responses',429,'Too Many Requests',{},io.BytesIO(b'{"error":{"code":"credit_balance_exhausted","message":"private provider text"}}'))
+  with patch('urllib.request.urlopen',side_effect=err):
+   with self.assertRaises(Invalid) as raised:agent.openai_call({}, {'model':'gpt-4.1','key':'synthetic-secret'})
+  self.assertIn('API credits are exhausted',str(raised.exception))
+  self.assertNotIn('private provider text',str(raised.exception))

@@ -255,6 +255,14 @@ def openai_call(packet,cfg):
         return json.loads(content),result.get('usage',{})
     except urllib.error.HTTPError as exc:
         # Do not expose provider bodies: they can echo input text or credentials.
+        try:
+            detail=json.loads(exc.read(16000)).get('error',{})
+            code=detail.get('code') if isinstance(detail,dict) else None
+        except Exception:code=None
+        if code=='credit_balance_exhausted':
+            raise Invalid('OpenAI API credits are exhausted. Add credits in OpenAI API billing, then run research again. No automatic retry.') from None
+        if code=='insufficient_quota':
+            raise Invalid('OpenAI API quota is unavailable. Check API billing and project usage limits, then run research again. No automatic retry.') from None
         hints={400:'OpenAI rejected the request format. Check the request parameters.',
                401:'OpenAI rejected the API key. Update the saved OpenAI connection.',
                403:'OpenAI denied access. Check project and model permissions.',
