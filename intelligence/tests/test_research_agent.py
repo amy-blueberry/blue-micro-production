@@ -223,3 +223,15 @@ class ResearchTests(unittest.TestCase):
   for _ in range(agent.DAILY_CALLS-1):self.s.consume('research_model_calls',agent.DAILY_CALLS)
   with self.assertRaises(Invalid):agent.begin(self.s,self.ids)
   self.assertEqual(self.s.db.execute('select count(*) from research_runs').fetchone()[0],0)
+
+ def test_selected_source_passages_are_inserted_verbatim(self):
+  source='A source with curly punctuation and exact spacing. '+('More source text. '*100)
+  passages=agent.source_passages(source)
+  self.assertTrue(all(p['text'] in source and len(p['text'])<=550 for p in passages))
+  evidence={'id':'real-source','text':source,'passages':passages}
+  value={'headline':'Test','observations':[{'text':'A stated fact','passage_id':passages[0]['id'],'quote':'Invented quote'}],'meaning':'Hypothesis','rationale':'Investigate','gaps':'Missing scenes','next_step':'Inspect scenes','action':'WATCH'}
+  result=agent.validate(value,evidence)
+  self.assertEqual(result['observations'][0]['quote'],passages[0]['text'])
+  self.assertEqual(result['observations'][0]['evidence_id'],'real-source')
+  value['observations'][0]['passage_id']='nonexistent'
+  with self.assertRaises(Invalid):agent.validate(value,evidence)

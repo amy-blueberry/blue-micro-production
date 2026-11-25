@@ -53,3 +53,5 @@ The initial deployment omitted the cryptography dependency needed for ES256 IAP 
 ## Cloud pilot request limits
 
 Hosted configuration now sets `BUMPP_RESEARCH_DAILY_CALLS=25` and `BUMPP_SOURCE_DAILY_PAGES=25`. Existing usage counters are preserved. Both allowances reset at midnight UTC. These are request ceilings, not currency budgets. The Findings dashboard shows both remaining counts. Whole batches are checked before queue creation; workers check again before retrieving a page. Failed provider attempts still consume an attempt. Local defaults remain five model calls and ten pages unless configured.
+
+New research requests now provide numbered, verbatim source passages. The model selects passage IDs; the server inserts the original source text into the citation. Invalid IDs are rejected, and legacy quote responses still require an exact match. This validates source provenance, not whether a claim is logically supported; editorial review remains necessary.

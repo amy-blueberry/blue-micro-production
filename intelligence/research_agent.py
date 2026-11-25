@@ -166,6 +166,19 @@ def model_call(packet,cfg):
     except urllib.error.HTTPError as exc:raise Invalid('Claude HTTP %s. Check key, model access or credits. No automatic retry.'%exc.code) from None
     except (ValueError,TypeError,urllib.error.URLError,OSError):raise Invalid('Claude did not return usable JSON. No draft saved or automatic retry.') from None
 
+def source_passages(source):
+    """Create exact source spans, never paraphrases or fuzzy quote matches."""
+    spans=[];start=0
+    while start<len(source):
+        end=min(start+550,len(source))
+        if end<len(source):
+            boundary=source.rfind(' ',start,end)
+            if boundary>start:end=boundary
+        chunk=source[start:end].strip()
+        if chunk:spans.append({'id':'p%03d'%(len(spans)+1),'text':chunk})
+        start=end
+    return spans
+
 def validate(value,evidence):
     if not isinstance(value,dict):raise Invalid('Research response must be an object.')
     for k,n in [('headline',200),('meaning',3000),('rationale',3000),('gaps',3000),('next_step',2000)]:value[k]=text(value.get(k),k,n)
@@ -174,7 +187,13 @@ def validate(value,evidence):
     if not isinstance(obs,list) or not 1<=len(obs)<=5:raise Invalid('Draft must have one to five cited observations.')
     for o in obs:
         if not isinstance(o,dict):raise Invalid('Invalid observation.')
-        text(o.get('text'),'observation',1200);quote=text(o.get('quote'),'quote',600)
+        text(o.get('text'),'observation',1200)
+        if 'passage_id' in o:
+            passage=next((p for p in evidence.get('passages',[]) if p['id']==o['passage_id']),None)
+            if not passage or passage['text'] not in evidence['text']:raise Invalid('Citation check failed: invalid source passage selection. No brief saved.')
+            o['quote']=passage['text']
+            o['evidence_id']=evidence['id']
+        quote=text(o.get('quote'),'quote',600)
         if o.get('evidence_id')!=evidence['id']:raise Invalid('Citation check failed: the response used the wrong source ID. No brief saved.')
         if quote not in evidence['text']:raise Invalid('Citation check failed: a quote does not exactly match the retrieved source text. No brief saved.')
     if 'creative_notes' in value:
@@ -213,6 +232,7 @@ def execute(data_dir,rid,fetcher=None,caller=None):
                 if not title_url(final) or title_url(final)[0]!=job['url']:raise Invalid('Title page redirected or could not be matched. No brief generated.')
                 if meta.get('statusCode',200)>=400 or not isinstance(body,str) or len(body.strip())<120:raise Invalid('Title page did not return sufficient readable evidence.')
                 evidence={'id':uuid.uuid4().hex,'url':job['url'],'observed_at':store.clock(),'text':body[:30000],'truncated':len(body)>30000}
+                evidence['passages']=source_passages(evidence['text'])
                 # Blank or consent-only responses must not be promoted into findings.
                 compact=body.casefold()
                 if len(body)<1500 and any(x in compact for x in ('access denied','verify you are human','captcha','just a moment')):raise Invalid('Title page returned an access challenge. No brief generated.')
