@@ -13,6 +13,7 @@ from . import findings, frameworks, feeds, web_collection, editorial
 from .title_extraction import title_url
 
 DEFAULT_MODEL='claude-sonnet-5-5'
+DAILY_CALLS=int(os.environ.get('BUMPP_RESEARCH_DAILY_CALLS','5'))
 SCHEMA='''
 CREATE TABLE IF NOT EXISTS research_runs(id TEXT PRIMARY KEY,created_at TEXT NOT NULL,status TEXT NOT NULL,payload TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS research_evidence(id TEXT PRIMARY KEY,candidate_id TEXT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,observed_at TEXT NOT NULL,payload TEXT NOT NULL);
@@ -61,10 +62,25 @@ def setup(store,value):
     with os.fdopen(fd,'w') as f:json.dump(cfg,f)
     return {'configured':True,'verified':False,'provider':provider}
 
+def allowance(store):
+    day=store.clock()[:10]
+    def remaining(bucket,limit):
+        row=store.db.execute('SELECT used FROM budgets WHERE day=? AND bucket=?',(day,bucket)).fetchone()
+        return max(0,limit-(row[0] if row else 0))
+    return {'model_remaining':remaining('research_model_calls',DAILY_CALLS),
+            'pages_remaining':remaining('firecrawl_pages',web_collection.DAILY_PAGES),
+            'model_limit':DAILY_CALLS,'page_limit':web_collection.DAILY_PAGES,'reset':'00:00 UTC'}
+
+def check_allowance(store,count=1):
+    limits=allowance(store)
+    for name,label in [('model_remaining','research requests'),('pages_remaining','source-page requests')]:
+        if limits[name]<count:
+            raise Invalid('Only %s %s remain today; this batch needs %s. Limits reset at 00:00 UTC. No collection or model request was started.'%(limits[name],label,count))
+
 def state(store):
     initialize(store);cfg=credentials(store)
     return {'provider':cfg['provider'],'providers':{p:{'configured':bool(credentials(store,p)['key']),'model':credentials(store,p)['model']} for p in PROVIDERS},'model_configured':bool(cfg['key']),'firecrawl_configured':bool(web_collection.credential(store)),
-        'model':cfg['model'],'max_batch':3,'daily_calls':5,
+        'model':cfg['model'],'max_batch':3,'daily_calls':DAILY_CALLS,'allowance':allowance(store),
         'runs':[dict(id=r['id'],created_at=r['created_at'],status=r['status'],**json.loads(r['payload'])) for r in store.db.execute('SELECT * FROM research_runs ORDER BY created_at DESC,rowid DESC LIMIT 8')],
         'reviews':[dict(finding_id=r['finding_id'],created_at=r['created_at'],**json.loads(r['payload'])) for r in store.db.execute('SELECT * FROM finding_reviews ORDER BY created_at DESC,rowid DESC')]}
 
@@ -124,6 +140,7 @@ def begin(store,ids,revision=False,feedback=None):
         if store.db.execute("SELECT 1 FROM research_runs WHERE status='RUNNING'").fetchone():raise Invalid('A research batch is already running. Its progress is shown in Findings.')
         for c in additions:
             store.db.execute('INSERT INTO finding_comments VALUES (?,?,?,?)',(c['id'],c['finding_id'],c['created_at'],json.dumps({k:c[k] for k in ('author','text','section','kind')})))
+        check_allowance(store,len(jobs))
         store.db.execute('INSERT INTO research_runs VALUES (?,?,?,?)',(rid,store.clock(),'RUNNING',json.dumps({'jobs':jobs,'model':cfg['model'],'provider':cfg['provider'],'feedback_request':feedback.get('request_id') if feedback else None})))
     return rid
 
@@ -188,6 +205,7 @@ def execute(data_dir,rid,fetcher=None,caller=None):
         for job in payload['jobs']:
             try:
                 item=store.get(job['candidate_id']);s=item['latest'];job['status']='FETCHING';persist()
+                check_allowance(store)
                 store.consume('firecrawl_pages',web_collection.DAILY_PAGES)
                 data=(fetcher or web_collection.fetch_page)(job['url'],web_collection.credential(store))
                 meta=data.get('metadata') or {};body=data.get('markdown')
@@ -210,7 +228,7 @@ def execute(data_dir,rid,fetcher=None,caller=None):
                     'known_mature_label':s.get('age_status')=='MATURE_LABEL_REVIEW_REQUIRED',
                     'editorial_lessons':editorial.context(store,s['feed_ids']),
                     'revision':job.get('revision')}
-                job['status']='DRAFTING';persist();store.consume('research_model_calls',5)
+                job['status']='DRAFTING';persist();store.consume('research_model_calls',DAILY_CALLS)
                 result,usage=(caller or model_call)(packet,cfg);result=validate(result,evidence)
                 if job.get('revision') and not result.get('feedback_response'):raise Invalid('Revision did not explain its response to feedback. No draft saved.')
                 citations=[dict(o,url=evidence['url'],retrieved_at=evidence['observed_at']) for o in result['observations']]

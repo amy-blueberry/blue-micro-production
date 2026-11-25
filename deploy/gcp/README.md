@@ -49,3 +49,7 @@ Server active; backend HEALTHY; persistent disk mounted; application restart ver
 ## Sign-in repair and browser verification
 
 The initial deployment omitted the cryptography dependency needed for ES256 IAP tokens. Added `cryptography==46.0.3` and a deployment-venv regression test that exercises real signatures, wrong audiences, expired tokens, invalid issuers and forged tokens. The installer now runs that test before starting the service. After installing the dependency and restarting, the authenticated Chrome session successfully loaded the live Findings dashboard with 4 briefs and 85 pending leads. HTTPS and browser sign-in are now verified. This does not establish successful provider research calls.
+
+## Cloud pilot request limits
+
+Hosted configuration now sets `BUMPP_RESEARCH_DAILY_CALLS=25` and `BUMPP_SOURCE_DAILY_PAGES=25`. Existing usage counters are preserved. Both allowances reset at midnight UTC. These are request ceilings, not currency budgets. The Findings dashboard shows both remaining counts. Whole batches are checked before queue creation; workers check again before retrieving a page. Failed provider attempts still consume an attempt. Local defaults remain five model calls and ten pages unless configured.

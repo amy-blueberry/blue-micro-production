@@ -13,7 +13,7 @@ from .sources import listing
 # Pilot adapters: exact public hosts only, never private analytics/account URLs.
 HOSTS = {'a24films.com', 'mydramalist.com', 'webtoons.com', 'reelshort.com', 'dramabox.com'}
 MAX_PAGES = 3
-DAILY_PAGES = 10
+DAILY_PAGES = int(os.environ.get('BUMPP_SOURCE_DAILY_PAGES','10'))
 
 def initialize(store):
     store.db.execute('CREATE TABLE IF NOT EXISTS collection_previews(id TEXT PRIMARY KEY,created_at TEXT NOT NULL,payload TEXT NOT NULL)')

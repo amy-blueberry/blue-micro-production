@@ -179,8 +179,10 @@ function renderFindings(){
 
 function reviewStatus(id){return state.research_agent?.reviews.find(r=>r.finding_id===id)?.status||'Awaiting review';}
 function researchProgress(){
+ const q=state.research_agent?.allowance;
+ const allowance=q?`<p class="callout">Today: <b>${q.model_remaining} of ${q.model_limit}</b> research requests remaining · <b>${q.pages_remaining} of ${q.page_limit}</b> source-page requests remaining. Resets at 00:00 UTC. Provider billing is separate.</p>`:'';
  const runs=(state.research_agent?.runs||[]).slice(0,3);
- return runs.length?`<div class="section"><h3>Research progress</h3>${runs.map(r=>`<details ${r.status==='RUNNING'?'open':''}><summary>${date(r.created_at)} · ${esc(r.status)}</summary>${r.jobs.map(j=>`<p><b>${esc(j.title)}</b> · ${esc(j.status)}${j.error?`<br><span class="errors">${esc(j.error)}</span>`:''}</p>`).join('')}</details>`).join('')}</div>`:'';
+ return allowance+(runs.length?`<div class="section"><h3>Research progress</h3>${runs.map(r=>`<details ${r.status==='RUNNING'?'open':''}><summary>${date(r.created_at)} · ${esc(r.status)}</summary>${r.jobs.map(j=>`<p><b>${esc(j.title)}</b> · ${esc(j.status)}${j.error?`<br><span class="errors">${esc(j.error)}</span>`:''}</p>`).join('')}</details>`).join('')}</div>`:'');
 }
 function researchConnectionForm(){
  const a=state.research_agent;

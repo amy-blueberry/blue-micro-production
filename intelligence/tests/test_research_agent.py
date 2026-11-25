@@ -211,3 +211,15 @@ class ResearchTests(unittest.TestCase):
   self.assertNotIn('feedback_response',agent.validate(value,evidence))
   value['observations'][0]['quote']='Invented source text.'
   with self.assertRaises(Invalid):agent.validate(value,evidence)
+
+ def test_exhausted_budget_rejects_before_queue_or_collection(self):
+  for _ in range(agent.DAILY_CALLS):self.s.consume('research_model_calls',agent.DAILY_CALLS)
+  with self.assertRaises(Invalid):agent.begin(self.s,[self.ids[0]])
+  self.assertEqual(self.s.db.execute('select count(*) from research_runs').fetchone()[0],0)
+  self.assertEqual(agent.allowance(self.s)['model_remaining'],0)
+  self.assertEqual(agent.allowance(self.s)['pages_remaining'],agent.web_collection.DAILY_PAGES)
+
+ def test_whole_batch_requires_enough_allowance(self):
+  for _ in range(agent.DAILY_CALLS-1):self.s.consume('research_model_calls',agent.DAILY_CALLS)
+  with self.assertRaises(Invalid):agent.begin(self.s,self.ids)
+  self.assertEqual(self.s.db.execute('select count(*) from research_runs').fetchone()[0],0)
